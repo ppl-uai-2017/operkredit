@@ -47,12 +47,11 @@
 <body>
 <!-- Header Section Starts -->
 <header id="header-area">
-    <?php
-    $this->load->view("navbar");
-    ?>
     <!-- Nested Container Starts -->
     <div class="container">
-
+        <?php
+        $this->load->view("navbar");
+        ?>
     </div>
     <!-- Nested Container Ends -->
 </header>
@@ -86,142 +85,107 @@
                         <form class="form-horizontal" role="form" method="POST" action="<?php echo base_url("index.php/register/create_account")?>">
                             <!-- Personal Information Starts -->
                             <div class="form-group">
-                                <label for="inputFname" class="col-sm-3 control-label">First Name :</label>
+                                <label for="nama_depan" class="col-sm-3 control-label">Nama Depan :</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputFname" placeholder="First Name">
+                                    <input type="text" class="form-control" id="nama_depan" placeholder="First Name">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputLname" class="col-sm-3 control-label">Last Name :</label>
+                                <label for="nama_belakang" class="col-sm-3 control-label">Nama Belakang :</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputLname" placeholder="Last Name">
+                                    <input type="text" class="form-control" id="nama_belakang" placeholder="Last Name">
+                                </div>
+                            </div>
+							<div class="form-group">
+                                <label for="tempat_lahir" class="col-sm-3 control-label">Tempat Lahir :</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="tempat_lahir" placeholder="Tempat Lahir">
+                                </div>
+                            </div>
+							<div class="form-group">
+                                <label for="tanggal_lahir" class="col-sm-3 control-label">Tanggal Lahir :</label>
+                                <div class="col-sm-9">
+                                    <input type="date" class="form-control" id="tanggal_lahir" placeholder="Tanggal Lahir">
+                                </div>
+                            </div>
+							<div class="form-group">
+                                <label for="jenis_kelamin" class="col-sm-3 control-label">Jenis Kelamin :</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" id="jenis_kelamin">
+                                        <option>- Jenis Kelamin -</option>
+                                        <option>Laki-laki</option>
+                                        <option>Perempuan</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail" class="col-sm-3 control-label">Email :</label>
+                                <label for="email" class="col-sm-3 control-label">Email :</label>
                                 <div class="col-sm-9">
-                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                    <input type="email" class="form-control" id="email" placeholder="Email">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputPhone" class="col-sm-3 control-label">Phone :</label>
+                                <label for="no_hp" class="col-sm-3 control-label">No.HP :</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputPhone" placeholder="Phone">
+                                    <input type="text" class="form-control" id="no_hp" placeholder="No.HP">
+                                </div>
+                            </div>
+							<div class="form-group">
+                                <label for="status_pernikahan" class="col-sm-3 control-label">Status Pernikahan :</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="status_pernikahan" placeholder="Status Pernikahan">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputFax" class="col-sm-3 control-label">Fax :</label>
+                                <label for="alamat" class="col-sm-3 control-label">Alamat :</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputFax" placeholder="Fax">
+                                    <input type="text" class="form-control" id="alamat" placeholder="Alamat">
+                                </div>
+                            </div>
+							<div class="form-group">
+                                <label for="kota" class="col-sm-3 control-label">Kota :</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="kota" placeholder="City">
+                                </div>
+                            </div>
+							<div class="form-group">
+                                <label for="kode_pos" class="col-sm-3 control-label">kode Pos :</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="kode_pos" placeholder="Kode Pos">
+                                </div>
+                            </div>
+							<div class="form-group">
+                                <label for="provinsi" class="col-sm-3 control-label">Provinsi :</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="provinsi" placeholder="Provinsi">
                                 </div>
                             </div>
                             <!-- Personal Information Ends -->
                             <h3 class="panel-heading inner">
-                                Delivery Information
-                            </h3>
-                            <!-- Delivery Information Starts -->
-                            <div class="form-group">
-                                <label for="inputCompany" class="col-sm-3 control-label">Company :</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputCompany" placeholder="Company">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputCompanyId" class="col-sm-3 control-label">Company ID :</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputCompanyId" placeholder="Company ID">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputAddress1" class="col-sm-3 control-label">Address/1 :</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputAddress1" placeholder="Address/1">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputAddress2" class="col-sm-3 control-label">Address/2 :</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputAddress2" placeholder="Address/2">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputCity" class="col-sm-3 control-label">City :</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputCity" placeholder="City">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputPostCode" class="col-sm-3 control-label">Postal Code :</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputPostCode" placeholder="Postal Code">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputCountry" class="col-sm-3 control-label">Country :</label>
-                                <div class="col-sm-9">
-                                    <select class="form-control" id="inputCountry">
-                                        <option>- All Countries -</option>
-                                        <option>India</option>
-                                        <option>USA</option>
-                                        <option>UK</option>
-                                        <option>China</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputRegion" class="col-sm-3 control-label">Region :</label>
-                                <div class="col-sm-9">
-                                    <select class="form-control" id="inputRegion">
-                                        <option>- All Regions -</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- Delivery Information Ends -->
-                            <h3 class="panel-heading inner">
-                                Password
+                                Username & Password
                             </h3>
                             <!-- Password Area Starts -->
-                            <div class="form-group">
-                                <label for="inputPassword" class="col-sm-3 control-label">Password :</label>
+							<div class="form-group">
+                                <label for="username" class="col-sm-3 control-label">Username :</label>
                                 <div class="col-sm-9">
-                                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                                    <input type="text" class="form-control" id="username" placeholder="Username">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputRePassword" class="col-sm-3 control-label">Re-Password :</label>
+                                <label for="password" class="col-sm-3 control-label">Password :</label>
                                 <div class="col-sm-9">
-                                    <input type="password" class="form-control" id="inputRePassword" placeholder="Re-Password">
+                                    <input type="password" class="form-control" id="password" placeholder="Password">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <span class="col-sm-3 control-label">Newsletter :</span>
+                                <label for="ulangipassword" class="col-sm-3 control-label">Ulangi Password :</label>
                                 <div class="col-sm-9">
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                            Subscribe
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option1">
-                                            Unsubscribe
-                                        </label>
-                                    </div>
+                                    <input type="password" class="form-control" id="ulangipassword" placeholder="Ulangi Password">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-9">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> I'v read and agreed on Conditions
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-3 col-sm-9">
-                                    <button type="submit" class="btn btn-black">
+                                    <button type="submit" class="btn btn-black" id="password" value="submit">
                                         Register
                                     </button>
                                 </div>
