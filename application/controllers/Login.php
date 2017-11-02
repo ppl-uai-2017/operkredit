@@ -10,7 +10,30 @@ class Login extends CI_Controller
 {
     public function index()
     {
-        $this->load->view("login/login");
+        $message = null;
+        $in = $this->session->flashdata('in');
+        if($in==1)
+        {
+            $message = "<div class=\"alert alert-info alert-dismissable fade in\">
+                                                        <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
+                                                        <strong>Login Berhasil</strong> Selamat Datang !
+                                                    </div>";
+        }
+        if($in==3)
+        {
+            $message = "<div class=\"alert alert-danger alert-dismissable fade in\">
+                                                        <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
+                                                        <strong>Login Gagal</strong> Username atau Password salah
+                                                    </div>";
+        }
+        if($in==4)
+        {
+            $message = "<div class=\"alert alert-danger alert-dismissable fade in\">
+                                                        <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
+                                                        <strong>Login Gagal</strong> Form tidak boleh ada yang kosong
+                                                    </div>";
+        }
+        $this->load->view("login/login", array("message" => $message));
     }
 
     public function validasi()
@@ -29,24 +52,25 @@ class Login extends CI_Controller
                 $this->session->set_userdata($session_data);
 
                 $this->session->set_flashdata('in',1);
-                redirect("home");
+                redirect("");
             }
             else
             {
-                $result = '<div class="alert alert-danger" role="alert">Username atau Password Salah</div>';
-                $this->load->view("login/login", array('result' => $result));
+                $this->session->set_flashdata('in',3);
+                redirect("login");
             }
         }
         else
         {
-            $result = '<div class="alert alert-warning" role="alert">Form Tidak Boleh Kosong</div>';
-            $this->load->view("login/login", array('result' => $result));
+            $this->session->set_flashdata('in',4);
+            redirect("login");
         }
     }
 
     function out()
     {
         $this->session->unset_userdata('username');
-        redirect(base_url() . 'index.php/home');
+        $this->session->set_flashdata('in',2);
+        redirect(base_url() . '');
     }
 }

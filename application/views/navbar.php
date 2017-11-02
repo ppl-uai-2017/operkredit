@@ -26,8 +26,9 @@
                                 My Account
                             </a>
                             <ul class="dropdown-menu" role="menu">
+                                <li><a tabindex="-1" href="<?php echo base_url("index.php/user")?>">Profile</a></li>
+                                <li><a tabindex="-1" href="<?php echo base_url("index.php/user/beri_kredit")?>">Beri Kredit</a></li>
                                 <li><a tabindex="-1" href="<?php echo base_url("index.php/login/out")?>">Logout</a></li>
-
                             </ul>
                         </li>
                     </ul>

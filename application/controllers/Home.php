@@ -14,9 +14,16 @@ class Home extends CI_Controller
         $in = $this->session->flashdata('in');
         if($in==1)
         {
-            $message = "<div class=\"alert alert-success alert-dismissable fade in\">
+            $message = "<div class=\"alert alert-info alert-dismissable fade in\">
                                                         <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
                                                         <strong>Login Berhasil</strong> Selamat Datang !
+                                                    </div>";
+        }
+        if($in==2)
+        {
+            $message = "<div class=\"alert alert-info alert-dismissable fade in\">
+                                                        <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
+                                                        <strong>Logout Berhasil</strong>
                                                     </div>";
         }
 

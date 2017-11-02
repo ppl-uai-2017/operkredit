@@ -98,6 +98,13 @@
                             </button>
                         </form>
                         <!-- Login Form Ends -->
+                        <br>
+                        <?php
+                        if(isset($message))
+                        {
+                            echo $message;
+                        }
+                        ?>
                     </div>
                 </div>
                 <!-- Login Panel Ends -->

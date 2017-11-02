@@ -66,11 +66,9 @@
 <!-- Header Section Ends -->
 <!-- Main Menu Starts -->
 
-<div class="col-lg-1">
+<div class="col-lg-8">
 </div>
-<div class="col-lg-7">
-    <img src="<?php echo base_url("./images/logo1.png")?>" width="150">
-</div>
+
 <div class="col-md-3 col-xs-12">
     <div id="search">
         <form action="" method="POST">
@@ -78,18 +76,15 @@
 
             <input type="text" class="form-control" placeholder="Search">
             <span class="input-group-btn">
-								<button class="btn btn-lg" type="button">
+								<button class="btn btn-lg" type="submit">
 									<i class="fa fa-search"></i>
 								</button>
 							  </span>
-
         </div>
         </form>
     </div>
 </div>
-<br><br><br><br><br><br><br><br>
-
-
+<br><br>
 <!-- Main Menu Ends -->
 <!-- Main Container Starts -->
 <div id="main-container" class="container home">
@@ -102,91 +97,48 @@
             <div class="list-group categories">
                 <a href="category-grid.html" class="list-group-item">
                     <i class="fa fa-chevron-right"></i>
-                    Digital Cameras
+                    Mobil
                 </a>
                 <a href="category-grid.html" class="list-group-item">
                     <i class="fa fa-chevron-right"></i>
-                    Sound Devices
+                    Motor
                 </a>
                 <a href="category-grid.html" class="list-group-item">
                     <i class="fa fa-chevron-right"></i>
-                    Televisions
+
                 </a>
                 <a href="category-grid.html" class="list-group-item">
                     <i class="fa fa-chevron-right"></i>
-                    Computers
+
                 </a>
                 <a href="category-grid.html" class="list-group-item">
                     <i class="fa fa-chevron-right"></i>
-                    Washing Machines
+
                 </a>
                 <a href="category-grid.html" class="list-group-item">
                     <i class="fa fa-chevron-right"></i>
-                    Accessories
+
                 </a>
                 <a href="category-grid.html" class="list-group-item">
                     <i class="fa fa-chevron-right"></i>
-                    Mobile Phones
+
+                </a>
+                <a href="category-grid.html" class="list-group-item">
+                    <i class="fa fa-chevron-right"></i>
+
+                </a>
+                <a href="category-grid.html" class="list-group-item">
+                    <i class="fa fa-chevron-right"></i>
+
                 </a>
             </div>
             <!-- Categories Links Ends -->
             <!-- Banner #1 Starts -->
-            <a href="#"><img src="<?php echo base_url("./images/banners/side-banner1.jpg")?>" alt="Side Banner" class="img-responsive img-center-sm img-center-xs" /></a>
-            <br>
+             <br>
             <!-- Banner #1 Ends -->
-            <!-- Shopping Options Starts -->
-            <h3 class="side-heading">Shopping Options</h3>
-            <div class="list-group">
-                <div class="list-group-item">
-                    Brands
-                </div>
-                <div class="list-group-item">
-                    <div class="filter-group">
-                        <label class="checkbox">
-                            <input name="filter1" type="checkbox" value="br1" checked="checked" />
-                            Brand Name 1
-                        </label>
-                        <label class="checkbox">
-                            <input name="filter2" type="checkbox" value="br2" />
-                            Brand Name 2
-                        </label>
-                        <label class="checkbox">
-                            <input name="filter3" type="checkbox" value="br3" />
-                            Brand Name 3
-                        </label>
-                        <label class="checkbox">
-                            <input name="filter4" type="checkbox" value="br4" />
-                            Brand Name 4
-                        </label>
-                    </div>
-                </div>
-                <div class="list-group-item">
-                    Manufacturer
-                </div>
-                <div class="list-group-item">
-                    <div class="filter-group">
-                        <label class="radio">
-                            <input name="filter-manuf" type="radio" value="mr1" checked="checked" />
-                            Manufacturer Name 1
-                        </label>
-                        <label class="radio">
-                            <input name="filter-manuf" type="radio" value="mr2" />
-                            Manufacturer Name 2
-                        </label>
-                        <label class="radio">
-                            <input name="filter-manuf" type="radio" value="mr3" />
-                            Manufacturer Name 3
-                        </label>
-                    </div>
-                </div>
-                <div class="list-group-item">
-                    <button type="button" class="btn btn-black">Filter</button>
-                </div>
-            </div>
-            <!-- Shopping Options Ends -->
+
             <!-- Banner #2 Starts -->
-            <img src="<?php echo base_url("./images/banners/side-banner2.jpg")?>" alt="Side Banner" class="img-responsive img-center-sm img-center-xs" />
-            <br>
+
             <!-- Banner #2 Ends -->
         </div>
         <!-- Sidebar Ends -->
@@ -195,15 +147,15 @@
             <!-- Top Section Starts -->
             <div class="row">
                 <!-- Slider Starts -->
-                <div class="col-sm-8 col-xs-12">
+                <div class="col-sm-13 col-xs-12">
                     <div id="main-carousel" class="carousel slide slider" data-ride="carousel">
                         <!-- Wrapper For Slides Starts -->
                         <div class="carousel-inner">
                             <div class="item active">
-                                <img src="<?php echo base_url("./images/slider-imgs/slide1-img.jpg")?>" alt="Slider" class="img-responsive img-center-xs" />
+                                <img src="http://www.xoticpc.com/media/wysiwyg/xpc/laptop/asus/gl503/banner-hero.jpg" width="1000" alt="Slider" class="img-responsive img-center-xs" />
                             </div>
                             <div class="item">
-                                <img src="<?php echo base_url("./images/slider-imgs/slide2-img.jpg")?>" alt="Slider" class="img-responsive img-center-xs" />
+                                <img src="https://dlcdnimgs.asus.com/websites/global/products/fRoiTmXJNO2QtbzD/PG27UQ-banner-middle.jpg" width="1100" alt="Slider" class="img-responsive img-center-xs" />
                             </div>
                         </div>
                         <!-- Wrapper For Slides Ends -->
@@ -218,16 +170,12 @@
                     </div>
                 </div>
                 <!-- Slider Ends -->
-                <!-- Banners Starts -->
-                <div class="col-sm-4 col-xs-12">
-                    <ul class="list-unstyled top-banners">
-                        <li><img src="<?php echo base_url("images/banners/top-banner1.jpg")?>" alt="banners" class="img-responsive img-center-xs" /></li>
-                        <li><img src="<?php echo base_url("images/banners/top-banner2.jpg")?>" alt="banners" class="img-responsive img-center-xs" /></li>
-                    </ul>
-                </div>
-                <!-- Banners Ends -->
+
             </div>
             <!-- Top Section Ends -->
+        </div>
+    </div>
+
             <!-- Latest Products Starts -->
             <section class="product-carousel">
                 <!-- Heading Starts -->
@@ -510,6 +458,176 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="product-col">
+                            <div class="image">
+                                <img src="<?php echo base_url("./images/product-images/9.jpg")?>" alt="product" class="img-responsive img-center-sm img-center-xs" />
+                            </div>
+                            <div class="caption">
+                                <h4>
+                                    <a href="product-full.html">Digital Electro Goods</a>
+                                </h4>
+                                <div class="price">
+                                    <span class="price-new">$199.50</span>
+                                    <span class="price-old">$249.50</span>
+                                </div>
+                                <div class="cart-button button-group">
+                                    <button type="button" class="btn btn-cart">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        Add to cart
+                                    </button>
+                                    <button type="button" title="Wishlist" class="btn btn-wishlist">
+                                        <i class="fa fa-heart"></i>
+                                    </button>
+                                    <button type="button" title="Compare" class="btn btn-compare">
+                                        <i class="fa fa-bar-chart-o"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="product-col">
+                            <div class="image">
+                                <img src="<?php echo base_url("./images/product-images/9.jpg")?>" alt="product" class="img-responsive img-center-sm img-center-xs" />
+                            </div>
+                            <div class="caption">
+                                <h4>
+                                    <a href="product-full.html">Digital Electro Goods</a>
+                                </h4>
+                                <div class="price">
+                                    <span class="price-new">$199.50</span>
+                                    <span class="price-old">$249.50</span>
+                                </div>
+                                <div class="cart-button button-group">
+                                    <button type="button" class="btn btn-cart">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        Add to cart
+                                    </button>
+                                    <button type="button" title="Wishlist" class="btn btn-wishlist">
+                                        <i class="fa fa-heart"></i>
+                                    </button>
+                                    <button type="button" title="Compare" class="btn btn-compare">
+                                        <i class="fa fa-bar-chart-o"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="product-col">
+                            <div class="image">
+                                <img src="<?php echo base_url("./images/product-images/9.jpg")?>" alt="product" class="img-responsive img-center-sm img-center-xs" />
+                            </div>
+                            <div class="caption">
+                                <h4>
+                                    <a href="product-full.html">Digital Electro Goods</a>
+                                </h4>
+                                <div class="price">
+                                    <span class="price-new">$199.50</span>
+                                    <span class="price-old">$249.50</span>
+                                </div>
+                                <div class="cart-button button-group">
+                                    <button type="button" class="btn btn-cart">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        Add to cart
+                                    </button>
+                                    <button type="button" title="Wishlist" class="btn btn-wishlist">
+                                        <i class="fa fa-heart"></i>
+                                    </button>
+                                    <button type="button" title="Compare" class="btn btn-compare">
+                                        <i class="fa fa-bar-chart-o"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="product-col">
+                            <div class="image">
+                                <img src="<?php echo base_url("./images/product-images/9.jpg")?>" alt="product" class="img-responsive img-center-sm img-center-xs" />
+                            </div>
+                            <div class="caption">
+                                <h4>
+                                    <a href="product-full.html">Digital Electro Goods</a>
+                                </h4>
+                                <div class="price">
+                                    <span class="price-new">$199.50</span>
+                                    <span class="price-old">$249.50</span>
+                                </div>
+                                <div class="cart-button button-group">
+                                    <button type="button" class="btn btn-cart">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        Add to cart
+                                    </button>
+                                    <button type="button" title="Wishlist" class="btn btn-wishlist">
+                                        <i class="fa fa-heart"></i>
+                                    </button>
+                                    <button type="button" title="Compare" class="btn btn-compare">
+                                        <i class="fa fa-bar-chart-o"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="product-col">
+                            <div class="image">
+                                <img src="<?php echo base_url("./images/product-images/9.jpg")?>" alt="product" class="img-responsive img-center-sm img-center-xs" />
+                            </div>
+                            <div class="caption">
+                                <h4>
+                                    <a href="product-full.html">Digital Electro Goods</a>
+                                </h4>
+                                <div class="price">
+                                    <span class="price-new">$199.50</span>
+                                    <span class="price-old">$249.50</span>
+                                </div>
+                                <div class="cart-button button-group">
+                                    <button type="button" class="btn btn-cart">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        Add to cart
+                                    </button>
+                                    <button type="button" title="Wishlist" class="btn btn-wishlist">
+                                        <i class="fa fa-heart"></i>
+                                    </button>
+                                    <button type="button" title="Compare" class="btn btn-compare">
+                                        <i class="fa fa-bar-chart-o"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product #1 Starts -->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="product-col">
+                            <div class="image">
+                                <img src="<?php echo base_url("./images/product-images/9.jpg")?>" alt="product" class="img-responsive img-center-sm img-center-xs" />
+                            </div>
+                            <div class="caption">
+                                <h4>
+                                    <a href="product-full.html">Digital Electro Goods</a>
+                                </h4>
+                                <div class="price">
+                                    <span class="price-new">$199.50</span>
+                                    <span class="price-old">$249.50</span>
+                                </div>
+                                <div class="cart-button button-group">
+                                    <button type="button" class="btn btn-cart">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        Add to cart
+                                    </button>
+                                    <button type="button" title="Wishlist" class="btn btn-wishlist">
+                                        <i class="fa fa-heart"></i>
+                                    </button>
+                                    <button type="button" title="Compare" class="btn btn-compare">
+                                        <i class="fa fa-bar-chart-o"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Product #1 Ends -->
                     <!-- Product #2 Starts -->
                     <div class="col-md-4 col-sm-6">
