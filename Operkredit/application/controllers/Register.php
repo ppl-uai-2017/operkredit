@@ -15,12 +15,12 @@ class Register extends CI_Controller
     {
     	$this->load->model('Data_pengunjung');
     	$this->load->library('session');
-		$this->load->helper('url');
+	$this->load->helper('url');
 
-		$password = $this->input->post('password');
-		$this->load->library('form_validation');
-		$this->form_validation->set_error_delimiters('<div class="col-sm-9" style="color:red; margin-bottom: 5px">', '</div>');
-		$this->form_validation->set_rules('nama_depan', '<b>Nama Depan</b>', 'required');
+	$password = $this->input->post('password');
+	$this->load->library('form_validation');
+	$this->form_validation->set_error_delimiters('<div class="col-sm-9" style="color:red; margin-bottom: 5px">', '</div>');
+	$this->form_validation->set_rules('nama_depan', '<b>Nama Depan</b>', 'required');
         $this->form_validation->set_rules('nama_belakang', '<b>Nama Belakang</b>', 'required');
         $this->form_validation->set_rules('tempat_lahir', '<b>Tempat Lahir</b>', 'required');
         $this->form_validation->set_rules('tanggal_lahir', '<b>Tanggal Lahir</b>', 'required');
