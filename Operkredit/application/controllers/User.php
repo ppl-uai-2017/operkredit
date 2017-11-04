@@ -35,8 +35,12 @@ class User extends CI_Controller
                                                     </div>";
         }
 
+        $this->load->model("Data_model");
 
-        $this->load->view("user/beri_kredit", array("message" => $message));
+        $data = $this->Data_model->getProfile();
+
+
+        $this->load->view("user/beri_kredit", array("message" => $message, "data" => $data));
     }
 
     public function rumah()

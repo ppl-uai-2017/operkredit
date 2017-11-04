@@ -144,7 +144,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="<?php echo base_url("index.php/login/out")?>">
                                 <p>Log out</p>
                             </a>
                         </li>
@@ -165,6 +165,12 @@
                         </div>
                         <div class="content table-responsive table-full-width">
                             <table class="table table-hover table-striped">
+                                <?php
+                                if(isset($message))
+                                {
+                                    echo $message;
+                                }
+                                ?>
                                 <thead>
                                 <th>No.</th>
                                 <th>Nama Pengoper Kredit</th>
@@ -173,26 +179,43 @@
                                 </thead>
                                 <tbody>
                                 <?php
+                                if($rumah != null)
+                                {
                                 foreach ($rumah as $data => $rumah) {
-                                ?>
-                                <tr>
+                                    ?>
 
-                                        <td><?php echo $rumah -> idrumah?></td>
-                                        <td><?php echo $rumah -> pengoper_kredit?></td>
-                                        <td><?php if($rumah->status == "Menunggu"){ echo "<font color='black'>".$rumah->status."</font>";} elseif($rumah->status == "Terverifikasi"){ echo "<font color='#32cd32'>".$rumah->status."</font>";} elseif($rumah->status == "Ditolak") echo "<font color='red'>".$rumah->status."</font>" ?></td>
+                                    <tr>
+                                        <td><?php echo $rumah->idrumah ?></td>
+                                        <td><?php echo $rumah->pengoper_kredit ?></td>
+                                        <td><?php if ($rumah->status == "Menunggu") {
+                                                echo "<font color='black'>" . $rumah->status . "</font>";
+                                            } elseif ($rumah->status == "Terverifikasi") {
+                                                echo "<font color='#32cd32'>" . $rumah->status . "</font>";
+                                            } elseif ($rumah->status == "Ditolak") echo "<font color='red'>" . $rumah->status . "</font>" ?></td>
                                         <td>
-                                            <button type="button" rel="tooltip" title="Detail" class="btn btn-info btn-simple btn-xs">
+                                            <button type="button" rel="tooltip" title="Detail"
+                                                    class="btn btn-info btn-simple btn-xs"
+                                                    onclick="location.href='<?php echo base_url("index.php/pengesahan/detailProduk/" . $rumah->idrumah) ?>';">
                                                 <i class="fa fa-eye"></i>
                                             </button>
-                                            <button type="button" rel="tooltip" title="Ubah" class="btn btn-info btn-simple btn-xs">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            <button type="button" rel="tooltip" title="Hapus" class="btn btn-danger btn-simple btn-xs">
+                                            <a href="<?php echo base_url("index.php/pengesahan/hapusProduk/" . $rumah->idrumah) ?>" type="button" rel="tooltip" title="Hapus"
+                                                    class="btn btn-danger btn-simple btn-xs"
+                                                    onclick="return confirm('Produk ini akan dihapus ?')">
                                                 <i class="fa fa-times"></i>
-                                            </button></td>
+                                            </a>
+                                        </td>
 
-                                </tr>
+                                    </tr>
                                     <?php
+                                }
+                                }
+                                else
+                                {
+                                    ?>
+                                    <tr>
+                                        <td colspan="4" align="center">Belum Ada Data</td>
+                                    </tr>
+                                <?php
                                 }
                                 ?>
                                 </tbody>

@@ -80,10 +80,16 @@
                 <div class="panel panel-smart">
                     <div class="panel-heading">
                         <h3 class="panel-title">Informasi Pribadi</h3>
+                        <?php
+                        if(isset($message))
+                        {
+                            echo $message;
+                        }
+                        ?>
                     </div>
                     <div class="panel-body">
                         <!-- Registration Form Starts -->
-                        <form class="form-horizontal" role="form" method="POST" action="<?php echo base_url("index.php/register/akun_baru")?>">
+                        <form class="form-horizontal" role="form" method="POST" action="<?php echo base_url("index.php/register/akun_baru")?>" enctype="multipart/form-data">
                             <!-- Personal Information Starts -->
                             <div class="form-group">
                                 <label for="inputFname" class="col-sm-3 control-label">Username :</label>
@@ -118,7 +124,11 @@
                             <div class="form-group">
                                 <label for="inputFax" class="col-sm-3 control-label">Jenis Kelamin :</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="jenis_kelamin" placeholder="Jenis Kelamin">
+                                    <select name="jenis_kelamin" class="form-control">
+                                        <option value="">Pilih</option>
+                                        <option value="Laki Laki">Laki Laki</option>
+                                        <option value="Perempuan">Perempuan</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -132,7 +142,13 @@
                             <div class="form-group">
                                 <label for="inputFax" class="col-sm-3 control-label">Status Pernikahan :</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="status_pernikahan" placeholder="Jenis Kelamin">
+                                    <select class="form-control" name="status_pernikahan">
+                                        <option value="">Pilih</option>
+                                        <option value="Kawin">Kawin</option>
+                                        <option value="Tinggal Cerai">Tinggal Cerai</option>
+                                        <option value="Tinggal Mati">Tinggal Mati</option>
+                                        <option value="Lajang">Lajang</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -230,7 +246,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-9">
-                                    <button type="submit" class="btn btn-black">
+                                    <button type="submit" name="submit" class="btn btn-black">
                                         Register
                                     </button>
                                 </div>

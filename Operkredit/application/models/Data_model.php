@@ -14,12 +14,9 @@ class Data_model extends CI_Model
         $this->db->from('user');
         $this->db->where('username', $_SESSION['username']);
         $query = $this->db->get();
-        if ($query->num_rows() != 0)
-        {
+        if ($query->num_rows() != 0) {
             return $query->result_array();
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
@@ -31,12 +28,23 @@ class Data_model extends CI_Model
         $this->db->join('pengunjung b', "b.email = a.email");
         $this->db->where('username', $_SESSION['username']);
         $query = $this->db->get();
-        if ($query->num_rows() != 0)
-        {
+        if ($query->num_rows() != 0) {
             return $query->result_array();
+        } else {
+            return false;
         }
-        else
-        {
+    }
+
+    function getRegistrasi($email)
+    {
+        $this->db->select('*');
+        $this->db->from('user a');
+        $this->db->join('pengunjung b', "b.email = a.email");
+        $this->db->where('b.email', $email);
+        $query = $this->db->get();
+        if ($query->num_rows() != 0) {
+            return $query->result_array();
+        } else {
             return false;
         }
     }
@@ -47,12 +55,9 @@ class Data_model extends CI_Model
         $this->db->from('rumah');
         $this->db->where('status', "Terverifikasi");
         $query = $this->db->get();
-        if ($query->num_rows() != 0)
-        {
+        if ($query->num_rows() != 0) {
             return $query->result_array();
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
@@ -64,12 +69,9 @@ class Data_model extends CI_Model
         $this->db->where('idrumah', $id);
 
         $query = $this->db->get();
-        if ($query->num_rows() != 0)
-        {
+        if ($query->num_rows() != 0) {
             return $query->result_array();
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
@@ -80,12 +82,22 @@ class Data_model extends CI_Model
         $this->db->from('rumah');
         $this->db->where('pengoper_kredit', $_SESSION['username']);
         $query = $this->db->get();
-        if ($query->num_rows() != 0)
-        {
+        if ($query->num_rows() != 0) {
             return $query->result_array();
+        } else {
+            return false;
         }
-        else
-        {
+    }
+
+    function getDetailProduk($id)
+    {
+        $this->db->select('*');
+        $this->db->from('rumah');
+        $this->db->where('idrumah', $id);
+        $query = $this->db->get();
+        if ($query->num_rows() != 0) {
+            return $query->result_array();
+        } else {
             return false;
         }
     }

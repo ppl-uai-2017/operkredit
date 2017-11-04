@@ -77,7 +77,7 @@
     foreach ($data as $data)
     {
         ?>
-        <form class="form-horizontal" method="POST" action="<?php echo base_url("index.php/user/edit/".$data['idrumah'])?>">
+        <form class="form-horizontal" method="POST" action="<?php echo base_url("index.php/user/edit/".$data['idrumah'])?>" enctype="multipart/form-data">
 
         <section class="registration-area">
              <div class="row">

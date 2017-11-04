@@ -86,64 +86,73 @@
             </thead>
             <tbody>
             <?php
+            if($data  != null)
+            {
             foreach ($data as $data) {
                 ?>
                 <tr>
-                    <td><?php echo $data['idrumah'];?></td>
+                    <td><?php echo $data['idrumah']; ?></td>
                     <td>
-                        <img src="<?php echo base_url("./rumah/".$data['foto1'])?>" width="100" alt="image" title="image" class="img-thumbnail"/>
+                        <img src="<?php echo base_url("./rumah/" . $data['foto1']) ?>" width="100" alt="image"
+                             title="image" class="img-thumbnail"/>
                     </td>
                     <td>
-                        <?php echo $data['judul'];?>
+                        <?php echo $data['judul']; ?>
                     </td>
                     <td>
-                        <?php echo number_format($data['harga'],2,',','.');?>
+                        <?php echo number_format($data['harga'], 2, ',', '.'); ?>
                     </td>
                     <td>
-                        <?php echo $data['total_cicilan']." Bulan";?>
+                        <?php echo $data['total_cicilan'] . " Bulan"; ?>
                     </td>
                     <td>
-                        <span class="label label-success"><?php echo $data['stok'];?></span>
+                        <span class="label label-success"><?php echo $data['stok']; ?></span>
                     </td>
                     <td>
                         <?php
-                        if ($data['status'] == "Menunggu")
-                        {
+                        if ($data['status'] == "Menunggu") {
                             ?>
-                            <span class="label label-warning"><?php echo $data['status'];?></span>
-                        <?php
-                        }
-                        elseif($data['status'] == "Terverifikasi")
-                        {
-                            ?>
-                            <span class="label label-success"><?php echo $data['status'];?></span>
+                            <span class="label label-warning"><?php echo $data['status']; ?></span>
                             <?php
-                        }
-                        else
-                        {
+                        } elseif ($data['status'] == "Terverifikasi") {
                             ?>
-                            <span class="label label-danger"><?php echo $data['status'];?></span>
+                            <span class="label label-success"><?php echo $data['status']; ?></span>
+                            <?php
+                        } else {
+                            ?>
+                            <span class="label label-danger"><?php echo $data['status']; ?></span>
                             <?php
                         }
                         ?>
                     </td>
                     <td>
-                        <a href="<?php echo base_url("index.php/user/detail_produk/".$data['idrumah'])?>"><span class="label label-info"> Detail</span></a>
+                        <a href="<?php echo base_url("index.php/user/detail_produk/" . $data['idrumah']) ?>"><span
+                                    class="label label-info"> Detail</span></a>
                         <?php
-                        if($data['stok'] != 0) {
+                        if ($data['stok'] != 0) {
                             ?>
-                            <a href="<?php echo base_url("index.php/user/edit/".$data['idrumah'])?>"><span class="label label-warning"> Edit</span></a>
+                            <a href="<?php echo base_url("index.php/user/edit/" . $data['idrumah']) ?>"><span
+                                        class="label label-warning"> Edit</span></a>
                             <?php
+                        } else {
+                            echo "";
                         }
-                        else
-                            {
-                               echo "";
-                            }
                         ?>
-                        <a href="<?php echo base_url("index.php/user/hapus/".$data['idrumah'])?>" onclick="return confirm('Yakin Menghapus Produk ?')"> <span class="label label-danger"> Hapus</span></a>
+                        <a href="<?php echo base_url("index.php/user/hapus/" . $data['idrumah']) ?>"
+                           onclick="return confirm('Yakin Menghapus Produk ?')"> <span
+                                    class="label label-danger"> Hapus</span></a>
                     </td>
                 </tr>
                 <?php
+            }
+            }
+            else
+            {
+                ?>
+            <tr>
+                <td colspan="8">Belum ada produk</td>
+            </tr>
+            <?php
             }
             ?>
             </tbody>

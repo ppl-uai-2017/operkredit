@@ -143,7 +143,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="<?php echo base_url("index.php/login/out")?>">
                                 <p>Log out</p>
                             </a>
                         </li>
@@ -159,135 +159,78 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Striped Table with Hover</h4>
-                                <p class="category">Here is a subtitle for this table</p>
+                                <h4 class="title" align="center">Daftar Registrasi User</h4>
+                                <hr>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
                                     <thead>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Salary</th>
-                                    <th>Country</th>
-                                    <th>City</th>
+
+                                    <th>No.</th>
+                                    <th>Nama Lengkap</th>
+                                    <th>Email</th>
+                                    <th>No Hp</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Dakota Rice</td>
-                                        <td>$36,738</td>
-                                        <td>Niger</td>
-                                        <td>Oud-Turnhout</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Minerva Hooper</td>
-                                        <td>$23,789</td>
-                                        <td>Curaçao</td>
-                                        <td>Sinaai-Waas</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Sage Rodriguez</td>
-                                        <td>$56,142</td>
-                                        <td>Netherlands</td>
-                                        <td>Baileux</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Philip Chaney</td>
-                                        <td>$38,735</td>
-                                        <td>Korea, South</td>
-                                        <td>Overland Park</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Doris Greene</td>
-                                        <td>$63,542</td>
-                                        <td>Malawi</td>
-                                        <td>Feldkirchen in Kärnten</td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>Mason Porter</td>
-                                        <td>$78,615</td>
-                                        <td>Chile</td>
-                                        <td>Gloucester</td>
-                                    </tr>
+                                    <?php
+                                    if(isset($message))
+                                    {
+                                        echo $message;
+                                    }
+                                    if($pengunjung != null)
+                                    {
+                                    foreach ($pengunjung as $data => $pengunjung) {
+                                        $no = 1;
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $no ?></td>
+                                            <td><?php echo $pengunjung->nama_lengkap ?></td>
+                                            <td><?php echo $pengunjung->email ?></td>
+                                            <td><?php echo $pengunjung->no_hp ?></td>
+                                            <td><?php echo $pengunjung->jenis_kelamin ?></td>
+                                            <td><?php if ($pengunjung->verifikasi == "Menunggu") {
+                                                    echo "<font color='black'>" . $pengunjung->verifikasi . "</font>";
+                                                } elseif ($pengunjung->verifikasi == "Terverifikasi") {
+                                                    echo "<font color='#32cd32'>" . $pengunjung->verifikasi . "</font>";
+                                                } elseif ($pengunjung->verifikasi == "Ditolak") echo "<font color='red'>" . $pengunjung->verifikasi . "</font>" ?></td>
+                                            <td>
+                                                <a href="<?php echo base_url("index.php/pengesahan/detailRegistrasi/" . $pengunjung->email) ?>" type="button" rel="tooltip" title="Detail"
+                                                        class="btn btn-info btn-simple btn-xs">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                                <a href="<?php echo base_url("index.php/pengesahan/hapusRegistrasi/" . $pengunjung->email) ?>" type="button" rel="tooltip" title="Hapus"
+                                                        class="btn btn-danger btn-simple btn-xs"
+                                                        onclick="return confirm('User Registrasi ini akan dihapus ?')">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                        $no++;
+                                    }
+                                    }
+                                    else
+                                    {
+                                        ?>
+                                        <tr>
+                                            <td colspan="7" align="center">Belum Ada Data</td>
+                                        </tr>
+                                        <?php
+                                    }
+                                    ?>
+
                                     </tbody>
                                 </table>
-
+                                <?php
+                                echo $this->pagination->create_links();
+                                ?>
                             </div>
+
                         </div>
                     </div>
-
-
-                    <div class="col-md-12">
-                        <div class="card card-plain">
-                            <div class="header">
-                                <h4 class="title">Table on Plain Background</h4>
-                                <p class="category">Here is a subtitle for this table</p>
-                            </div>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-hover">
-                                    <thead>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Salary</th>
-                                    <th>Country</th>
-                                    <th>City</th>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Dakota Rice</td>
-                                        <td>$36,738</td>
-                                        <td>Niger</td>
-                                        <td>Oud-Turnhout</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Minerva Hooper</td>
-                                        <td>$23,789</td>
-                                        <td>Curaçao</td>
-                                        <td>Sinaai-Waas</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Sage Rodriguez</td>
-                                        <td>$56,142</td>
-                                        <td>Netherlands</td>
-                                        <td>Baileux</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Philip Chaney</td>
-                                        <td>$38,735</td>
-                                        <td>Korea, South</td>
-                                        <td>Overland Park</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Doris Greene</td>
-                                        <td>$63,542</td>
-                                        <td>Malawi</td>
-                                        <td>Feldkirchen in Kärnten</td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>Mason Porter</td>
-                                        <td>$78,615</td>
-                                        <td>Chile</td>
-                                        <td>Gloucester</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </div>
-                    </div>
-
-
                 </div>
             </div>
         </div>
