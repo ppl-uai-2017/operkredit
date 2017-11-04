@@ -28,6 +28,43 @@ class Home extends CI_Controller
                                                     </div>";
         }
 
-        $this->load->view("pengunjung/index", array("message" => $message));
+        $this->load->library("pagination");
+
+        $query = $this->db->get_where("rumah", array("status" => "Terverifikasi", "stok" => 1), "12", $this->uri->segment(1));
+        $data['rumah'] = $query->result();
+
+        $query2 = $this->db->get("rumah");
+
+        $config['base_url'] = "home";
+
+        $config['total_rows'] = $query2->num_rows();
+        $config['per_page'] = 12;
+
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+
+        $config['first_tag_open'] = '<li>';
+        $config['last_tag_open'] = '<li>';
+
+        $config['next_tag_open'] = '<li>';
+        $config['prev_tag_open'] = '<li>';
+
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_close'] = '</li>';
+
+        $config['next_tag_close'] = '</li>';
+        $config['prev_tag_close'] = '</li>';
+
+        $config['cur_tag_open'] = "<li class=\"active\"><span><b>";
+        $config['cur_tag_close'] = "</b></span></li>";
+
+        $this->pagination->initialize($config);
+
+
+
+        $this->load->view("pengunjung/index", $data, array("message" => $message));
     }
 }

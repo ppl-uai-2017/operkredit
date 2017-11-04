@@ -13,7 +13,7 @@ class User extends CI_Controller
         $this->load->model("Data_model");
         $data = $this->Data_model->getProfile();
 
-        $this->load->view("user/profile");
+        $this->load->view("user/profile", array("data" => $data));
     }
 
     public function beri_kredit()

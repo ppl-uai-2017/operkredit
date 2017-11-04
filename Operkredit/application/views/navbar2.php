@@ -1,5 +1,5 @@
-<nav id="main-menu" class="navbar" role="navigation">
-    <div class="panel ">
+<nav class="navbar" role="navigation">
+    <div class="panel panel-smart" >
         <!-- Nav Header Starts -->
         <!-- Nav Header Ends -->
         <!-- Navbar Cat collapse Starts -->
@@ -10,14 +10,6 @@
                 {
                     ?>
                     <ul class="nav navbar-nav">
-
-                        <li>
-                            <a href="<?php echo base_url("./images/logo1.png")?>">
-                                <img src="<?php echo base_url("./images/logo1.png")?>" width="50">
-                            </a>
-                        </li>
-
-
                         <li>
                             <a href="<?php echo base_url("index.php/home")?>">
                                 <i class="fa fa-home hidden-lg hidden-md" title="Home"></i>
@@ -80,3 +72,4 @@
         <!-- Navbar Cat collapse Ends -->
     </div>
 </nav>
+<hr>
