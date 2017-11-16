@@ -166,7 +166,7 @@
                                 <table class="table table-hover table-striped">
                                     <thead>
                                     <th>No.</th>
-                                    <th>Nama Lengkap</th>
+                                    <th>Nama Pengambil Kredit</th>
                                     <th>Email</th>
                                     <th>No Hp</th>
                                     <th>Jenis Kelamin</th>
@@ -179,36 +179,29 @@
                                     {
                                         echo $message;
                                     }
-                                    if($pengunjung != null)
+                                    if($data != null)
                                     {
-                                        foreach ($pengunjung as $data => $pengunjung) {
+                                        foreach ($data as $data) {
                                             $no = 1;
                                             ?>
                                             <tr>
                                                 <td><?php echo $no ?></td>
-                                                <td><?php echo $pengunjung->nama_lengkap ?></td>
-                                                <td><?php echo $pengunjung->email ?></td>
-                                                <td><?php echo $pengunjung->no_hp ?></td>
-                                                <td><?php echo $pengunjung->jenis_kelamin ?></td>
-                                                <td><?php if ($pengunjung->verifikasi == "Menunggu") {
-                                                        echo "<font color='black'>" . $pengunjung->verifikasi . "</font>";
-                                                    } elseif ($pengunjung->verifikasi == "Terverifikasi") {
-                                                        echo "<font color='#32cd32'>" . $pengunjung->verifikasi . "</font>";
-                                                    } elseif ($pengunjung->verifikasi == "Ditolak") echo "<font color='red'>" . $pengunjung->verifikasi . "</font>" ?></td>
+                                                <td><?php echo $data['nama_lengkap'] ?></td>
+                                                <td><?php echo $data['email'] ?></td>
+                                                <td><?php echo $data['no_hp'] ?></td>
+                                                <td><?php echo $data['jenis_kelamin'] ?></td>
+												
+                                                <td><?php if ($data['verifikasi'] == "Menunggu") {
+                                                        echo "<font color='black'>" . $data['verifikasi'] . "</font>";
+                                                    } elseif ($data['verifikasi'] == "Disetujui") {
+                                                        echo "<font color='#32cd32'>" . $data['verifikasi'] . "</font>";
+                                                    } elseif ($data['verifikasi'] == "Ditolak") echo "<font color='red'>" . $data['verifikasi'] . "</font>" ?></td>
                                                 <td>
-                                                    <button type="button" rel="tooltip" title="Detail"
-                                                            class="btn btn-info btn-simple btn-xs">
-                                                        <i class="fa fa-eye"></i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Ubah"
-                                                            class="btn btn-info btn-simple btn-xs">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    <a href="<?php echo base_url("index.php/pengesahan/hapusRegistrasi/" . $pengunjung->email) ?>" type="button" rel="tooltip" title="Hapus"
-                                                       class="btn btn-danger btn-simple btn-xs"
-                                                       onclick="return confirm('User Registrasi ini akan dihapus ?')">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
+													<button type="button" rel="tooltip" title="Detail"
+															class="btn btn-info btn-simple btn-xs"
+															onclick="location.href='<?php echo base_url("index.php/pengesahan/detailTransaksi/" . $data['id_pengambilan_kredit']) ?>';">
+														<i class="fa fa-eye"></i>
+													</button>
                                                 </td>
                                             </tr>
                                             <?php
@@ -227,9 +220,6 @@
 
                                     </tbody>
                                 </table>
-                                <?php
-                                echo $this->pagination->create_links();
-                                ?>
                             </div>
 
                         </div>
