@@ -28,9 +28,9 @@ class pengesahan extends CI_Controller
 
         $this->load->library("pagination");
 
-        $this->db->select('*');
-        $this->db->from('user a');
-        $this->db->join('pengunjung b', "a.email = b.email");
+        //$this->db->select('*');
+        //$this->db->from('user a');
+        //$this->db->join('pengunjung b', "b.email = a.email");
 
         $query = $this->db->get("pengunjung", "10", $this->uri->segment(3));
         $data['pengunjung'] = $query->result();
@@ -97,7 +97,7 @@ class pengesahan extends CI_Controller
 
         $this->load->library("pagination");
 
-        $query = $this->db->get("rumah", "1", $this->uri->segment(1));
+        $query = $this->db->get("rumah", $this->uri->segment(3));
         $data['rumah'] = $query->result();
 
         $query2 = $this->db->get("rumah");
@@ -105,7 +105,7 @@ class pengesahan extends CI_Controller
         $config['base_url'] = "produk";
 
         $config['total_rows'] = $query2->num_rows();
-        $config['per_page'] = 1;
+        $config['per_page'] = 10;
 
         $config['full_tag_open'] = '<ul class="pagination">';
         $config['full_tag_close'] = '</ul>';
@@ -256,7 +256,70 @@ class pengesahan extends CI_Controller
 
     public function transaksi()
     {
+		$this->load->model("Data_model");
 
-        $this->load->view("pengesahan/transaksi");
+        $data = $this->Data_model->getTransaksi();
+		$this->load->view("pengesahan/transaksi", array("data" => $data));
+    }
+	
+	public function detailTransaksi($id)
+    {
+        $message = null;
+        $in = $this->session->flashdata('in');
+        if($in==17)
+        {
+            $message = "<div class=\"alert alert-success alert-dismissable fade in\">
+                                                        <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
+                                                        <strong>Sukses</strong> Pemindahan Kredit Disetujui.
+                                                    </div>";
+        }
+        if($in==18)
+        {
+            $message = "<div class=\"alert alert-danger alert-dismissable fade in\">
+                                                        <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
+                                                        <strong>Gagal</strong> Tidak Dapat Menyetujui Pemindahan Kredit ini.
+                                                    </div>";
+        }
+
+        $this->load->model("Data_model");
+
+        $data = $this->Data_model->getDetailTransaksiPenerima($id);
+		$data1 = $this->Data_model->getDetailTransaksiPengoper($id);
+
+        $this->load->view("pengesahan/detailTransaksi", array("data" => $data, "message" => $message, "data1" => $data1));
+    }
+	
+	public function approveTransaksi($id)
+    {
+            $update_status = array(
+                'verifikasi' => "Disetujui"
+            );
+
+            $where = array("id_pengambilan_kredit" => $id);
+            $update = $this->db->update('pengambilan_kredit', $update_status, $where);
+            if ($update != null) {
+                $this->session->set_flashdata('in', 19);
+                redirect(base_url() . "index.php/pengesahan/transaksi");
+            } else {
+                $this->session->set_flashdata('in', 20);
+                redirect(base_url() . "index.php/pengesahan/transaksi");
+            }
+    }
+
+    public function deniedTransaksi($id)
+    {
+        $update_status = array(
+            'verifikasi' => "Ditolak"
+        );
+
+        $where = array("id_pengambilan_kredit" => $id);
+        $update = $this->db->update('pengambilan_kredit', $update_status, $where);
+        if ($update != null) {
+            $this->session->set_flashdata('in', 21);
+            redirect(base_url() . "index.php/pengesahan/transaksi");
+        } else {
+            $this->session->set_flashdata('in', 22);
+            redirect(base_url() . "index.php/pengesahan/transaksi");
+        }
     }
 }
