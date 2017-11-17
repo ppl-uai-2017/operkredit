@@ -272,17 +272,17 @@ class User extends CI_Controller
         $this->session->set_flashdata('in',3);
         redirect(base_url("index.php/user/produk"));
     }
-	
-	public function history()
+
+    public function history()
     {
-        
+
         $this->load->model("Data_model");
-		
+
         $data = $this->Data_model->getHistory();
         $this->load->view("user/history", array("data" => $data));
     }
-	
-	public function detailHistory($id)
+
+    public function detailHistory($id)
     {
         $this->load->model("Data_model");
 
@@ -290,5 +290,4 @@ class User extends CI_Controller
 
         $this->load->view("user/detailHistory", array("data" => $data));
     }
-
 }

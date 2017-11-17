@@ -55,14 +55,14 @@
                         <p>Daftar Registrasi</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="<?php echo base_url("index.php/pengesahan/produk")?>">
                         <i class="pe-7s-note2"></i>
                         <p>Daftar Produk</p>
                     </a>
                 </li>
 
-                <li>
+                <li class="active">
                     <a href="<?php echo base_url("index.php/pengesahan/transaksi")?>">
                         <i class="pe-7s-shopbag"></i>
                         <p>Daftar Transaksi</p>
@@ -75,75 +75,10 @@
     <div class="main-panel">
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Table List</a>
-                </div>
                 <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-dashboard"></i>
-                                <p class="hidden-lg hidden-md">Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-globe"></i>
-                                <b class="caret hidden-sm hidden-xs"></b>
-                                <span class="notification hidden-sm hidden-xs">5</span>
-                                <p class="hidden-lg hidden-md">
-                                    5 Notifications
-                                    <b class="caret"></b>
-                                </p>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="">
-                                <i class="fa fa-search"></i>
-                                <p class="hidden-lg hidden-md">Search</p>
-                            </a>
-                        </li>
-                    </ul>
-
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="">
-                                <p>Account</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <p>
-                                    Dropdown
-                                    <b class="caret"></b>
-                                </p>
-
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">
+                            <a href="<?php echo base_url("index.php/login/out")?>">
                                 <p>Log out</p>
                             </a>
                         </li>
@@ -164,6 +99,7 @@
 
                                 <div class="col-md-6">
                                     <div class="card">
+                                        <h3 align="center">Informasi Personal</h3>
                                         <table class="table table-hover table-striped">
                                             <?php
                                             foreach ($data as $data) {
@@ -176,20 +112,45 @@
                                                     <td>Tanggal Transaksi: </td>
                                                     <td><?php echo $data['tanggal'] ?></td>
                                                 </tr>
-												<?php
-												foreach ($data1 as $data1) {
-													?>
-													<tr>
-														<td>From : </td>
-														<td><?php echo $data1['nama_lengkap'] ?></td>
-													</tr>
-													<?php
-												}?>
+                                                    <tr>
+                                                        <td>Pemilik Produk (From) : </td>
+                                                        <td><?php echo $data['nama_lengkap'] ?></td>
+                                                    </tr>
                                                 <tr>
-                                                    <td>For : </td>
-                                                    <td><?php echo $data['nama_lengkap'] ?></td>
                                                 </tr>
-												<tr>
+                                            <tr>
+                                                <td>Kontak Pemilik : </td>
+                                                <td><?php echo $data['no_hp'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Email : </td>
+                                                <td><?php echo $data['email'] ?></td>
+                                            </tr>
+                                            <?php
+                                            foreach ($data2 as $data2) {
+                                                ?>
+                                                <tr>
+                                                    <td>Pengambil Barang (For) :</td>
+                                                    <td><?php echo $data2['nama_lengkap'] ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Email :</td>
+                                                    <td><?php echo $data2['email'] ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Kontak Penerima :</td>
+                                                    <td><?php echo $data2['no_hp'] ?></td>
+                                                </tr>
+                                                <?php
+                                            }
+                                            ?>
+                                        </table>
+
+                                    </div>
+                                        <div class="card">
+                                        <h3 align="center">Informasi Produk</h3>
+                                        <table class="table table-hover table-striped">
+                                                <tr>
                                                     <td>Luas Bangunan : </td>
                                                     <td><?php echo $data['luas_bangunan'] ?></td>
                                                 </tr>
@@ -216,16 +177,7 @@
                                                     <td>Deskripsi : </td>
                                                     <td><?php echo $data['deskripsi'] ?></td>
                                                 </tr>
-                                                <?php
-                                            }
-                                            ?>
-                                        </table>
-                                    </div>
-                                </div>
 
-                                <div class="col-md-6">
-                                    <div class="card">
-                                        <table class="table table-hover table-striped">
                                             <tr>
                                                 <td>Foto : </td>
                                                 <td><a href="<?php echo base_url("./rumah/".$data['foto1']) ?>"> <img src="<?php echo base_url("./rumah/".$data['foto1']) ?>" width="100"> </a> <br><br> <a href="<?php echo base_url("./rumah/".$data['foto1']) ?>"> <img src="<?php echo base_url("./rumah/".$data['foto2']) ?>" width="100"> </a>  <br><br> <a href="<?php echo base_url("./rumah/".$data['foto1']) ?>"> <img src="<?php echo base_url("./rumah/".$data['foto3']) ?>" width="100"> </a>  <br><br> <a href="<?php echo base_url("./rumah/".$data['foto1']) ?>"> <img src="<?php echo base_url("./rumah/".$data['foto4']) ?>" width="100"> </a> </td>
@@ -246,77 +198,72 @@
                                                 <td>Stok barang : </td>
                                                 <td><?php echo $data['stok'] ?></td>
                                             </tr>
+                                                <?php
+                                            }
+                                            ?>
                                         </table>
                                     </div>
                                 </div>
+
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <h3 align="center">Informasi Biaya</h3>
+                                        <table class="table table-hover table-striped">
+                                            <tr>
+                                                <td>Total Kewajiban : </td>
+                                                <td><?php echo "Rp ".number_format($data['total_bayar'],2,',','.') ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total Cicilan/bulan : </td>
+                                                <td><?php echo "Rp ".number_format($data['cicilan'],2,',','.') ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Status Verifikasi Produk : </td>
+                                                <td><?php echo $data['verifikasi'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Pembayaran yang dipilih : </td>
+                                                <td><?php echo $data['nama_metode_pembayaran'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nomor Rekening : </td>
+                                                <td><?php echo $data['nomor_rekening'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Status Transaksi : </td>
+                                                <td><?php echo $data['status_verifikasi'] ?></td>
+                                            </tr>
+                                        </table>
+                                        <?php
+                                        if($data['status_verifikasi'] == "Disetujui")
+                                        {
+                                            ?>
+                                            <a href="<?php echo base_url("index.php/pengesahan/deniedTransaksi/" . $data['id_pengambilan_kredit']) ?>" type="button" name="submit" rel="tooltip" title="Tolak"
+                                               class="btn btn-danger btn-simple btn-xs"
+                                               onclick="return confirm('Tolak Transaksi ini ?');">
+                                                <div class="btn btn-danger">Batal/Tolak Transaksi</div>
+                                            </a>
+                                            <?php
+                                        }
+                                        if($data['status_verifikasi'] == "Menunggu" || $data['status_verifikasi'] == "Ditolak")
+                                        {
+                                            ?>
+                                            <a href="<?php echo base_url("index.php/pengesahan/approveTransaksi/" . $data['id_pengambilan_kredit']) ?>" type="button" name="submit" rel="tooltip" title="Verifikasi"
+                                               class="btn btn-info btn-simple btn-xs"
+                                               onclick="return confirm('Konfirmasi Transaksi ini ?')">
+                                                <div class="btn btn-success">Setujui Verifikasi</div>
+                                            </a>
+                                            <?php
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
                             </div>
-                            <?php
-                            if($data['verifikasi'] == "Disetujui")
-                            {
-                                ?>
-                                <a href="<?php echo base_url("index.php/pengesahan/deniedTransaksi/" . $data['id_pengambilan_kredit']) ?>" type="button" name="submit" rel="tooltip" title="Tolak"
-                                        class="btn btn-danger btn-simple btn-xs"
-                                        onclick="return confirm('Tolak Transaksi ini ?');">
-                                    <div class="btn btn-danger">Tolak Transaksi</div>
-                                </a>
-                            <?php
-                            }
-                            ?>
-
-                            <?php
-                            if($data['verifikasi'] == "Menunggu" || $data['verifikasi'] == "Ditolak")
-                            {
-                                ?>
-                                <a href="<?php echo base_url("index.php/pengesahan/approveTransaksi/" . $data['id_pengambilan_kredit']) ?>" type="button" name="submit" rel="tooltip" title="Verifikasi"
-                                    class="btn btn-info btn-simple btn-xs"
-                                    onclick="return confirm('Konfirmasi Transaksi ini ?')">
-                                <div class="btn btn-success">Setujui Verifikasi</div>
-                                </a>
-                                </form>
-                            <?php
-                            }
-                            ?>
-
-
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Company
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Portfolio
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Blog
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <p class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-                </p>
-            </div>
-        </footer>
-
 
     </div>
 </div>

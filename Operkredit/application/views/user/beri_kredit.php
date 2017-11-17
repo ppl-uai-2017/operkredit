@@ -68,47 +68,41 @@
     <!-- Breadcrumb Ends -->
     <!-- Main Heading Starts -->
     <?php
-    foreach ($data as $data)
-    {
-        $verifikasi = $data['verifikasi'];
-    }
-    if($verifikasi != "Terverifikasi")
-    {
-        echo "<h2 align='center'>Anda Belum dapat mengajukan barang untuk operkredit</h2>";
-    }
-    else
-    {
-        ?>
-        <h2 align="center">
-            Ajukan Beri Kredit <br />
-        </h2>
-    <?php
+    if($data != null) {
+        foreach ($data as $data) {
+            $verifikasi = $data['verifikasi'];
+        }
+        if ($verifikasi != "Terverifikasi" ) {
+            echo "<h2 align='center'>Anda Belum dapat mengajukan barang untuk operkredit</h2>";
+        } else {
+            ?>
+            <h2 align="center">
+                Ajukan Beri Kredit <br/>
+            </h2>
+            <?php
+        }
     }
 
-    if(isset($message))
-    {
-        echo $message;
+        if(isset($message))
+        {
+            echo $message;
+        }
+        ?>
+
+    <?php
+        if ($verifikasi == "Terverifikasi") {
+            ?>
+            <form action="" method="POST">
+                <select name="Produk" class="form-control" onchange="this.form.submit()" required>
+                    <option value="">Pilih Produk</option>
+                    <option value="Rumah">Rumah</option>
+                </select>
+            </form>
+            <?php
     }
     ?>
-
-    <?php
-    if($verifikasi == "Terverifikasi")
-    {
-        ?>
-        <form action="" method="POST">
-            <select name="Produk" class="form-control" onchange="this.form.submit()" required>
-                <option value="">Pilih Produk</option>
-                <option value="Rumah">Rumah</option>
-            </select>
-        </form>
-    <?php
-    }
-    ?>
-
-
 
     <!-- Main Heading Ends -->
-
     <?php
     if(isset($_POST['Produk']))
     {

@@ -21,6 +21,18 @@ class Data_model extends CI_Model
         }
     }
 
+    function getPembayaran()
+    {
+        $this->db->select('*');
+        $this->db->from('metode_pembayaran');
+        $query = $this->db->get();
+        if ($query->num_rows() != 0) {
+            return $query->result_array();
+        } else {
+            return false;
+        }
+    }
+
     function getProfile()
     {
         $this->db->select('*');
@@ -92,7 +104,9 @@ class Data_model extends CI_Model
     function getDetailProduk($id)
     {
         $this->db->select('*');
-        $this->db->from('rumah');
+        $this->db->from('rumah a');
+        $this->db->join('user b', "a.pengoper_kredit = b.username");
+        $this->db->join('pengunjung c', "b.email = c.email");
         $this->db->where('idrumah', $id);
         $query = $this->db->get();
         if ($query->num_rows() != 0) {
@@ -101,16 +115,15 @@ class Data_model extends CI_Model
             return false;
         }
     }
-	
-	function getTransaksi()
+
+    function getTransaksi()
     {
-        $this->db->select('*');
-        $this->db->from('user a');
-		$this->db->join('pengunjung b', "a.email = b.email");
-        $this->db->join('pengambilan_kredit c', "c.username = a.username");
-		$this->db->join('rumah d', "c.id_barang = d.idrumah");
-        
-		
+        $this->db->select('*, a.verifikasi as transaksi_status');
+
+        $this->db->from('pengambilan_kredit a');
+        $this->db->join('user b', "a.id_pengambil_kredit = b.username");
+        $this->db->join('pengunjung c', "c.email = b.email");
+
         $query = $this->db->get();
         if ($query->num_rows() != 0) {
             return $query->result_array();
@@ -118,16 +131,17 @@ class Data_model extends CI_Model
             return false;
         }
     }
-	
-	function getDetailTransaksiPenerima($id)
+
+    function getDetailTransaksi($id)
     {
-        $this->db->select('*');
-        $this->db->from('user a');
-		$this->db->join('pengunjung b', "a.email = b.email");
-        $this->db->join('pengambilan_kredit c', "c.username = a.username");
-		$this->db->join('rumah d', "c.id_barang = d.idrumah");
-		$this->db->where('id_pengambilan_kredit', $id);
-        
+        $this->db->select('*, a.verifikasi as status_verifikasi');
+        $this->db->from('pengambilan_kredit a');
+        $this->db->join('rumah b', "a.id_rumah = b.idrumah");
+        $this->db->join('user c', "b.pengoper_kredit = c.username");
+        $this->db->join('pengunjung d', "c.email = d.email");
+        $this->db->join('metode_pembayaran e', "a.id_metode_pembayaran = e.id_metode_pembayaran");
+        $this->db->where('id_pengambilan_kredit', $id);
+
         $query = $this->db->get();
         if ($query->num_rows() != 0) {
             return $query->result_array();
@@ -135,16 +149,15 @@ class Data_model extends CI_Model
             return false;
         }
     }
-	
-	function getDetailTransaksiPengoper($id)
+
+    function getDetailPengambil($id)
     {
         $this->db->select('*');
         $this->db->from('pengambilan_kredit a');
-		$this->db->join('rumah b', "a.id_barang = b.idrumah");
-		$this->db->join('user d', "b.pengoper_kredit = d.username");
-		$this->db->join('pengunjung e', "e.email = d.email");
-		$this->db->where('id_pengambilan_kredit', $id);
-        
+        $this->db->join('user b', "a.id_pengambil_kredit = b.username");
+        $this->db->join('pengunjung c', "b.email = c.email");
+        $this->db->where('id_pengambilan_kredit', $id);
+
         $query = $this->db->get();
         if ($query->num_rows() != 0) {
             return $query->result_array();
@@ -152,15 +165,15 @@ class Data_model extends CI_Model
             return false;
         }
     }
-	
-	function getHistory()
+
+    function getHistory()
     {
-        $this->db->select('*');
+        $this->db->select('*, a.verifikasi as status_transaksi');
         $this->db->from('pengambilan_kredit a');
-		$this->db->join('rumah b', "a.id_barang = b.idrumah");
-		$this->db->join('user d', "b.pengoper_kredit = d.username");
-		$this->db->join('pengunjung e', "e.email = d.email");
-        $this->db->where('a.username', $_SESSION['username']);
+        $this->db->join('rumah b', "a.id_rumah = b.idrumah");
+        $this->db->join('user d', "b.pengoper_kredit = d.username");
+        $this->db->join('pengunjung e', "e.email = d.email");
+        $this->db->where('a.id_pengambil_kredit', $_SESSION['username']);
         $query = $this->db->get();
         if ($query->num_rows() != 0) {
             return $query->result_array();
@@ -168,14 +181,15 @@ class Data_model extends CI_Model
             return false;
         }
     }
-	
-	function getDetailHistory($id)
+
+    function getDetailHistory($id)
     {
         $this->db->select('*');
         $this->db->from('pengambilan_kredit a');
-		$this->db->join('rumah b', "a.id_barang = b.idrumah");
-		$this->db->join('user d', "b.pengoper_kredit = d.username");
-		$this->db->join('pengunjung e', "e.email = d.email");
+        $this->db->join('rumah b', "a.id_rumah = b.idrumah");
+        $this->db->join('user d', "b.pengoper_kredit = d.username");
+        $this->db->join('pengunjung e', "e.email = d.email");
+        $this->db->join('metode_pembayaran f', "a.id_metode_pembayaran = f.id_metode_pembayaran");
         $this->db->where('a.id_pengambilan_kredit', $id);
         $query = $this->db->get();
         if ($query->num_rows() != 0) {
@@ -184,4 +198,5 @@ class Data_model extends CI_Model
             return false;
         }
     }
+
 }

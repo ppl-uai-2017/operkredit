@@ -223,7 +223,7 @@
                                 </form>
 
                             <div class="panel-heading">
-                                <h3 class="panel-title">Informasi Cicilan</h3>
+                                <h3 class="panel-title">Informasi Pembayaran</h3>
                             </div>
                             <div class="panel-body">
                                 <!-- Registration Form Starts -->
@@ -231,9 +231,16 @@
                                       action="<?php echo base_url("index.php/user/rumah") ?>" enctype="multipart/form-data">
                                     <!-- Personal Information Starts -->
                                     <div class="form-group">
-                                        <label for="inputCompany" class="col-sm-3 control-label">Harga :</label>
+                                        <label for="inputCompany" class="col-sm-3 control-label">Total Kewajiban :</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" name="harga" value="<?php echo $data['harga'] ?>" readonly
+                                            <input type="text" class="form-control" name="harga" value="<?php echo "Rp ".number_format($data['total_bayar'],2,',','.') ?>" readonly
+                                                   placeholder="Harga Total Keseluruhan">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputCompany" class="col-sm-3 control-label">Metode Pembayaran :</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" name="harga" value="<?php echo $data['nama_metode_pembayaran']." - ". $data['nomor_rekening'] ?>" readonly
                                                    placeholder="Harga Total Keseluruhan">
                                         </div>
                                     </div>
@@ -254,7 +261,7 @@
                                     <div class="form-group">
                                         <label for="inputAddress2" class="col-sm-3 control-label">Cicilan Perbulan :</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" name="cicilan_perbulan" value="<?php echo $data['cicilan_perbulan'] ?>" readonly
+                                            <input type="text" class="form-control" name="cicilan_perbulan" value="<?php echo "Rp ".number_format($data['cicilan'],2,',','.') ?>" readonly
                                                    placeholder="Cicilan Perbulan">
                                         </div>
                                     </div>

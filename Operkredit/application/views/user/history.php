@@ -95,21 +95,21 @@
                         <?php echo $data['judul']; ?>
                     </td>
                     <td>
-                        <?php echo number_format($data['total_harga'], 2, ',', '.'); ?>
+                        <?php echo number_format($data['total_bayar'], 2, ',', '.'); ?>
                     </td> 
                     <td>
                         <?php
-                        if ($data['verifikasi'] == "Menunggu") {
+                        if ($data['status_transaksi'] == "Menunggu") {
                             ?>
-                            <span class="label label-warning"><?php echo $data['verifikasi']; ?></span>
+                            <span class="label label-warning"><?php echo $data['status_transaksi']; ?></span>
                             <?php
-                        } elseif ($data['verifikasi'] == "Disetujui") {
+                        } elseif ($data['status_transaksi'] == "Disetujui") {
                             ?>
-                            <span class="label label-success"><?php echo $data['verifikasi']; ?></span>
+                            <span class="label label-success"><?php echo $data['status_transaksi']; ?></span>
                             <?php
                         } else{
                             ?>
-                            <span class="label label-danger"><?php echo $data['verifikasi']; ?></span>
+                            <span class="label label-danger"><?php echo $data['status_transaksi']; ?></span>
                             <?php
                         }
                         ?>

@@ -1,7 +1,5 @@
 <!doctype html>
 <html lang="en">
-
-<!-- Mirrored from www.shoppestores.com/demos/mobile-shoppe/product-full.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 30 Oct 2017 11:09:02 GMT -->
 <head>
 
     <meta charset="utf-8">
@@ -28,9 +26,8 @@
     <link href="<?php echo base_url("./css/style.css")?>" rel="stylesheet">
     <link href="<?php echo base_url("css/responsive.css")?>" rel="stylesheet">
 
-    <!--[if lt IE 9]>
+
     <script src="<?php echo base_url("./js/ie8-responsive-file-warning.js")?>"></script>
-    <![endif]-->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -121,14 +118,21 @@ foreach ($data as $data) {
                 <div class="options">
                     <div class="cart-button button-group">
                         <?php
-                        if($data['pengoper_kredit'] != $_SESSION['username']) {
+                        if(!isset($_SESSION['username'])) {
                             ?>
-                            <button type="button" class="btn btn-cart">
+                            <a href="<?php echo base_url("index.php/login") ?>" type="button" class="btn btn-cart">
+                                Silahkan Login terlebih dahulu
+                            </a>
+                            <?php
+                        }
+                        elseif(isset($_SESSION['username']) && $data['pengoper_kredit'] != $_SESSION['username']) {
+                            ?>
+                            <button onclick="location.href='<?php echo base_url("index.php/transaksi/review/".$data['idrumah']) ?>';" type="button" class="btn btn-cart">
                                 Ajukan Operkredit
                             </button>
                             <?php
                         }
-                        else
+                        elseif($data['pengoper_kredit'] == $_SESSION['username'])
                         {
                             ?>
                             <button type="button" class="btn btn-cart" onclick="location.href='<?php echo base_url("index.php/user/produk") ?>';">

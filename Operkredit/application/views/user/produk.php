@@ -118,7 +118,13 @@
                             ?>
                             <span class="label label-success"><?php echo $data['status']; ?></span>
                             <?php
-                        } else {
+                        }
+                        elseif ($data['status'] == "Dalam Transaksi") {
+                            ?>
+                            <span class="label label-warning"><?php echo $data['status']; ?></span>
+                            <?php
+                        }
+                        else {
                             ?>
                             <span class="label label-danger"><?php echo $data['status']; ?></span>
                             <?php
@@ -129,18 +135,39 @@
                         <a href="<?php echo base_url("index.php/user/detail_produk/" . $data['idrumah']) ?>"><span
                                     class="label label-info"> Detail</span></a>
                         <?php
-                        if ($data['stok'] != 0) {
+                        if ($data['stok'] != 1) {
                             ?>
                             <a href="<?php echo base_url("index.php/user/edit/" . $data['idrumah']) ?>"><span
                                         class="label label-warning"> Edit</span></a>
                             <?php
-                        } else {
+                        }
+                        elseif ($data['status'] != "Dalam Transaksi") {
+                            ?>
+                            <a href="<?php echo base_url("index.php/user/edit/" . $data['idrumah']) ?>"><span
+                                        class="label label-warning"> Edit</span></a>
+                            <?php
+                        }
+                        else {
                             echo "";
                         }
+
                         ?>
-                        <a href="<?php echo base_url("index.php/user/hapus/" . $data['idrumah']) ?>"
-                           onclick="return confirm('Yakin Menghapus Produk ?')"> <span
-                                    class="label label-danger"> Hapus</span></a>
+                        <?php
+                        if($data['status'] == "Dalam Transaksi")
+                        {
+                            ?>
+                            <a href="<?php echo base_url("index.php/transaksi/riwayat/") ?>" <span
+                                        class="label label-info"> Transaksi</span></a>
+                            <?php
+                        }
+                        else {
+                            ?>
+                            <a href="<?php echo base_url("index.php/user/hapus/" . $data['idrumah']) ?>"
+                               onclick="return confirm('Yakin Menghapus Produk ?')"> <span
+                                        class="label label-danger"> Hapus</span></a>
+                            <?php
+                        }
+                            ?>
                     </td>
                 </tr>
                 <?php

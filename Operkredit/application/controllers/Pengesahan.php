@@ -8,6 +8,32 @@
 
 class pengesahan extends CI_Controller
 {
+    function __construct() {
+        parent::__construct();
+
+        if(isset($_SESSION['username']))
+        {
+            $this->load->model("Data_model");
+
+            $data = $this->Data_model->getRole();
+
+            foreach ($data as $data)
+            {
+                $getRole = $data['role'];
+            }
+
+            if($getRole != "Pengesahan")
+            {
+                redirect(base_url("index.php/error404"));
+            }
+        }
+        else
+        {
+            redirect(base_url("index.php/error404"));
+        }
+
+    }
+
     public function index()
     {
         $this->load->view("pengesahan/index");
@@ -73,25 +99,11 @@ class pengesahan extends CI_Controller
     {
         $message = null;
         $in = $this->session->flashdata('in');
-        if($in==1)
-        {
-            $message = "<div class=\"alert alert-success alert-dismissable fade in\">
-                                                        <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
-                                                        <strong>Sukses</strong> Menghapus Produk user.
-                                                    </div>";
-        }
         if($in==10)
         {
             $message = "<div class=\"alert alert-success alert-dismissable fade in\">
                                                         <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
                                                         <strong>Sukses</strong> Memverifikasi Produk.
-                                                    </div>";
-        }
-        if($in==11)
-        {
-            $message = "<div class=\"alert alert-danger alert-dismissable fade in\">
-                                                        <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
-                                                        <strong>Gagal</strong> Tidak Dapat verifikasi produk ini.
                                                     </div>";
         }
 
@@ -130,7 +142,7 @@ class pengesahan extends CI_Controller
 
         $this->pagination->initialize($config);
 
-        $this->load->view("pengesahan/produk", $data, $message);
+        $this->load->view("pengesahan/produk", $data, array("message" => $message));
     }
 
     public function hapusRegistrasi($email)
@@ -187,9 +199,6 @@ class pengesahan extends CI_Controller
             $update = $this->db->update('rumah', $update_status, $where);
             if ($update != null) {
                 $this->session->set_flashdata('in', 10);
-                redirect(base_url() . "index.php/pengesahan/produk");
-            } else {
-                $this->session->set_flashdata('in', 11);
                 redirect(base_url() . "index.php/pengesahan/produk");
             }
     }
@@ -256,13 +265,31 @@ class pengesahan extends CI_Controller
 
     public function transaksi()
     {
-		$this->load->model("Data_model");
+        $this->load->model("Data_model");
+
+        $message = null;
+        $in = $this->session->flashdata('in');
+        if($in==19)
+        {
+            $message = "<div class=\"alert alert-success alert-dismissable fade in\">
+                                                        <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
+                                                        <strong>Sukses</strong> Transaksi berhasil di verifikasi untuk dilanjutkan ke penjadwalan
+                                                    </div>";
+        }
+        elseif($in==20)
+        {
+            $message = "<div class=\"alert alert-success alert-dismissable fade in\">
+                                                        <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
+                                                        <strong>Sukses</strong> Transaksi berhasil di Tolak.
+                                                    </div>";
+        }
+
 
         $data = $this->Data_model->getTransaksi();
-		$this->load->view("pengesahan/transaksi", array("data" => $data));
+        $this->load->view("pengesahan/transaksi", array("data" => $data, "message" => $message));
     }
-	
-	public function detailTransaksi($id)
+
+    public function detailTransaksi($id)
     {
         $message = null;
         $in = $this->session->flashdata('in');
@@ -283,27 +310,24 @@ class pengesahan extends CI_Controller
 
         $this->load->model("Data_model");
 
-        $data = $this->Data_model->getDetailTransaksiPenerima($id);
-		$data1 = $this->Data_model->getDetailTransaksiPengoper($id);
+        $data = $this->Data_model->getDetailTransaksi($id);
+        $data2 = $this->Data_model->getDetailPengambil($id);
 
-        $this->load->view("pengesahan/detailTransaksi", array("data" => $data, "message" => $message, "data1" => $data1));
+        $this->load->view("pengesahan/detailTransaksi", array("data" => $data, "message" => $message, "data2" => $data2));
     }
-	
-	public function approveTransaksi($id)
-    {
-            $update_status = array(
-                'verifikasi' => "Disetujui"
-            );
 
-            $where = array("id_pengambilan_kredit" => $id);
-            $update = $this->db->update('pengambilan_kredit', $update_status, $where);
-            if ($update != null) {
-                $this->session->set_flashdata('in', 19);
-                redirect(base_url() . "index.php/pengesahan/transaksi");
-            } else {
-                $this->session->set_flashdata('in', 20);
-                redirect(base_url() . "index.php/pengesahan/transaksi");
-            }
+    public function approveTransaksi($id)
+    {
+        $update_status = array(
+            'verifikasi' => "Disetujui"
+        );
+
+        $where = array("id_pengambilan_kredit" => $id);
+        $update = $this->db->update('pengambilan_kredit', $update_status, $where);
+        if ($update != null) {
+            $this->session->set_flashdata('in', 19);
+            redirect(base_url() . "index.php/pengesahan/transaksi");
+        }
     }
 
     public function deniedTransaksi($id)
@@ -315,11 +339,13 @@ class pengesahan extends CI_Controller
         $where = array("id_pengambilan_kredit" => $id);
         $update = $this->db->update('pengambilan_kredit', $update_status, $where);
         if ($update != null) {
-            $this->session->set_flashdata('in', 21);
-            redirect(base_url() . "index.php/pengesahan/transaksi");
-        } else {
-            $this->session->set_flashdata('in', 22);
+            $this->session->set_flashdata('in', 20);
             redirect(base_url() . "index.php/pengesahan/transaksi");
         }
+    }
+
+    public function error404()
+    {
+        $this->load->view("errors/cli/error_404");
     }
 }

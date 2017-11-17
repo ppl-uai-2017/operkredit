@@ -5,7 +5,7 @@
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Light Bootstrap Dashboard by Creative Tim</title>
+    <title>Daftar Transaksi</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -49,7 +49,7 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="<?php echo base_url("index.php/pengesahan/customer")?>">
                         <i class="pe-7s-user"></i>
                         <p>Daftar Registrasi</p>
@@ -62,7 +62,7 @@
                     </a>
                 </li>
 
-                <li>
+                <li class="active">
                     <a href="<?php echo base_url("index.php/pengesahan/transaksi")?>">
                         <i class="pe-7s-shopbag"></i>
                         <p>Daftar Transaksi</p>
@@ -75,73 +75,8 @@
     <div class="main-panel">
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Table List</a>
-                </div>
                 <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-dashboard"></i>
-                                <p class="hidden-lg hidden-md">Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-globe"></i>
-                                <b class="caret hidden-sm hidden-xs"></b>
-                                <span class="notification hidden-sm hidden-xs">5</span>
-                                <p class="hidden-lg hidden-md">
-                                    5 Notifications
-                                    <b class="caret"></b>
-                                </p>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="">
-                                <i class="fa fa-search"></i>
-                                <p class="hidden-lg hidden-md">Search</p>
-                            </a>
-                        </li>
-                    </ul>
-
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="">
-                                <p>Account</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <p>
-                                    Dropdown
-                                    <b class="caret"></b>
-                                </p>
-
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </li>
                         <li>
                             <a href="<?php echo base_url("index.php/login/out")?>">
                                 <p>Log out</p>
@@ -153,6 +88,7 @@
             </div>
         </nav>
 
+
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -163,6 +99,12 @@
                                 <hr>
                             </div>
                             <div class="content table-responsive table-full-width">
+                                <?php
+                                if(isset($message))
+                                {
+                                    echo $message;
+                                }
+                                ?>
                                 <table class="table table-hover table-striped">
                                     <thead>
                                     <th>No.</th>
@@ -175,14 +117,10 @@
                                     </thead>
                                     <tbody>
                                     <?php
-                                    if(isset($message))
-                                    {
-                                        echo $message;
-                                    }
                                     if($data != null)
-                                    {
+                                    {$no = 1;
                                         foreach ($data as $data) {
-                                            $no = 1;
+
                                             ?>
                                             <tr>
                                                 <td><?php echo $no ?></td>
@@ -191,11 +129,17 @@
                                                 <td><?php echo $data['no_hp'] ?></td>
                                                 <td><?php echo $data['jenis_kelamin'] ?></td>
 												
-                                                <td><?php if ($data['verifikasi'] == "Menunggu") {
-                                                        echo "<font color='black'>" . $data['verifikasi'] . "</font>";
-                                                    } elseif ($data['verifikasi'] == "Disetujui") {
-                                                        echo "<font color='#32cd32'>" . $data['verifikasi'] . "</font>";
-                                                    } elseif ($data['verifikasi'] == "Ditolak") echo "<font color='red'>" . $data['verifikasi'] . "</font>" ?></td>
+                                                <td><?php if ($data['transaksi_status'] == "transaksi_status") {
+                                                        echo "<font color='black'>" . $data['transaksi_status'] . "</font>";
+                                                    } elseif ($data['transaksi_status'] == "Disetujui") {
+                                                        echo "<font color='#32cd32'>" . $data['transaksi_status'] . "</font>";
+                                                    } elseif ($data['transaksi_status'] == "Ditolak") echo "<font color='red'>" . $data['transaksi_status'] . "</font>";
+                                                    elseif ($data['transaksi_status'] == "Menunggu") {
+                                                        echo "<font color='black'>" . $data['transaksi_status'] . "</font>";
+                                                    }
+
+                                                    ?>
+                                                </td>
                                                 <td>
 													<button type="button" rel="tooltip" title="Detail"
 															class="btn btn-info btn-simple btn-xs"
@@ -217,7 +161,6 @@
                                         <?php
                                     }
                                     ?>
-
                                     </tbody>
                                 </table>
                             </div>
