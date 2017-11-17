@@ -126,6 +126,7 @@ class Data_model extends CI_Model
 		$this->db->join('pengunjung b', "a.email = b.email");
         $this->db->join('pengambilan_kredit c', "c.username = a.username");
 		$this->db->join('rumah d', "c.id_barang = d.idrumah");
+		$this->db->where('id_pengambilan_kredit', $id);
         
         $query = $this->db->get();
         if ($query->num_rows() != 0) {
@@ -142,7 +143,40 @@ class Data_model extends CI_Model
 		$this->db->join('rumah b', "a.id_barang = b.idrumah");
 		$this->db->join('user d', "b.pengoper_kredit = d.username");
 		$this->db->join('pengunjung e', "e.email = d.email");
+		$this->db->where('id_pengambilan_kredit', $id);
         
+        $query = $this->db->get();
+        if ($query->num_rows() != 0) {
+            return $query->result_array();
+        } else {
+            return false;
+        }
+    }
+	
+	function getHistory()
+    {
+        $this->db->select('*');
+        $this->db->from('pengambilan_kredit a');
+		$this->db->join('rumah b', "a.id_barang = b.idrumah");
+		$this->db->join('user d', "b.pengoper_kredit = d.username");
+		$this->db->join('pengunjung e', "e.email = d.email");
+        $this->db->where('a.username', $_SESSION['username']);
+        $query = $this->db->get();
+        if ($query->num_rows() != 0) {
+            return $query->result_array();
+        } else {
+            return false;
+        }
+    }
+	
+	function getDetailHistory($id)
+    {
+        $this->db->select('*');
+        $this->db->from('pengambilan_kredit a');
+		$this->db->join('rumah b', "a.id_barang = b.idrumah");
+		$this->db->join('user d', "b.pengoper_kredit = d.username");
+		$this->db->join('pengunjung e', "e.email = d.email");
+        $this->db->where('a.id_pengambilan_kredit', $id);
         $query = $this->db->get();
         if ($query->num_rows() != 0) {
             return $query->result_array();
