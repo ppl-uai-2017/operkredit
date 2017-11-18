@@ -45,32 +45,14 @@
 
 </head>
 <body>
-<!-- Header Section Starts -->
-<header id="header-area">
-    <?php
-        $this->load->view("navbar");
-    ?>
-    <!-- Nested Container Starts -->
-    <div class="container">
-
-    </div>
-    <!-- Nested Container Ends -->
-</header>
-<!-- Header Section Ends -->
-
 <!-- Main Container Starts -->
 <div id="main-container" class="container">
-    <!-- Breadcrumb Starts -->
-    <ol class="breadcrumb">
-        <li><a href="<?php echo base_url("index.php/home")?>">Home</a></li>
-        <li class="active">Register</li>
-    </ol>
-    <!-- Breadcrumb Ends -->
     <!-- Main Heading Starts -->
     <h2 class="main-heading text-center">
         Registrasi <br />
         <span>Buat Akun Baru</span>
     </h2>
+    <hr>
     <!-- Main Heading Ends -->
     <!-- Registration Section Starts -->
     <section class="registration-area">
@@ -86,6 +68,7 @@
                             echo $message;
                         }
                         ?>
+                        * Semua kolom wajib di isi
                     </div>
                     <div class="panel-body">
                         <!-- Registration Form Starts -->
@@ -94,37 +77,49 @@
                             <div class="form-group">
                                 <label for="inputFname" class="col-sm-3 control-label">Username :</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="username" placeholder="Username">
+                                    <input type="text" class="form-control" name="username" placeholder="Username" required
+                                           oninvalid="this.setCustomValidity('Username harus diisi')"
+                                           oninput="setCustomValidity('')"  />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputFname" class="col-sm-3 control-label">Nama Lengkap :</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="nama_lengkap" placeholder="Nama Lengkap">
+                                    <input type="text" class="form-control" name="nama_lengkap" placeholder="Nama Lengkap" required
+                                           oninvalid="this.setCustomValidity('Lengkap Nama')"
+                                           oninput="setCustomValidity('')"  />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputLname" class="col-sm-3 control-label">Tempat Lahir :</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat Lahir">
+                                    <input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat Lahir" required
+                                           oninvalid="this.setCustomValidity('Lengkapi tempat lahir')"
+                                           oninput="setCustomValidity('')"  />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail" class="col-sm-3 control-label">Email :</label>
                                 <div class="col-sm-9">
-                                    <input type="email" class="form-control" name="email" placeholder="Email">
+                                    <input type="email" class="form-control" name="email" placeholder="Email" required placeholder="Lengkapi email"
+                                           oninvalid="this.setCustomValidity('lengkapi email')"
+                                           oninput="setCustomValidity('')"  />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputPhone" class="col-sm-3 control-label">Tanggal Lahir :</label>
                                 <div class="col-sm-9">
-                                    <input type="date" class="form-control" name="tanggal_lahir">
+                                    <input type="date" class="form-control" name="tanggal_lahir" required
+                                           oninvalid="this.setCustomValidity('Isi tanggal lahir')"
+                                           oninput="setCustomValidity('')"  />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputFax" class="col-sm-3 control-label">Jenis Kelamin :</label>
                                 <div class="col-sm-9">
-                                    <select name="jenis_kelamin" class="form-control">
+                                    <select name="jenis_kelamin" class="form-control" required
+                                            oninvalid="this.setCustomValidity('Tidak boleh kosong')"
+                                            oninput="setCustomValidity('')"  />
                                         <option value="">Pilih</option>
                                         <option value="Laki Laki">Laki Laki</option>
                                         <option value="Perempuan">Perempuan</option>
@@ -135,7 +130,9 @@
                             <div class="form-group">
                                 <label for="inputFax" class="col-sm-3 control-label">Nomor HP :</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="no_hp" placeholder="Nomor HP">
+                                    <input type="text" class="form-control" name="no_hp" placeholder="Nomor HP" required
+                                           oninvalid="this.setCustomValidity('Nomor HP Tidak boleh kosong')"
+                                           oninput="setCustomValidity('')" maxlength="13" />
                                 </div>
                             </div>
 
@@ -246,8 +243,11 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-9">
-                                    <button type="submit" name="submit" class="btn btn-black">
+                                    <button type="submit" name="submit" class="btn btn-info">
                                         Register
+                                    </button>
+                                    <button  name="submit" class="btn btn-default" onclick="location.href='<?php echo base_url("")?>';">
+                                        Batal
                                     </button>
                                 </div>
                             </div>
@@ -264,7 +264,7 @@
                 <div class="panel panel-smart">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            Conditions
+                            Syarat dan Ketentuan
                         </h3>
                     </div>
                     <div class="panel-body">
@@ -293,9 +293,7 @@
 </div>
 <!-- Main Container Ends -->
 <!-- Footer Section Starts -->
-<?php
-    $this->load->view("./footer");
-?>
+
 <!-- Footer Section Ends -->
 <!-- JavaScript Files -->
 <script src="<?php echo base_url("./js/jquery-1.11.1.min.js")?>"></script>

@@ -238,7 +238,7 @@
                                         if($data['status_verifikasi'] == "Disetujui")
                                         {
                                             ?>
-                                            <a href="<?php echo base_url("index.php/pengesahan/deniedTransaksi/" . $data['id_pengambilan_kredit']) ?>" type="button" name="submit" rel="tooltip" title="Tolak"
+                                            <a href="<?php echo base_url("index.php/pengesahan/deniedTransaksi/".$data['id_pengambilan_kredit']."/".$data['idrumah']) ?>" type="button" name="submit" rel="tooltip" title="Tolak"
                                                class="btn btn-danger btn-simple btn-xs"
                                                onclick="return confirm('Tolak Transaksi ini ?');">
                                                 <div class="btn btn-danger">Batal/Tolak Transaksi</div>
@@ -248,10 +248,10 @@
                                         if($data['status_verifikasi'] == "Menunggu" || $data['status_verifikasi'] == "Ditolak")
                                         {
                                             ?>
-                                            <a href="<?php echo base_url("index.php/pengesahan/approveTransaksi/" . $data['id_pengambilan_kredit']) ?>" type="button" name="submit" rel="tooltip" title="Verifikasi"
+                                            <a href="<?php echo base_url("index.php/pengesahan/approveTransaksi/" . $data['id_pengambilan_kredit']."/".$data['idrumah']) ?>" type="button" name="submit" rel="tooltip" title="Verifikasi"
                                                class="btn btn-info btn-simple btn-xs"
                                                onclick="return confirm('Konfirmasi Transaksi ini ?')">
-                                                <div class="btn btn-success">Setujui Verifikasi</div>
+                                                <div class="btn btn-success">Setujui Transaksi</div>
                                             </a>
                                             <?php
                                         }

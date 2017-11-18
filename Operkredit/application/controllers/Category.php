@@ -52,19 +52,14 @@ class Category extends CI_Controller
     {
         $this->load->model("Data_model");
         $data = $this->Data_model->getDetail($id);
-        $this->load->view("kategori/detail", array("data" => $data));
+        $profile = $this->Data_model->getProfile();
+        $this->load->view("kategori/detail", array("data" => $data, "profile" => $profile));
     }
 
     public function review($id)
     {
         $this->load->model("Data_model");
         $data = $this->Data_model->getDetail($id);
-
-
-
-
-
-
 
         $this->load->view("kategori/review", array("data" => $data));
     }

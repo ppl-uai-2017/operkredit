@@ -34,21 +34,7 @@ class Login extends CI_Controller
                                                     </div>";
         }
 
-        if($in==7)
-        {
-            $message = "<div class=\"alert alert-success alert-dismissable fade in\">
-                                                        <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
-                                                        <strong>Registrasi Berhasil</strong> Silahkan login dan pantau status verifikasi akun
-                                                    </div>";
-        }
 
-        if($in==8)
-        {
-            $message = "<div class=\"alert alert-danger alert-dismissable fade in\">
-                                                        <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
-                                                        <strong>Registrasi Gagal</strong> Silahkan hubungi customer service operkredit
-                                                    </div>";
-        }
         $this->load->view("login/login", array("message" => $message));
     }
 

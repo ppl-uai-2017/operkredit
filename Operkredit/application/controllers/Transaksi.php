@@ -32,7 +32,8 @@ class Transaksi extends CI_Controller
             'total_bayar' => $total,
             'cicilan' => $cicilan,
             'id_rumah' => $idrumah,
-            'status' => "Menunggu"
+            'verifikasi' => "Menunggu",
+            'status_pembayaran' => "Menunggu"
         );
 
         $data = array(
@@ -46,7 +47,7 @@ class Transaksi extends CI_Controller
 
         if ($insert != null && $update != null) {
             echo "<script type=\"text/javascript\">alert('Sukses, data anda kan kami review. Silahkan pantau pada halaman riwayat transaksi anda');</script>";
-            redirect(base_url() . "index.php/transaksi/riwayat");
+            redirect(base_url() . "index.php/user/history");
         }
     }
 }

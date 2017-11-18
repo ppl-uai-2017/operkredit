@@ -1,155 +1,193 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
+    <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
+    <title>Riwayat Transaksi</title>
 
-    <meta charset="utf-8">
-    <!--[if IE]>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <!-- Favicons-->
+    <link rel="icon" href="<?php echo base_url("./images/favicon/favicon-32x32.png")?>" sizes="32x32">
+    <!-- Favicons-->
+    <link rel="apple-touch-icon-precomposed" href="<?php echo base_url("./images/favicon/apple-touch-icon-152x152.png")?>">
+    <!-- For iPhone -->
+    <meta name="msapplication-TileColor" content="#00bcd4">
+    <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+    <!-- For Windows Phone -->
 
-    <title>Daftar Produk</title>
+    <!-- CORE CSS-->
 
-    <!-- Bootstrap Core CSS -->
-    <link href="<?php echo base_url("css/bootstrap.min.css")?>" rel="stylesheet">
+    <link href="<?php echo base_url("./css/materialize.css")?>" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="<?php echo base_url("./css/style.css")?>" type="text/css" rel="stylesheet" media="screen,projection">
+    <!-- Custome CSS-->
+    <link href="<?php echo base_url("./css/custom-style.css")?>" type="text/css" rel="stylesheet" media="screen,projection">
+    <!-- CSS style Horizontal Nav (Layout 03)-->
+    <link href="<?php echo base_url("./css/style-horizontal.css")?>" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="<?php echo base_url("../../../../cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css")?>" type="text/css" rel="stylesheet" media="screen,projection">
 
-    <!-- Google Web Fonts -->
-    <link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Oswald:400,700,300" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400" rel="stylesheet" type="text/css">
-
-    <!-- CSS Files -->
-    <link href="<?php echo base_url("./font-awesome/css/font-awesome.min.css")?>" rel="stylesheet">
-    <link href="<?php echo base_url("./css/style.css")?>" rel="stylesheet">
-    <link href="<?php echo base_url("./css/responsive.css")?>" rel="stylesheet">
-
-
-    <script src="<?php echo base_url("./js/ie8-responsive-file-warning.js")?>"></script>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo base_url("./images/fav-144.html")?>">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url("./images/fav-114.html")?>">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url("./images/fav-72.html")?>">
-    <link rel="apple-touch-icon-precomposed" href="<?php echo base_url("./images/fav-57.html")?>">
-    <link rel="shortcut icon" href="<?php echo base_url("./images/fav.html")?>">
-
+    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+    <link href="<?php echo base_url("./css/prism.css")?>" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="<?php echo base_url("./js/plugins/perfect-scrollbar/perfect-scrollbar.css")?>" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="<?php echo base_url("./js/plugins/data-tables/css/jquery.dataTables.min.css")?>" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="<?php echo base_url("./js/plugins/chartist-js/chartist.min.css")?>" type="text/css" rel="stylesheet" media="screen,projection">
 </head>
+
 <body>
+<!-- //////////////////////////////////////////////////////////////////////////// -->
+
 <?php
-    $this->load->view("./navbar");
+$this->load->view("./navbar");
 ?>
-<!-- Main Container Starts -->
-<div id="main-container" class="container">
-    <!-- Breadcrumb Starts -->
-    <ol class="breadcrumb">
-        <li><a href="<?php echo base_url("")?>">Home</a></li>
-        <li class="active">Riwayat Transaksi</li>
-    </ol>
-    <!-- Breadcrumb Ends -->
-    <!-- Main Heading Starts -->
-    <h4 align="center">
-        Riwayat Transaksi
-    </h4>
-    <!-- Main Heading Ends -->
-    <!-- Compare Table Starts -->
-    <br>
-    * Transaksi dalam status menunggu belum bisa melanjutkan penjadwalan
-    <?php
-    if(isset($message))
-    {
-        echo $message;
-    }
-    ?>
-    <div class="table-responsive compare-table">
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <td>No Transaksi. </td>
-                <td>Tanggal </td>
-                <td>Judul </td>
-                <td>Total Harga </td>
-                <td>Status</td>
-                <td>Aksi</td>
-            </tr>
-            </thead>
-            <tbody>
-            <?php
-            if($data  != null)
-            {
-            foreach ($data as $data) {
-                ?>
-                <tr>
-                    <td><?php echo $data['id_pengambilan_kredit']; ?></td>
-					<td><?php echo $data['tanggal']; ?></td>
-                    <td>
-                        <?php echo $data['judul']; ?>
-                    </td>
-                    <td>
-                        <?php echo number_format($data['total_bayar'], 2, ',', '.'); ?>
-                    </td> 
-                    <td>
-                        <?php
-                        if ($data['status_transaksi'] == "Menunggu") {
-                            ?>
-                            <span class="label label-warning"><?php echo $data['status_transaksi']; ?></span>
-                            <?php
-                        } elseif ($data['status_transaksi'] == "Disetujui") {
-                            ?>
-                            <span class="label label-success"><?php echo $data['status_transaksi']; ?></span>
-                            <?php
-                        } else{
-                            ?>
-                            <span class="label label-danger"><?php echo $data['status_transaksi']; ?></span>
-                            <?php
-                        }
-                        ?>
-                    </td>
-                    <td>
-                        <a href="<?php echo base_url("index.php/user/detailHistory/" . $data['id_pengambilan_kredit']) ?>"><span
-                                    class="label label-info"> Detail</span></a>
-                    </td>
-                </tr>
-                <?php
-            }
-            }
-            else
-            {
-                ?>
-            <tr>
-                <td colspan="8">Belum ada Transaksi</td>
-            </tr>
-            <?php
-            }
-            ?>
-            </tbody>
-        </table>
+
+<!-- //////////////////////////////////////////////////////////////////////////// -->
+
+<!-- START MAIN -->
+<div id="main">
+    <!-- START WRAPPER -->
+    <div class="wrapper">
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+        <!-- START CONTENT -->
+        <section id="content">
+
+            <!--start container-->
+            <div class="container">
+
+                <div class="section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                <h5 class="breadcrumbs-title">Riwayat</h5>
+                                <ol class="breadcrumb">
+                                    <li><a href="<?php echo base_url("")?>">Dashboard</a></li>
+                                    <li class="active">Riwayat Transaksi</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <!--DataTables example-->
+                    <div id="table-datatables">
+                        <div class="row">
+                            <div class="col s12 m4 l">
+
+                                <?php
+                                if(isset($message))
+                                {
+                                    echo $message;
+                                }
+                                ?>
+                            </div>
+                            <div id="profile-page-wall-post" class="card">
+
+                                <div class="card-profile-title">
+
+                                    <div class="col s12 ">
+                                        * Transaksi dalam status menunggu belum bisa melanjutkan penjadwalan
+                                        <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                                            <thead>
+                                            <tr>
+                                                <th>No Transaksi</th>
+                                                <th>Tanggal </th>
+                                                <th>Judul </th>
+                                                <th>Total Harga</th>
+                                                <th>Status</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+                                            <?php
+                                            if($data != null) {
+                                                foreach ($data as $data) {
+                                                    ?>
+                                                    <tr>
+                                                        <td><?php echo $data['id_pengambilan_kredit']; ?></td>
+                                                        <td><?php echo $data['tanggal']; ?></td>
+                                                        <td><?php echo $data['judul']; ?></td>
+                                                        <td><?php echo number_format($data['total_bayar'], 2, ',', '.'); ?></td>
+                                                        <td>
+                                                            <?php
+                                                            if ($data['status_transaksi'] == "Menunggu") {
+                                                                ?>
+                                                                <span class="btn waves-effect waves-light yellow"><?php echo $data['status_transaksi']; ?></span>
+                                                                <?php
+                                                            } elseif ($data['status_transaksi'] == "Disetujui") {
+                                                                ?>
+                                                                <span class="btn waves-effect waves-light green"><?php echo $data['status_transaksi']; ?></span>
+                                                                <?php
+                                                            } else{
+                                                                ?>
+                                                                <span class="btn waves-effect waves-light red"><?php echo $data['status_transaksi']; ?></span>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </td>
+                                                    <td><a href="<?php echo base_url("index.php/user/detailHistory/" . $data['id_pengambilan_kredit']) ?>"><i
+                                                                    class="mdi-image-remove-red-eye"></i></a></td>
+                                                    </tr>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                            </tbody>
+
+                                            <br>
+                                        </table><br><br>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <br> <br>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="divider"></div>
+                </div>
+
+            </div>
+            <!--end container-->
+
+        </section>
+        <!-- END CONTENT -->
+
     </div>
-    <!-- Compare Table Ends -->
+    <!-- END WRAPPER -->
+
 </div>
-<!-- Main Container Ends -->
-<!-- Footer Section Starts -->
+<!-- END MAIN -->
+
+
+
+<!-- //////////////////////////////////////////////////////////////////////////// -->
+
+<!-- START FOOTER -->
 <?php
-    $this->load->view("./footer");
+$this->load->view("./footer");
 ?>
-<!-- Footer Section Ends -->
-<!-- JavaScript Files -->
-<script src="<?php echo base_url("./js/jquery-1.11.1.min.js")?>"></script>
-<script src="<?php echo base_url("./js/jquery-migrate-1.2.1.min.js")?>"></script>
-<script src="<?php echo base_url("./js/bootstrap.min.js")?>"></script>
-<script src="<?php echo base_url("./js/bootstrap-hover-dropdown.min.js")?>"></script>
-<script src="<?php echo base_url("./js/jquery.magnific-popup.min.js")?>"></script>
-<script src="<?php echo base_url("./js/owl.carousel.min.js")?>"></script>
-<script src="<?php echo base_url("./js/custom.js")?>"></script>
+<!-- ================================================
+Scripts
+================================================ -->
+
+<!-- jQuery Library -->
+<script type="text/javascript" src="<?php echo base_url("./js/jquery-1.11.2.min.js")?>"></script>
+<!--materialize js-->
+<script type="text/javascript" src="<?php echo base_url("./js/materialize.js")?>"></script>
+<!--prism-->
+<script type="text/javascript" src="<?php echo base_url("./js/prism.js")?>"></script>
+<!--scrollbar-->
+<script type="text/javascript" src="<?php echo base_url("./js/plugins/perfect-scrollbar/perfect-scrollbar.min.js")?>"></script>
+<!-- data-tables -->
+<script type="text/javascript" src="<?php echo base_url("./js/plugins/data-tables/js/jquery.dataTables.min.js")?>"></script>
+<script type="text/javascript" src="<?php echo base_url("./js/plugins/data-tables/data-tables-script.js")?>"></script>
+<!-- chartist -->
+<script type="text/javascript" src="<?php echo base_url("./js/plugins/chartist-js/chartist.min.js")?>"></script>
+
+<script type="text/javascript" src="<?php echo base_url("./js/plugins.js")?>"></script>
 </body>
 
 </html>

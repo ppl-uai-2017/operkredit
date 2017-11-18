@@ -123,29 +123,42 @@
 
                                             ?>
                                             <tr>
-                                                <td><?php echo $no ?></td>
-                                                <td><?php echo $data['nama_lengkap'] ?></td>
-                                                <td><?php echo $data['email'] ?></td>
-                                                <td><?php echo $data['no_hp'] ?></td>
-                                                <td><?php echo $data['jenis_kelamin'] ?></td>
-												
-                                                <td><?php if ($data['transaksi_status'] == "transaksi_status") {
-                                                        echo "<font color='black'>" . $data['transaksi_status'] . "</font>";
-                                                    } elseif ($data['transaksi_status'] == "Disetujui") {
-                                                        echo "<font color='#32cd32'>" . $data['transaksi_status'] . "</font>";
-                                                    } elseif ($data['transaksi_status'] == "Ditolak") echo "<font color='red'>" . $data['transaksi_status'] . "</font>";
-                                                    elseif ($data['transaksi_status'] == "Menunggu") {
-                                                        echo "<font color='black'>" . $data['transaksi_status'] . "</font>";
-                                                    }
+                                            <td><?php echo $no ?></td>
+                                            <td><?php echo $data['nama_lengkap'] ?></td>
+                                            <td><?php echo $data['email'] ?></td>
+                                            <td><?php echo $data['no_hp'] ?></td>
+                                            <td><?php echo $data['jenis_kelamin'] ?></td>
 
+                                            <td><?php if ($data['transaksi_status'] == "transaksi_status") {
+                                                    echo "<font color='black'>" . $data['transaksi_status'] . "</font>";
+                                                } elseif ($data['transaksi_status'] == "Disetujui") {
+                                                    echo "<font color='#32cd32'>" . $data['transaksi_status'] . "</font>";
+                                                } elseif ($data['transaksi_status'] == "Ditolak") echo "<font color='red'>" . $data['transaksi_status'] . "</font>";
+                                                elseif ($data['transaksi_status'] == "Menunggu") {
+                                                    echo "<font color='black'>" . $data['transaksi_status'] . "</font>";
+                                                }
+
+                                                ?>
+                                            </td>
+                                            <td>
+                                            <button type="button" rel="tooltip" title="Detail"
+                                                    class="btn btn-info btn-simple btn-xs"
+                                                    onclick="location.href='<?php echo base_url("index.php/pengesahan/detailTransaksi/" . $data['id_pengambilan_kredit']) ?>';">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+
+                                            <?php
+                                            if($data['transaksi_status'] == "Disetujui")
+                                            {
+                                            ?>
+                                            <button type="button" rel="tooltip" title="Penjadwalan"
+                                                    class="btn btn-info btn-simple btn-xs"
+                                                    onclick="location.href='<?php echo base_url("index.php/pengesahan/jadwal/" . $data['id_pengambilan_kredit']) ?>';">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                            <?php
+                                            }
                                                     ?>
-                                                </td>
-                                                <td>
-													<button type="button" rel="tooltip" title="Detail"
-															class="btn btn-info btn-simple btn-xs"
-															onclick="location.href='<?php echo base_url("index.php/pengesahan/detailTransaksi/" . $data['id_pengambilan_kredit']) ?>';">
-														<i class="fa fa-eye"></i>
-													</button>
                                                 </td>
                                             </tr>
                                             <?php

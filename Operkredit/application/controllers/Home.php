@@ -10,22 +10,26 @@ class Home extends CI_Controller
 {
    public function index()
     {
-        $message = null;
+        $alert = null;
         $in = $this->session->flashdata('in');
 
         if($in==1)
         {
-            $message = "<div class=\"alert alert-info alert-dismissable fade in\">
-                                                        <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
+            $alert = array(
+                'notif' => '<div class="alert alert-info alert-dismissable fade in">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Login Berhasil</strong> Selamat Datang !
-                                                    </div>";
+                                                    </div>'
+            );
         }
         if($in==2)
         {
-            $message = "<div class=\"alert alert-info alert-dismissable fade in\">
+             $alert = array(
+                'notif' => '<div class=\"alert alert-info alert-dismissable fade in\">
                                                         <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
                                                         <strong>Logout Berhasil</strong>
-                                                    </div>";
+                                                    </div>'
+            );
         }
 
         $this->load->library("pagination");
@@ -63,8 +67,6 @@ class Home extends CI_Controller
 
         $this->pagination->initialize($config);
 
-
-
-        $this->load->view("pengunjung/index", $data, array("message" => $message));
+        $this->load->view("pengunjung/index-2", $data);
     }
 }

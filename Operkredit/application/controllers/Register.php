@@ -19,7 +19,22 @@ class Register extends CI_Controller
                                                         <strong>Gagal buat akun</strong> Password dan konfirmasi tidak cocok.
                                                     </div>";
         }
-        $this->load->view("register/register");
+        if($in==7)
+        {
+            $message = "<div class=\"alert alert-success alert-dismissable fade in\">
+                                                        <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
+                                                        <strong>Registrasi Berhasil</strong> Silahkan login dan pantau status verifikasi akun
+                                                    </div>";
+        }
+
+        if($in==8)
+        {
+            $message = "<div class=\"alert alert-danger alert-dismissable fade in\">
+                                                        <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
+                                                        <strong>Registrasi Gagal</strong> Silahkan hubungi customer service operkredit
+                                                    </div>";
+        }
+        $this->load->view("register/register", array("message" => $message));
     }
 
     public function akun_baru()
@@ -96,10 +111,10 @@ class Register extends CI_Controller
 
                 if ($insert_user != null && $insert_login != null) {
                     $this->session->set_flashdata('in', 7);
-                    redirect(base_url() . "index.php/login");
+                    redirect(base_url() . "index.php/register");
                 } else {
                     $this->session->set_flashdata('in', 8);
-                    redirect(base_url() . "index.php/login");
+                    redirect(base_url() . "index.php/register");
                 }
             }
             else{

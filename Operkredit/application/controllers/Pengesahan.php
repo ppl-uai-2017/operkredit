@@ -283,6 +283,20 @@ class pengesahan extends CI_Controller
                                                         <strong>Sukses</strong> Transaksi berhasil di Tolak.
                                                     </div>";
         }
+        elseif($in==22)
+        {
+            $message = "<div class=\"alert alert-success alert-dismissable fade in\">
+                                                        <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
+                                                        <strong>Sukses</strong> Berhasil melakukan penjadwalan
+                                                    </div>";
+        }
+        elseif($in==23)
+        {
+            $message = "<div class=\"alert alert-success alert-dismissable fade in\">
+                                                        <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
+                                                        <strong>Sukses</strong> Berhasil Merubah penjadwalan
+                                                    </div>";
+        }
 
 
         $data = $this->Data_model->getTransaksi();
@@ -316,32 +330,98 @@ class pengesahan extends CI_Controller
         $this->load->view("pengesahan/detailTransaksi", array("data" => $data, "message" => $message, "data2" => $data2));
     }
 
-    public function approveTransaksi($id)
+    public function approveTransaksi($id_transaksi, $idrumah)
     {
-        $update_status = array(
+        $update_status1 = array(
             'verifikasi' => "Disetujui"
         );
+        $update_status2 = array(
+            'status' => "Habis",
+            'stok' => 0
+        );
 
-        $where = array("id_pengambilan_kredit" => $id);
-        $update = $this->db->update('pengambilan_kredit', $update_status, $where);
-        if ($update != null) {
+        $where1 = array("id_pengambilan_kredit" => $id_transaksi);
+        $where2 = array("idrumah" => $idrumah);
+
+        $update1 = $this->db->update('pengambilan_kredit', $update_status1, $where1);
+        $update2 = $this->db->update('rumah', $update_status2, $where2);
+
+        if ($update1 != null && $update2 != null) {
             $this->session->set_flashdata('in', 19);
             redirect(base_url() . "index.php/pengesahan/transaksi");
         }
     }
 
-    public function deniedTransaksi($id)
+    public function deniedTransaksi($id_transaksi, $idrumah)
     {
         $update_status = array(
             'verifikasi' => "Ditolak"
         );
+        $update_status2 = array(
+            'status' => "Terverifikasi",
+            'stok' => 1
+        );
 
-        $where = array("id_pengambilan_kredit" => $id);
+        $where = array("id_pengambilan_kredit" => $id_transaksi);
+        $where2 = array("idrumah" => $idrumah);
+
         $update = $this->db->update('pengambilan_kredit', $update_status, $where);
-        if ($update != null) {
+        $update2 = $this->db->update('rumah', $update_status2, $where2);
+
+        if ($update != null && $update2 != null) {
             $this->session->set_flashdata('in', 20);
             redirect(base_url() . "index.php/pengesahan/transaksi");
         }
+    }
+
+    public function jadwal($id_transaksi)
+    {
+        $this->load->model("Data_model");
+        $load = $this->Data_model->getJadwal($id_transaksi);
+
+        if(isset($_POST['submit']))
+        {
+            $status = $this->input->post('status');
+            $pertemuan = $this->input->post('pertemuan');
+
+            $data = array(
+                'id_pengambilan_kredit' => $id_transaksi,
+                'pertemuan' => $pertemuan,
+                'status_jadwal' => $status
+            );
+
+            $insert = $this->db->insert('jadwal', $data);
+
+            if ($insert != null) {
+                $this->session->set_flashdata('in', 22);
+                redirect(base_url() . "index.php/pengesahan/transaksi");
+            }
+        }
+
+        elseif(isset($_POST['edit']))
+        {
+            $status = $this->input->post('status');
+            $pertemuan = $this->input->post('pertemuan');
+            $id_jadwal = $this->input->post('id_jadwal');
+
+            $update_data = array(
+                'id_pengambilan_kredit' => $id_transaksi,
+                'pertemuan' => $pertemuan,
+                'status_jadwal' => $status
+            );
+
+            $where = array("id_jadwal" => $id_jadwal);
+
+            $update = $this->db->update('jadwal', $update_data, $where);
+
+
+            if ($update) {
+                $this->session->set_flashdata('in', 23);
+                redirect(base_url() . "index.php/pengesahan/transaksi");
+            }
+        }
+        $this->load->view("pengesahan/jadwal", array("id" => $id_transaksi, "load" => $load));
+
     }
 
     public function error404()

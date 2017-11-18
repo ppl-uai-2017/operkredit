@@ -101,6 +101,20 @@ class Data_model extends CI_Model
         }
     }
 
+    function getJadwal($id)
+    {
+        $this->db->select('*');
+        $this->db->from('jadwal a');
+        $this->db->join('pengambilan_kredit b', "b.id_pengambilan_kredit = a.id_pengambilan_kredit");
+        $this->db->where('b.id_pengambilan_kredit', $id);
+        $query = $this->db->get();
+        if ($query->num_rows() != 0) {
+            return $query->result_array();
+        } else {
+            return false;
+        }
+    }
+
     function getDetailProduk($id)
     {
         $this->db->select('*');
