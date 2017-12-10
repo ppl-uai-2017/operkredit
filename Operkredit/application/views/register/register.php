@@ -49,7 +49,6 @@
 <div id="main-container" class="container">
     <!-- Main Heading Starts -->
     <h2 class="main-heading text-center">
-        Registrasi <br />
         <span>Buat Akun Baru</span>
     </h2>
     <hr>
@@ -246,7 +245,7 @@
                                     <button type="submit" name="submit" class="btn btn-info">
                                         Register
                                     </button>
-                                    <button  name="submit" class="btn btn-default" onclick="location.href='<?php echo base_url("")?>';">
+                                    <button  class="btn btn-default" onclick="location.href='<?php echo base_url("")?>';">
                                         Batal
                                     </button>
                                 </div>

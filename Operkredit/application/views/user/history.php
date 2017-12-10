@@ -106,7 +106,7 @@ $this->load->view("./navbar");
                                                     <tr>
                                                         <td><?php echo $data['id_pengambilan_kredit']; ?></td>
                                                         <td><?php echo $data['tanggal']; ?></td>
-                                                        <td><?php echo $data['judul']; ?></td>
+                                                        <td><?php echo $data['nama']; ?></td>
                                                         <td><?php echo number_format($data['total_bayar'], 2, ',', '.'); ?></td>
                                                         <td>
                                                             <?php

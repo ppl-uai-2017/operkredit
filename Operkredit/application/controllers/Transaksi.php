@@ -40,10 +40,10 @@ class Transaksi extends CI_Controller
             'status' => "Dalam Transaksi"
         );
 
-        $where = array("idrumah" => $idrumah);
+        $where = array("no_stnkb" => $idrumah);
 
         $insert = $this->db->insert('pengambilan_kredit', $tambah);
-        $update = $this->db->update('rumah', $data, $where);
+        $update = $this->db->update('motor', $data, $where);
 
         if ($insert != null && $update != null) {
             echo "<script type=\"text/javascript\">alert('Sukses, data anda kan kami review. Silahkan pantau pada halaman riwayat transaksi anda');</script>";

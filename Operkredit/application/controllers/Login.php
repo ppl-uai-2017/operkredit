@@ -74,13 +74,13 @@ class Login extends CI_Controller
             else
             {
                 $this->session->set_flashdata('in',3);
-                redirect("login");
+                redirect(base_url(""));
             }
         }
         else
         {
             $this->session->set_flashdata('in',4);
-            redirect("login");
+            redirect(base_url(""));
         }
     }
 

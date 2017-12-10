@@ -11,7 +11,15 @@ class User extends CI_Controller
     public function index()
     {
         $this->load->model("Data_model");
-        $data = $this->Data_model->getProfile();
+
+        $username = null;
+
+        if(isset($_SESSION['username']))
+        {
+            $username = $_SESSION['username'];
+        }
+
+        $data = $this->Data_model->getProfile($username);
 
         $this->load->view("user/profile", array("data" => $data));
     }
@@ -37,7 +45,15 @@ class User extends CI_Controller
 
         $this->load->model("Data_model");
 
-        $data = $this->Data_model->getProfile();
+
+        $username = null;
+
+        if(isset($_SESSION['username']))
+        {
+            $username = $_SESSION['username'];
+        }
+
+        $data = $this->Data_model->getProfile($username);
 
 
         $this->load->view("user/beri_kredit", array("message" => $message, "data" => $data));

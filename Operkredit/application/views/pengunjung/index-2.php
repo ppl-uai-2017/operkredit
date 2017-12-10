@@ -33,46 +33,80 @@ $this->load->view("./navbar.php");
                         <script src="<?php echo base_url("./themes/2/js-image-slider.js")?>" type="text/javascript"></script>
                         <link href="<?php echo base_url("./generic.css")?>" rel="stylesheet" type="text/css" />
                     </head>
-                    <body>
+
                     <br>
 
+                    <div id="container">
+                        <a href="<?php echo base_url("index.php/category/sport")?>">
+                            <figure>
+                                <img src="<?php echo base_url("./images/motor/motorbike.png")?>" width="100px" height="100px" />
+                                <figcaption>Sport</figcaption>
+                            </figure>
+                        </a>
+                        <a href="<?php echo base_url("index.php/category/matic")?>">
+                            <figure>
+                                <img src="<?php echo base_url("./images/motor/vespa.png")?>" width="100px" height="100px" />
+                                <figcaption>Matik</figcaption>
+                            </figure>
+                        </a>
+                    </div>
                     <div id="sliderFrame">
-                        <div id="slider">
-                            <img src="<?php echo base_url("./images/image-slider-1.jpg")?>"/>
-                            <a class="lazyImage" href="images/image-slider-2.jpg"></a>
-                            <a ><b data-src="images/image-slider-3.jpg"></b></a>
-                            <a class="lazyImage" href="images/image-slider-4.jpg" title=""></a>
+                        <div class="header-search-wrapper hide-on-med-and-down">
+                            <form action="<?php echo base_url("index.php/category/all")?>" method="POST">
+                                <input type="text" name="kota" class="form-control" required placeholder="Saya ingin cari di: Jakarta"  oninvalid="this.setCustomValidity('Tidak Boleh Kosong')"
+                                       oninput="setCustomValidity('')"/>
+                                <input type="submit" name="submit" class="btn btn-info" value="Cari">
+                            </form>
                         </div>
-                        <!--thumbnails-->
-                        <div id="thumbs">
-                            <div class="thumb">
-                                <div class="frame"><img src="<?php echo base_url("./images/thumb1.jpg")?>" /></div>
-                                <div class="thumb-content"><p>HTML Content</p>Thumbnails allows any HTML content</div>
-                                <div style="clear:both;"></div>
-                            </div>
-                            <div class="thumb">
-                                <div class="frame"><img src="images/thumb2.jpg" /></div>
-                                <div class="thumb-content"><p>Customizable</p>Thumbnail style is customizable</div>
-                                <div style="clear:both;"></div>
-                            </div>
-                            <div class="thumb">
-                                <div class="frame"><img src="images/thumb3.jpg" /></div>
-                                <div class="thumb-content"><p>Variety of Layouts</p>Just a CSS tweak.</div>
-                                <div style="clear:both;"></div>
-                            </div>
-                            <div class="thumb">
-                                <div class="frame"><img src="images/thumb4.jpg" /></div>
-                                <div class="thumb-content"><p>Integration</p>Built-in functions for the thumbnails</div>
-                                <div style="clear:both;"></div>
-                            </div>
-                        </div>
-                        <div style="clear:both;height:0;"></div>
+
                     </div>
                 </div>
             </section>
 
-            <!-- END CONTENT -->
 
+
+
+            <style>
+                #container {
+                    text-align: center;
+                }
+                a, figure {
+                    display: inline-block;
+                }
+                figcaption {
+                    margin: 10px 0 0 0;
+                    font-variant: small-caps;
+                    font-family: Arial;
+                    font-weight: bold;
+                    color: #bb3333;
+                }
+                figure {
+                    padding: 5px;
+                }
+                img:hover {
+                    transform: scale(1.1);
+                    -ms-transform: scale(1.1);
+                    -webkit-transform: scale(1.1);
+                    -moz-transform: scale(1.1);
+                    -o-transform: scale(1.1);
+                }
+                img {
+                    transition: transform 0.2s;
+                    -webkit-transition: -webkit-transform 0.2s;
+                    -moz-transition: -moz-transform 0.2s;
+                    -o-transition: -o-transform 0.2s;
+                }
+            </style>
+            <!--Start of Zendesk Chat Script-->
+            <script type="text/javascript">
+                window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+                    d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+                _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+                    $.src="https://v2.zopim.com/?5K8hLQsfy7OuoR5d7SrTJXWIjLppNgIc";z.t=+new Date;$.
+                        type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+            </script>
+            <!--End of Zendesk Chat Script-->
+            <!-- END CONTENT -->
         </div>
         <!-- END WRAPPER -->
 

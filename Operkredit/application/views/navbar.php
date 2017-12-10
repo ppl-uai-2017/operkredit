@@ -5,24 +5,7 @@
         <nav class="cyan">
             <div class="nav-wrapper">
                 <ul class="left">
-                    <li class="no-hover"><a href="#" data-activates="slide-out" class="menu-sidebar-collapse btn-floating btn-flat btn-medium waves-effect waves-light cyan hide-on-large-only"><i class="mdi-navigation-menu" ></i></a></li>
-                    <li><h1 class="logo-wrapper"><a href="<?php echo base_url("")?>" class="brand-logo darken-1"><img src="" alt="OperKredit"></a> <span class="logo-text">Materialize</span></h1></li>
-                </ul>
-                <div class="header-search-wrapper hide-on-med-and-down">
-                    <i class="mdi-action-search"></i>
-                    <input type="text" name="Search" class="header-search-input z-depth-9" placeholder="Apa yang kamu cari"/>
-                </div>
-                <ul class="right hide-on-med-and-down">
-                    <?php
-                    if(!isset($_SESSION['username'])) {
-                        ?>
-                        <li><a class="modal-trigger" href="#modal1">Login</a>
-                        </li>
-                        <li><a href="<?php echo base_url("index.php/register")?>">Register</a>
-                        </li>
-                        <?php
-                    }
-                    ?>
+                    <li><h1 class="logo-wrapper"><a href="<?php echo base_url("")?>" class="brand-logo darken-1"><img src="#" alt="OperKredit"></a> <span class="logo-text">Materialize</span></h1></li>
                 </ul>
             </div>
         </nav>
@@ -66,12 +49,20 @@
                             <span>Home</span>
                         </a>
                     </li>
-                    <li>
-                        <a class="dropdown-menu cyan-text" href="#!" data-activates="Formsdropdown">
-                            <i class="mdi-editor-insert-comment"></i>
-                            <span>Produk<i class="mdi-navigation-arrow-drop-down right"></i></span>
-                        </a>
-                    </li>
+
+                </ul>
+
+                <ul class="right hide-on-med-and-down">
+                    <?php
+                    if(!isset($_SESSION['username'])) {
+                        ?>
+                        <li><a class="modal-trigger" href="#modal1"><font color="black">Login</font> </a>
+                        </li>
+                        <li><a href="<?php echo base_url("index.php/register")?>"><font color="black">Register</font></a>
+                        </li>
+                        <?php
+                    }
+                    ?>
                 </ul>
                 <?php
                 if(isset($_SESSION['username'])) {
@@ -98,10 +89,6 @@
             <li><a tabindex="-1" href="<?php echo base_url("index.php/login/out")?>"><font color="black", size="2">Logout</font></a></li>
         </ul>
 
-        <!-- Formsdropdown -->
-        <ul id="Formsdropdown" class="dropdown-content dropdown-horizontal-list">
-            <li><a tabindex="-1" href="<?php echo base_url("index.php/category/rumah")?>"><font color="black", size="2">Rumah</font></a></li>
-        </ul>
     </div>
     <!-- end header nav-->
 </header>

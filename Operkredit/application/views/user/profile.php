@@ -124,6 +124,13 @@ $this->load->view("./navbar.php");
                                         <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['verifikasi'] ?></div>
                                     </div>
                                 </li>
+
+                                <li class="collection-item">
+                                    <div class="row">
+                                        <div class="col s5 grey-text darken-1">Catatan</div>
+                                        <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['catatan'] ?></div>
+                                    </div>
+                                </li>
                             </ul>
                             <!--/ Profile About Details  -->
                         </div>
@@ -166,8 +173,20 @@ $this->load->view("./navbar.php");
                                                         </tr>
 
                                                         <tr>
+
                                                             <td>Gaji</td>
-                                                            <td><?php echo "Rp ".number_format($data['gaji'],2,',','.')." /" ?></td>
+                                                            <td>
+                                                                <?php
+                                                                if($data['gaji'] == null)
+                                                                {
+                                                                    echo "- / Bulan";
+                                                                }
+                                                                else
+                                                                {
+                                                                    echo "Rp ".number_format($data['gaji'],2,',','.')." / Bulan";
+                                                                }
+                                                                ?>;
+                                                            </td>
                                                         </tr>
                                                     </table></div>
                                             </div>

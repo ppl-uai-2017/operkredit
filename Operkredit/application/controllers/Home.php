@@ -34,10 +34,10 @@ class Home extends CI_Controller
 
         $this->load->library("pagination");
 
-        $query = $this->db->get_where("rumah", array("status" => "Terverifikasi", "stok" => 1), "12", $this->uri->segment(1));
+        $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "stok" => 1), "12", $this->uri->segment(1));
         $data['rumah'] = $query->result();
 
-        $query2 = $this->db->get("rumah");
+        $query2 = $this->db->get("motor");
 
         $config['base_url'] = "home";
 

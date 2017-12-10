@@ -33,12 +33,12 @@ class Data_model extends CI_Model
         }
     }
 
-    function getProfile()
+    function getProfile($username)
     {
         $this->db->select('*');
         $this->db->from('user a');
         $this->db->join('pengunjung b', "b.email = a.email");
-        $this->db->where('username', $_SESSION['username']);
+        $this->db->where('username', $username);
         $query = $this->db->get();
         if ($query->num_rows() != 0) {
             return $query->result_array();
@@ -76,9 +76,11 @@ class Data_model extends CI_Model
 
     function getDetail($id)
     {
-        $this->db->select('*');
-        $this->db->from('rumah');
-        $this->db->where('idrumah', $id);
+        $this->db->select('*, a.kota as kota_motor');
+        $this->db->from('motor a');
+        $this->db->join('user b', "b.username = a.pengoper_kredit");
+        $this->db->join('pengunjung c', "b.email = c.email");
+        $this->db->where('no_stnkb', $id);
 
         $query = $this->db->get();
         if ($query->num_rows() != 0) {
@@ -184,7 +186,7 @@ class Data_model extends CI_Model
     {
         $this->db->select('*, a.verifikasi as status_transaksi');
         $this->db->from('pengambilan_kredit a');
-        $this->db->join('rumah b', "a.id_rumah = b.idrumah");
+        $this->db->join('motor b', "a.no_stnkb = b.no_stnkb");
         $this->db->join('user d', "b.pengoper_kredit = d.username");
         $this->db->join('pengunjung e', "e.email = d.email");
         $this->db->where('a.id_pengambil_kredit', $_SESSION['username']);
@@ -198,9 +200,9 @@ class Data_model extends CI_Model
 
     function getDetailHistory($id)
     {
-        $this->db->select('*');
+        $this->db->select('*, b.kota as kota_motor');
         $this->db->from('pengambilan_kredit a');
-        $this->db->join('rumah b', "a.id_rumah = b.idrumah");
+        $this->db->join('motor b', "a.no_stnkb = b.no_stnkb");
         $this->db->join('user d', "b.pengoper_kredit = d.username");
         $this->db->join('pengunjung e', "e.email = d.email");
         $this->db->join('metode_pembayaran f', "a.id_metode_pembayaran = f.id_metode_pembayaran");
