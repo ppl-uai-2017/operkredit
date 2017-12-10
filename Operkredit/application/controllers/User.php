@@ -26,26 +26,8 @@ class User extends CI_Controller
 
     public function beri_kredit()
     {
-        $message = null;
-        $in = $this->session->flashdata('in');
-        if($in==1)
-        {
-            $message = "<div class=\"alert alert-success alert-dismissable fade in\">
-                                                        <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
-                                                        <strong>Sukses</strong> Mengajukan Oper Kredit Rumah, Silahkan pantau status verifikasi pada halaman history.
-                                                    </div>";
-        }
-        if($in==2)
-        {
-            $message = "<div class=\"alert alert-warning alert-dismissable fade in\">
-                                                        <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
-                                                        <strong>Gagal</strong> Mengajukan Oper Kredit Rumah, Silahkan periksa kembali data anda.
-                                                    </div>";
-        }
-
+        echo $this->session->flashdata('something');
         $this->load->model("Data_model");
-
-
         $username = null;
 
         if(isset($_SESSION['username']))
@@ -56,16 +38,16 @@ class User extends CI_Controller
         $data = $this->Data_model->getProfile($username);
 
 
-        $this->load->view("user/beri_kredit", array("message" => $message, "data" => $data));
+        $this->load->view("user/beri_kredit", array("data" => $data));
     }
 
-    public function rumah()
+    public function motor()
     {
         $file_name=null;
 
-        $config['upload_path'] = './rumah/';
+        $config['upload_path'] = './motor/';
         $config['allowed_types'] = 'jpg|png|jpeg';
-        $config['max_size'] = '5000';
+        $config['max_size'] = '50000';
         $config['overwrite'] = TRUE;
         $config['encrypt_name'] = TRUE;
         $config['remove_spaces'] = TRUE;
@@ -73,72 +55,82 @@ class User extends CI_Controller
 
         if(isset($_POST['submit']))
         {
-            $judul = $this->input->post('judul');
-            $luas_tanah = $this->input->post('luas_tanah');
-            $lantai = $this->input->post('lantai');
-            $kamar_mandi = $this->input->post('kamar_mandi');
-            $luas_bangunan = $this->input->post('luas_bangunan');
-            $kamar = $this->input->post('kamar');
-            $sertifikasi = $this->input->post('sertifikasi');
+            $nomor_stnk = $this->input->post('stnk');
+            $nomor_bpkb = $this->input->post('bpkb');
+            $nama = $this->input->post('nama');
+            $merek = $this->input->post('merek');
+            $tipe = $this->input->post('tipe');
             $kota = $this->input->post('kota');
-            $dokumen = $this->input->post('dokumen');
-            $alamat = $this->input->post('alamat');
+            $provinsi = $this->input->post('provinsi');
+            $warna = $this->input->post('warna');
+            $jarak = $this->input->post('jarak');
+            $silinder = $this->input->post('silinder');
+            $tahun = $this->input->post('tahun');
             $deskripsi = $this->input->post('deskripsi');
-            $harga = $this->input->post('harga');
-            $total_cicilan = $this->input->post('total_cicilan');
-            $cicilan_ke = $this->input->post('cicilan_ke');
+
+            $harga_awal = $this->input->post('harga');
+            $total_bulan_cicilan = $this->input->post('total_cicilan');
+            $cicilan_berjalan_ke = $this->input->post('cicilan_ke');
             $cicilan_perbulan = $this->input->post('cicilan_perbulan');
 
             $this->upload->do_upload('foto1');
             $file1 = $this->upload->data();
-            $file1_name = $file1['file_name'];
+            echo $file1_name = $file1['file_name'];
 
             $this->upload->do_upload('foto2');
             $file2 = $this->upload->data();
-            $file2_name = $file2['file_name'];
+            echo $file2_name = $file2['file_name'];
 
             $this->upload->do_upload('foto3');
             $file3 = $this->upload->data();
-            $file3_name = $file3['file_name'];
+            echo $file3_name = $file3['file_name'];
 
             $this->upload->do_upload('foto4');
             $file4 = $this->upload->data();
-            $file4_name = $file4['file_name'];
+            echo $file4_name = $file4['file_name'];
 
-            $tambah_rumah = array(
-                'judul' => $judul,
-                'luas_tanah' => $luas_tanah,
-                'lantai' => $lantai,
-                'kamar_mandi' => $kamar_mandi,
-                'luas_bangunan' => $luas_bangunan,
-                'kamar' => $kamar,
-                'sertifikasi' => $sertifikasi,
+            $this->upload->do_upload('stnkb');
+            $stnkb = $this->upload->data();
+            echo $stnkb_name = $stnkb['file_name'];
+
+            $tambah_motor = array(
+                'no_stnkb' => $nomor_stnk,
+                'no_bpkb' => $nomor_bpkb,
+                'nama' => $nama,
+                'merk' => $merek,
+                'type' => $tipe,
+                'warna' => $warna,
+                'jarak_tempuh' => $jarak,
+                'isi_silinder' => $silinder,
+                'tahun' => $tahun,
                 'kota' => $kota,
-                'dokumen' => $dokumen,
-                'alamat' => $alamat,
+                'provinsi' => $provinsi,
                 'deskripsi' => $deskripsi,
                 'foto1' => $file1_name,
                 'foto2' => $file2_name,
                 'foto3' => $file3_name,
                 'foto4' => $file4_name,
-                'harga' => $harga,
-                'total_cicilan' => $total_cicilan,
-                'cicilan_ke' => $cicilan_ke,
+                'dokumen_stnkb' => $stnkb_name,
+                'harga_awal' => $harga_awal,
+                'total_cicilan' => $total_bulan_cicilan,
+                'cicilan_ke' => $cicilan_berjalan_ke,
                 'cicilan_perbulan' => $cicilan_perbulan,
                 'pengoper_kredit' => $_SESSION['username'],
                 'status' => "Menunggu",
                 'stok' => 1
             );
 
-            $insert = $this->db->insert('rumah', $tambah_rumah);
+            $insert = $this->db->insert('motor', $tambah_motor);
             if ($insert != null) {
-                $this->session->set_flashdata('in',1);
+                $this->session->set_flashdata('something', 'Produk Berhasil Ditambahkan');
                 redirect(base_url() . "index.php/user/beri_kredit");
+
             }
             else
             {
-                $this->session->set_flashdata('in',2);
+                $this->session->set_flashdata('something', 'Gagal Menambahkan Produk');
                 redirect(base_url() . "index.php/user/beri_kredit");
+
             }
     }
 

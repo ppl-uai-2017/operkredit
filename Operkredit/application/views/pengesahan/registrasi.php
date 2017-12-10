@@ -116,10 +116,12 @@
                                     {
                                         echo $message;
                                     }
+                                    $no = 1;
                                     if($pengunjung != null)
                                     {
+
                                     foreach ($pengunjung as $data => $pengunjung) {
-                                        $no = 1;
+
                                         ?>
                                         <tr>
                                             <td><?php echo $no ?></td>

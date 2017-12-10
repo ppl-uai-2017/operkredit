@@ -88,9 +88,9 @@ $this->load->view("./navbar");
                                         ?>
                                     <div class="col s12 m4 l">
                                         <form action="" method="POST">
-                                            <select name="Produk" onchange="this.form.submit()" required>
+                                            <select name="Produk" onchange="this.form.submit()" class="browser-default"  required>
                                                 <option value="">Pilih Produk</option>
-                                                <option value="Rumah">Rumah</option>
+                                                <option value="Rumah">Motor</option>
                                             </select>
                                         </form>
                                     </div>
@@ -104,8 +104,7 @@ $this->load->view("./navbar");
                                         if($_POST['Produk'] == "Rumah") {
                                             ?>
                             <!-- Registration Section Starts -->
-                            <form class="form-horizontal" role="form" method="POST"
-                                  action="<?php echo base_url("index.php/user/rumah") ?>" enctype="multipart/form-data">
+                            <form class="form-horizontal" role="form" method="POST" action="<?php echo base_url("index.php/user/motor") ?>" enctype="multipart/form-data">
                                 <!-- Personal Information Starts -->
 
                                 <div class="col s12 m6">
@@ -115,96 +114,112 @@ $this->load->view("./navbar");
                                     <!-- Registration Block Starts -->
                                     <div class="panel panel-smart">
                                         <div class="panel-heading">
-                                            <h3 class="panel-title">Informasi Rumah</h3>
+                                            <h3 class="panel-title">Informasi Motor</h3>
                                         </div>
-
+                                        <font color="red">*</font> Wajib Diisi
                                         <div class="panel-body">
                                             <!-- Registration Form Starts -->
                                            <div class="form-group">
-                                                    <label for="inputFname" class="col-sm-3 control-label">Judul : </label>
+                                                    <label for="inputFname" class="col-sm-3 control-label"><font color="red">*</font> Nomor STNK : </label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" name="judul"
-                                                               placeholder="Contoh : Hunian Cibubur">
+                                                        <input type="text" name="stnk" required placeholder="Isi - bila baru" oninvalid="this.setCustomValidity('STNK Harus Diisi')"
+                                                               oninput="setCustomValidity('')">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputFname" class="col-sm-3 control-label">Luas Tanah (M2) :</label>
+                                                    <label for="inputFname" class="col-sm-3 control-label"><font color="red">*</font> Nomor BPKB :</label>
                                                     <div class="col-sm-9">
-                                                        <input type="number" class="form-control" name="luas_tanah"
-                                                               placeholder="Luas Tanah">
+                                                        <input type="text" class="form-control" name="bpkb" required placeholder="Isi 0 bila baru" oninvalid="this.setCustomValidity('BPKB Tidak boleh Kosong')"
+                                                               oninput="setCustomValidity('')">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputLname" class="col-sm-3 control-label">Lantai :</label>
+                                                    <label for="inputLname" class="col-sm-3 control-label"><font color="red">*</font> Nama Produk :</label>
                                                     <div class="col-sm-9">
-                                                        <input type="number" class="form-control" name="lantai"
-                                                               placeholder="Jumlah Lantai">
+                                                        <input type="text" class="form-control" name="nama" required placeholder="CBR" oninvalid="this.setCustomValidity('Beri Nama Produk')"
+                                                               oninput="setCustomValidity('')">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputEmail" class="col-sm-3 control-label">Kamar Mandi :</label>
+                                                    <label for="inputEmail" class="col-sm-3 control-label"><font color="red">*</font> Merek :</label>
                                                     <div class="col-sm-9">
-                                                        <input type="number" class="form-control" name="kamar_mandi"
-                                                               placeholder="Jumlah kamar mandi">
+                                                        <input type="text" class="form-control" name="merek" required placeholder="Merek Produk" oninvalid="this.setCustomValidity('Beri Merek')"
+                                                               oninput="setCustomValidity('')">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputPhone" class="col-sm-3 control-label">Luas Bangunan (M2) :</label>
+                                                    <label for="inputPhone" class="col-sm-3 control-label"><font color="red">*</font> Tipe :</label>
                                                     <div class="col-sm-9">
-                                                        <input type="number" class="form-control" name="luas_bangunan" placeholder="Luas Bangunan">
+                                                        <input type="text" class="form-control" name="tipe" required placeholder="Tipe Produk" oninvalid="this.setCustomValidity('Beri Tipe')"
+                                                               oninput="setCustomValidity('')">
                                                     </div>
                                                 </div>
+
                                                 <div class="form-group">
-                                                    <label for="inputFax" class="col-sm-3 control-label">Kamar :</label>
+                                                    <label for="inputPhone" class="col-sm-3 control-label"><font color="red">*</font> Kota :</label>
                                                     <div class="col-sm-9">
-                                                        <input type="number" class="form-control" name="kamar" placeholder="Jumlah Kamar">
+                                                        <input type="text" class="form-control" name="kota" required placeholder="Kota Produk Berada" oninvalid="this.setCustomValidity('Kota Tidak Boleh Kosong')"
+                                                               oninput="setCustomValidity('')">
                                                     </div>
                                                 </div>
+
                                                 <div class="form-group">
-                                                    <label for="inputFax" class="col-sm-3 control-label">Sertifikasi :</label>
+                                                    <label for="inputPhone" class="col-sm-3 control-label"><font color="red">*</font> Provinsi :</label>
                                                     <div class="col-sm-9">
-                                                        <select name="sertifikasi" class="form-control" required>
-                                                            <option value="">Pilih Sertifikasi</option>
-                                                            <option value="Sertifikat Hak Milik (SHM)">Sertifikat Hak Milik (SHM)</option>
-                                                            <option value="Sertifikat Hak Guna Bangunan (SHGB)">Sertifikat Hak Guna Bangunan (SHGB)</option>
-                                                            <option value="Sertifikat Hak Satuan Rumah Susun (SHSRS)">Sertifikat Hak Satuan Rumah Susun (SHSRS)</option>
-                                                            <option value="Girik">Girik</option>
-                                                            <option value="Akta Jual Beli (AJB)">Akta Jual Beli (AJB)</option>
-                                                        </select>
+                                                        <input type="text" class="form-control" name="provinsi" required placeholder="Provinsi Produk Berada" oninvalid="this.setCustomValidity('Provinsi Tidak Boleh Kosong')"
+                                                               oninput="setCustomValidity('')">
                                                     </div>
                                                 </div>
+
                                                 <div class="form-group">
-                                                    <label for="inputFax" class="col-sm-3 control-label">Kota :</label>
+                                                    <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Warna :</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="kota" placeholder="Kota">
+                                                        <input type="text" class="form-control" name="warna" required placeholder="Warna Produk" oninvalid="this.setCustomValidity('Beri Warna Produk')"
+                                                               oninput="setCustomValidity('')">
                                                     </div>
                                                 </div>
+
                                                 <div class="form-group">
-                                                    <label for="inputFax" class="col-sm-3 control-label">Dokumen :</label>
+                                                    <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Jarak Tempuh (KM) :</label>
                                                     <div class="col-sm-9">
-                                                        <select class="form-control" name="dokumen">
-                                                            <option value="">Pilih</option>
-                                                            <option value="Lengkap">Lengkap</option>
-                                                            <option value="Tidak Lengkap">Tidak lengkap</option>
-                                                        </select>
+                                                        <input type="number" class="form-control" name="jarak" required placeholder="Jarak Tempuh" oninvalid="this.setCustomValidity('Isi Jarak Tempuh')"
+                                                               oninput="setCustomValidity('')">
                                                     </div>
                                                 </div>
+
                                                 <div class="form-group">
-                                                    <label for="inputFax" class="col-sm-3 control-label">Alamat / Lokasi :</label>
+                                                    <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Isi Silinder :</label>
                                                     <div class="col-sm-9">
-                                                        <textarea type="text" class="form-control" name="alamat" placeholder="Alamat Lengkap Rumah"></textarea>
+                                                        <input type="text" class="form-control" name="silinder" required placeholder="Isi Silinder, contoh 1000CC" oninvalid="this.setCustomValidity('Isi Silinder harus diisi')"
+                                                               oninput="setCustomValidity('')">
                                                     </div>
                                                 </div>
+
                                                 <div class="form-group">
-                                                    <label for="inputFax" class="col-sm-3 control-label">Deskripsi Lainnya</label>
+                                                    <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Tahun :</label>
                                                     <div class="col-sm-9">
-                                                        <textarea type="text" class="form-control" name="deskripsi" placeholder="Deskripsi rumah dengan lengkap, contoh : rumah dekat dengan tol, Listrik 1300 watt"></textarea>
+                                                        <input type="number" class="form-control" name="tahun" required placeholder="Tahun Penerbitan sesuai STNK" oninvalid="this.setCustomValidity('Isi Tahun penerbitan')"
+                                                               oninput="setCustomValidity('')">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Deskripsi</label>
+                                                    <div class="col-sm-9">
+                                                        <textarea type="text" class="form-control" name="deskripsi" placeholder="Deskripsi motor dengan lengkap, contoh : Baret sedikit, tapi ok"></textarea>
                                                         <br>* Semakin lengkap deskripsi yang anda berikan akan meningkatkan persentase pengesahan disetujui
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="inputFax" class="col-sm-3 control-label">Gambar</label>
+                                                    <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Dokumen STNKB</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="file" name="stnkb" class="form-control" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Gambar</label>
                                                     <div class="col-sm-9">
                                                         <input type="file" name="foto1" class="form-control" required>
                                                         <input type="file" name="foto2" class="form-control" required>
@@ -233,33 +248,33 @@ $this->load->view("./navbar");
                                                     </h3>
                                                     <!-- Delivery Information Starts -->
                                                     <div class="form-group">
-                                                        <label for="inputCompany" class="col-sm-3 control-label">Harga :</label>
+                                                        <label for="inputCompany" class="col-sm-3 control-label"><font color="red">*</font> Harga :</label>
                                                         <div class="col-sm-9">
                                                             <input type="text" class="form-control" name="harga"
-                                                                   placeholder="Harga Total Keseluruhan">
+                                                                   placeholder="Harga Beli Total">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="inputCompanyId" class="col-sm-3 control-label">Total Jangka Waktu Cicilan (Bulan) :</label>
+                                                        <label for="inputCompanyId" class="col-sm-3 control-label"><font color="red">*</font> Total Jangka Waktu Cicilan (Bulan) :</label>
                                                         <div class="col-sm-9">
                                                             <input type="text" class="form-control" name="total_cicilan"
                                                                    placeholder="Total bulan">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="inputAddress1" class="col-sm-3 control-label">Cicilan Berjalan ke :</label>
+                                                        <label for="inputAddress1" class="col-sm-3 control-label"><font color="red">*</font> Cicilan Berjalan ke :</label>
                                                         <div class="col-sm-9">
                                                             <input type="number" class="form-control" name="cicilan_ke"
                                                                    placeholder="Cicilan Berjalan (Bulan)">
                                                             <br>
-                                                            * Isi bulan dengan 0 bila rumah adalah baru
+                                                            * Isi bulan dengan 0 bila produk adalah baru
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="inputAddress2" class="col-sm-3 control-label">Cicilan Perbulan :</label>
+                                                        <label for="inputAddress2" class="col-sm-3 control-label"><font color="red">*</font> Cicilan Perbulan :</label>
                                                         <div class="col-sm-9">
                                                             <input type="text" class="form-control" name="cicilan_perbulan"
-                                                                   placeholder="Cicilan Perbulan">
+                                                                   placeholder="Cicilan Perbulan saat ini">
                                                         </div>
                                                     </div>
 

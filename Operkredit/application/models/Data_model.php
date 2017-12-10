@@ -93,7 +93,7 @@ class Data_model extends CI_Model
     function getListProduk()
     {
         $this->db->select('*');
-        $this->db->from('rumah');
+        $this->db->from('motor');
         $this->db->where('pengoper_kredit', $_SESSION['username']);
         $query = $this->db->get();
         if ($query->num_rows() != 0) {

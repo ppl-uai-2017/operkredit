@@ -67,14 +67,14 @@
                             echo $message;
                         }
                         ?>
-                        * Semua kolom wajib di isi
+                        <font color="red">*</font>  Semua kolom wajib di isi
                     </div>
                     <div class="panel-body">
                         <!-- Registration Form Starts -->
                         <form class="form-horizontal" role="form" method="POST" action="<?php echo base_url("index.php/register/akun_baru")?>" enctype="multipart/form-data">
                             <!-- Personal Information Starts -->
                             <div class="form-group">
-                                <label for="inputFname" class="col-sm-3 control-label">Username :</label>
+                                <label for="inputFname" class="col-sm-3 control-label"><font color="red">*</font> Username :</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="username" placeholder="Username" required
                                            oninvalid="this.setCustomValidity('Username harus diisi')"
@@ -82,15 +82,15 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputFname" class="col-sm-3 control-label">Nama Lengkap :</label>
+                                <label for="inputFname" class="col-sm-3 control-label"><font color="red">*</font> Nama Lengkap :</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="nama_lengkap" placeholder="Nama Lengkap" required
-                                           oninvalid="this.setCustomValidity('Lengkap Nama')"
+                                           oninvalid="this.setCustomValidity('Nama lengkap Harus Diisi')"
                                            oninput="setCustomValidity('')"  />
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputLname" class="col-sm-3 control-label">Tempat Lahir :</label>
+                                <label for="inputLname" class="col-sm-3 control-label"><font color="red">*</font> Tempat Lahir :</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat Lahir" required
                                            oninvalid="this.setCustomValidity('Lengkapi tempat lahir')"
@@ -98,15 +98,15 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail" class="col-sm-3 control-label">Email :</label>
+                                <label for="inputEmail" class="col-sm-3 control-label"><font color="red">*</font> Email :</label>
                                 <div class="col-sm-9">
                                     <input type="email" class="form-control" name="email" placeholder="Email" required placeholder="Lengkapi email"
-                                           oninvalid="this.setCustomValidity('lengkapi email')"
+                                           oninvalid="this.setCustomValidity('Lengkapi email')"
                                            oninput="setCustomValidity('')"  />
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputPhone" class="col-sm-3 control-label">Tanggal Lahir :</label>
+                                <label for="inputPhone" class="col-sm-3 control-label"><font color="red">*</font> Tanggal Lahir :</label>
                                 <div class="col-sm-9">
                                     <input type="date" class="form-control" name="tanggal_lahir" required
                                            oninvalid="this.setCustomValidity('Isi tanggal lahir')"
@@ -114,7 +114,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputFax" class="col-sm-3 control-label">Jenis Kelamin :</label>
+                                <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Jenis Kelamin :</label>
                                 <div class="col-sm-9">
                                     <select name="jenis_kelamin" class="form-control" required
                                             oninvalid="this.setCustomValidity('Tidak boleh kosong')"
@@ -127,7 +127,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="inputFax" class="col-sm-3 control-label">Nomor HP :</label>
+                                <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Nomor HP :</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="no_hp" placeholder="Nomor HP" required
                                            oninvalid="this.setCustomValidity('Nomor HP Tidak boleh kosong')"
@@ -136,9 +136,10 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="inputFax" class="col-sm-3 control-label">Status Pernikahan :</label>
+                                <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Status Pernikahan :</label>
                                 <div class="col-sm-9">
-                                    <select class="form-control" name="status_pernikahan">
+                                    <select class="form-control" name="status_pernikahan" required oninvalid="this.setCustomValidity('Pilih Status Pernikahan')"
+                                            oninput="setCustomValidity('')">
                                         <option value="">Pilih</option>
                                         <option value="Kawin">Kawin</option>
                                         <option value="Tinggal Cerai">Tinggal Cerai</option>
@@ -149,30 +150,34 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="inputFax" class="col-sm-3 control-label">Alamat :</label>
+                                <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Alamat :</label>
                                 <div class="col-sm-9">
-                                    <textarea type="text" class="form-control" name="alamat" placeholder="Alamat"></textarea>
+                                    <textarea type="text" class="form-control" name="alamat" required placeholder="Alamat" oninvalid="this.setCustomValidity('Lengkapi Alamat')"
+                                              oninput="setCustomValidity('')"></textarea>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="inputFax" class="col-sm-3 control-label">Kota :</label>
+                                <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Kota :</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="kota" placeholder="Kota">
+                                    <input type="text" class="form-control" name="kota" required placeholder="Kota" oninvalid="this.setCustomValidity('Lengkapi Kota')"
+                                           oninput="setCustomValidity('')">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="inputFax" class="col-sm-3 control-label">Kode Pos :</label>
+                                <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Kode Pos :</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="kode_pos" placeholder="Kode Pos">
+                                    <input type="text" class="form-control" name="kode_pos" required placeholder="Kode Pos" oninvalid="this.setCustomValidity('Lengkapi Kodepos')"
+                                           oninput="setCustomValidity('')">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="inputFax" class="col-sm-3 control-label">Provinsi :</label>
+                                <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Provinsi :</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="provinsi" placeholder="Provinsi">
+                                    <input type="text" class="form-control" name="provinsi" required placeholder="Provinsi" oninvalid="this.setCustomValidity('Lengkapi Provinsi')"
+                                           oninput="setCustomValidity('')">
                                 </div>
                             </div>
                             <!-- Personal Information Ends -->
@@ -181,35 +186,40 @@
                             </h3>
                             <!-- Delivery Information Starts -->
                             <div class="form-group">
-                                <label for="inputCompany" class="col-sm-3 control-label">Nomor KTP :</label>
+                                <label for="inputCompany" class="col-sm-3 control-label"><font color="red">*</font> Nomor KTP :</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="no_ktp" placeholder="Nomor KTP">
+                                    <input type="text" class="form-control" name="no_ktp" required placeholder="Nomor KTP" oninvalid="this.setCustomValidity('Lengkapi Nomor KTP')"
+                                           oninput="setCustomValidity('')">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputCompany" class="col-sm-3 control-label">Foto :</label>
+                                <label for="inputCompany" class="col-sm-3 control-label"><font color="red">*</font> Foto :</label>
                                 <div class="col-sm-9">
-                                    <input type="file" class="form-control" name="foto">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="inputCompany" class="col-sm-3 control-label">File KTP :</label>
-                                <div class="col-sm-9">
-                                    <input type="file" class="form-control" name="file_ktp">
+                                    <input type="file" class="form-control" required name="foto" oninvalid="this.setCustomValidity('Lengkapi Foto')"
+                                           oninput="setCustomValidity('')">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="inputCompanyId" class="col-sm-3 control-label">Pekerjaan :</label>
+                                <label for="inputCompany" class="col-sm-3 control-label"><font color="red">*</font> File KTP :</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="pekerjaan" placeholder="Pekerjaan">
+                                    <input type="file" class="form-control" name="file_ktp" required oninvalid="this.setCustomValidity('Lengkapi File KTP')"
+                                           oninput="setCustomValidity('')">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputCompanyId" class="col-sm-3 control-label"><font color="red">*</font> Pekerjaan :</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="pekerjaan" required placeholder="Pekerjaan" oninvalid="this.setCustomValidity('Lengkapi Pekerjaan')"
+                                           oninput="setCustomValidity('')">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputAddress1" class="col-sm-3 control-label">Gaji (Rata - rata) :</label>
+                                <label for="inputAddress1" class="col-sm-3 control-label"><font color="red">*</font> Gaji (Rata - rata) :</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="gaji" placeholder="Gaji Rata Rata">
+                                    <input type="text" class="form-control" name="gaji" required placeholder="Gaji Rata Rata, contoh 4000000 tanpa tanda . dan ," oninvalid="this.setCustomValidity('Lengkapi Gaji')"
+                                           oninput="setCustomValidity('')">
                                 </div>
                             </div>
 
@@ -219,15 +229,17 @@
                             </h3>
                             <!-- Password Area Starts -->
                             <div class="form-group">
-                                <label for="inputPassword" class="col-sm-3 control-label">Password :</label>
+                                <label for="inputPassword" class="col-sm-3 control-label"><font color="red">*</font> Password :</label>
                                 <div class="col-sm-9">
-                                    <input type="password" class="form-control" name="password" placeholder="Password">
+                                    <input type="password" class="form-control" name="password" required placeholder="Password" oninvalid="this.setCustomValidity('Silahkan Buat Password')"
+                                           oninput="setCustomValidity('')">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputRePassword" class="col-sm-3 control-label">Konfirmasi Password :</label>
+                                <label for="inputRePassword" class="col-sm-3 control-label"><font color="red">*</font> Konfirmasi Password :</label>
                                 <div class="col-sm-9">
-                                    <input type="password" class="form-control" name="konfirmasi" placeholder="Konfirmasi Password">
+                                    <input type="password" class="form-control" name="konfirmasi" required placeholder="Konfirmasi Password" oninvalid="this.setCustomValidity('Lengkapi Konfirmasi Password')"
+                                           oninput="setCustomValidity('')">
                                 </div>
                             </div>
 

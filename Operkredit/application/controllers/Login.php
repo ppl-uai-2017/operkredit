@@ -8,6 +8,7 @@
 
 class Login extends CI_Controller
 {
+    /*
     public function index()
     {
         $message = null;
@@ -37,6 +38,7 @@ class Login extends CI_Controller
 
         $this->load->view("login/login", array("message" => $message));
     }
+    */
 
     public function validasi()
     {
@@ -62,24 +64,25 @@ class Login extends CI_Controller
 
                 if($role_user == "Pengunjung")
                 {
-                    $this->session->set_flashdata('in',1);
+                    $this->session->set_flashdata('something', '<script language="javascript"> alert("Login Berhasil")  </script>');
                     redirect("");
                 }
                 if($role_user == "Pengesahan")
                 {
-                    $this->session->set_flashdata('in',1);
+                    $this->session->set_flashdata('something', '<div class="collapsible-header purple white-text"><i class="mdi-device-access-alarms"></i> Login Berhasil, Selamat Datang</div>');
                     redirect("pengesahan");
                 }
             }
             else
             {
-                $this->session->set_flashdata('in',3);
+                $this->session->set_flashdata('something', '<script language="javascript"> alert("Username atau Password Salah")  </script>');
+
                 redirect(base_url(""));
             }
         }
         else
         {
-            $this->session->set_flashdata('in',4);
+            $this->session->set_flashdata('something', '<script language="javascript"> alert("Form Tidak Boleh ada yang kosong")  </script>');
             redirect(base_url(""));
         }
     }
@@ -87,7 +90,8 @@ class Login extends CI_Controller
     function out()
     {
         $this->session->unset_userdata('username');
-        $this->session->set_flashdata('in',2);
+        $this->session->set_flashdata('something', '<script language="javascript"> alert("Logout Berhasil")  </script>');
+
         redirect(base_url() . '');
     }
 }

@@ -5,7 +5,7 @@
         <nav class="cyan">
             <div class="nav-wrapper">
                 <ul class="left">
-                    <li><h1 class="logo-wrapper"><a href="<?php echo base_url("")?>" class="brand-logo darken-1"><img src="#" alt="OperKredit"></a> <span class="logo-text">Materialize</span></h1></li>
+                    <li><h1 class="logo-wrapper"><a href="<?php echo base_url("")?>" class="brand-logo darken-1">Operkredit</a> <span class="logo-text">Materialize</span></h1></li>
                 </ul>
             </div>
         </nav>

@@ -23,7 +23,7 @@ class Register extends CI_Controller
         {
             $message = "<div class=\"alert alert-success alert-dismissable fade in\">
                                                         <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
-                                                        <strong>Registrasi Berhasil</strong> Silahkan login dan pantau status verifikasi akun
+                                                        <strong>Registrasi Berhasil</strong> Silahkan login dan pantau status verifikasi akun. Klik <a href=''>Disini</a> untuk login
                                                     </div>";
         }
 
@@ -43,7 +43,7 @@ class Register extends CI_Controller
 
         $config['upload_path'] = './akun/';
         $config['allowed_types'] = 'jpg|png|jpeg';
-        $config['max_size'] = '5000';
+        $config['max_size'] = '50000';
         $config['overwrite'] = TRUE;
         $config['encrypt_name'] = TRUE;
         $config['remove_spaces'] = TRUE;
