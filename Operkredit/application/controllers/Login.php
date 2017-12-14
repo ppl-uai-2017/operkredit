@@ -65,7 +65,7 @@ class Login extends CI_Controller
                 if($role_user == "Pengunjung")
                 {
                     $this->session->set_flashdata('something', '<script language="javascript"> alert("Login Berhasil")  </script>');
-                    redirect("");
+                    redirect($_SERVER['HTTP_REFERER']);
                 }
                 if($role_user == "Pengesahan")
                 {
@@ -77,13 +77,13 @@ class Login extends CI_Controller
             {
                 $this->session->set_flashdata('something', '<script language="javascript"> alert("Username atau Password Salah")  </script>');
 
-                redirect(base_url(""));
+                redirect($_SERVER['HTTP_REFERER']);
             }
         }
         else
         {
             $this->session->set_flashdata('something', '<script language="javascript"> alert("Form Tidak Boleh ada yang kosong")  </script>');
-            redirect(base_url(""));
+            redirect($_SERVER['HTTP_REFERER']);
         }
     }
 
@@ -92,7 +92,7 @@ class Login extends CI_Controller
         $this->session->unset_userdata('username');
         $this->session->set_flashdata('something', '<script language="javascript"> alert("Logout Berhasil")  </script>');
 
-        redirect(base_url() . '');
+        redirect($_SERVER['HTTP_REFERER']);
     }
 }
 

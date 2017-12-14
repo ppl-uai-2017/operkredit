@@ -20,7 +20,7 @@ $this->load->view("./navbar.php");
     <div class="col s12 m12 l12">
         <h5 class="breadcrumbs-title">Produk</h5>
         <ol class="breadcrumb">
-            <li><a href="<?php echo base_url("")?>">Motor</a></li>
+            <li><a href="javascript:history.go(-1)">Kembali</a></li>
             <li class="active">Detail Motor</li>
         </ol>
     </div>
@@ -189,13 +189,6 @@ $this->load->view("./navbar.php");
 
                                                     <li class="collection-item">
                                                         <div class="row">
-                                                            <div class="col s5 grey-text darken-1">Dokumen STNK</div>
-                                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['dokumen_stnkb'] ?></div>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class="collection-item">
-                                                        <div class="row">
                                                             <div class="col s5 grey-text darken-1">Status Produk</div>
                                                             <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['status'] ?></div>
                                                         </div>
@@ -210,8 +203,8 @@ $this->load->view("./navbar.php");
 
                                                     <li class="collection-item">
                                                         <div class="row">
-                                                            <div class="col s5 grey-text darken-1">Status</div>
-                                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['status'] ?></div>
+                                                            <div class="col s5 grey-text darken-1">Tanggal Post Produk</div>
+                                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo date("d M Y H:i:s", strtotime($data['tanggal_post']))  ?></div>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -222,18 +215,19 @@ $this->load->view("./navbar.php");
                                                             foreach ($profile as $profile) {
                                                                 if (!isset($_SESSION['username'])) {
                                                                     ?>
-                                                                    <a href="<?php echo base_url("index.php/login") ?>"
+                                                                    <a class="modal-trigger" href="#modal1"
                                                                        type="button" class="btn btn-cart">
                                                                         Silahkan Login terlebih dahulu
                                                                     </a>
                                                                     <?php
-                                                                } elseif (isset($_SESSION['username']) && $data['pengoper_kredit'] != $_SESSION['username'] && $profile['verifikasi'] != "Ditolak") {
+                                                                } elseif (isset($_SESSION['username']) && $data['pengoper_kredit'] != $_SESSION['username'] && $profile['verifikasi'] != "Ditolak" && $profile['verifikasi'] != "Menunggu" && $data['stok'] != 0) {
                                                                     ?>
                                                                     <button onclick="location.href='<?php echo base_url("index.php/transaksi/review/" . $data['no_stnkb']) ?>';"
                                                                             type="button" class="btn btn-cart">
                                                                         Ajukan Operkredit
                                                                     </button>
                                                                     <?php
+
                                                                 } elseif ($data['pengoper_kredit'] == $_SESSION['username']) {
                                                                     ?>
                                                                     <button type="button" class="btn btn-cart"
@@ -243,13 +237,32 @@ $this->load->view("./navbar.php");
                                                                     <br><br>
                                                                     * Ini adalah halaman berisi salah satu barang yang kamu ajukan untuk di operkredit
                                                                     <?php
-                                                                } elseif ($profile['verifikasi'] == "Ditolak") {
+                                                                }
+                                                                elseif (isset($_SESSION['username']) && $profile['verifikasi'] == "Ditolak") {
                                                                     ?>
                                                                     <button type="button" class="btn btn-cart" disabled>
                                                                         Ajukan Operkredit
                                                                     </button>
                                                                     <br><br>
-                                                                    * Kamu tidak dapat mengjukan kredit. Status akun kamu di tolak atau masih dalam status menunggu verifikasi
+                                                                    * Kamu tidak dapat mengajukan kredit. Status akun kamu di tolak
+                                                                    <?php
+                                                                }
+                                                                elseif (isset($_SESSION['username']) && $profile['verifikasi'] == "Menunggu") {
+                                                                    ?>
+                                                                    <button type="button" class="btn btn-cart" disabled>
+                                                                        Ajukan Operkredit
+                                                                    </button>
+                                                                    <br><br>
+                                                                    * Kamu belum dapat mengajukan kredit. Status akun kamu dalam verifikasi
+                                                                    <?php
+                                                                }
+                                                                elseif ($data['stok'] == 0) {
+                                                                    ?>
+                                                                    <button type="button" class="btn btn-cart" disabled>
+                                                                        Tidak Tersedia
+                                                                    </button>
+                                                                    <br><br>
+                                                                    * Barang sudah terjual
                                                                     <?php
                                                                 }
                                                             }
@@ -257,8 +270,8 @@ $this->load->view("./navbar.php");
                                                         else
                                                         {
                                                         ?>
-                                                            <a href="<?php echo base_url("") ?>"
-                                                               type="button" class="btn btn-cart">
+                                                            <a class="btn btn-cart modal-trigger" href="#modal1"
+                                                               type="button">
                                                                 Silahkan Login terlebih dahulu
                                                             </a>
                                                         <?php

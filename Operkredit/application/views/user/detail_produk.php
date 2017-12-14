@@ -44,146 +44,159 @@ $this->load->view("./navbar.php");
                         <!-- profile-page-content -->
                         <div id="profile-page-content" class="row">
                             <!-- profile-page-sidebar-->
-                            <div id="profile-page-sidebar" class="col s12 m4">
+                            <div id="profile-page-sidebar" class="col s12 m6">
                                                                <!-- Profile About Details  -->
+                                <ul id="profile-page-about-details" class="collection z-depth-1">
+                                    <div id="profile-page-wall-post" class="card">
+                                        <div class="card-profile-title">
+                                            <a href="<?php echo base_url("./motor/".$data['foto1'])?>">
+                                                <img src="<?php echo base_url("./motor/".$data['foto1'])?>" width="430"  alt="Image" class="img-responsive thumbnail"/>
+                                            </a>
+                                            <ul class="list-unstyled list-inline">
+
+                                                <a href="<?php echo base_url("./motor/".$data['foto4'])?>">
+                                                    <img src="<?php echo base_url("./motor/".$data['foto4'])?>" width="100" alt="Image"
+                                                         class="img-responsive thumbnail"/>
+                                                </a>
+
+
+                                                <a href="<?php echo base_url("./motor/".$data['foto2'])?>">
+                                                    <img src="<?php echo base_url("./motor/".$data['foto2'])?>" width="100" alt="Image"
+                                                         class="img-responsive thumbnail"/>
+                                                </a>
+
+                                                <a href="<?php echo base_url("./motor/".$data['foto3'])?>"">
+                                                <img src="<?php echo base_url("./motor/".$data['foto3'])?>" width="100" alt="Image"
+                                                     class="img-responsive thumbnail"/>
+                                                </a>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </ul>
+
                                 <ul id="profile-page-about-details" class="collection z-depth-1">
                                     <li class="collection-item">
                                         <div class="row">
-                                            <div class="col s5 grey-text darken-1">Nama Rumah</div>
-                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['judul'] ?></div>
+                                            <div class="col s5 grey-text darken-1">Nama Motor</div>
+                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['nama'] ?></div>
                                         </div>
                                     </li>
                                     <li class="collection-item">
                                         <div class="row">
-                                            <div class="col s5 grey-text darken-1">Luas Tanah (m2)</div>
-                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['luas_tanah'] ?></div>
+                                            <div class="col s5 grey-text darken-1">Harga</div>
+                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo "Rp ".number_format($data['harga_awal'],2,',','.') ?></div>
                                         </div>
                                     </li>
                                     <li class="collection-item">
                                         <div class="row">
-                                            <div class="col s5 grey-text darken-1">Jumlah Lantai</div>
-                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['lantai'] ?></div>
+                                            <div class="col s5 grey-text darken-1">Lokasi/Daerah</div>
+                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['kota_motor']?></div>
                                         </div>
                                     </li>
                                     <li class="collection-item">
                                         <div class="row">
-                                            <div class="col s5 grey-text darken-1">Kamar Mandi</div>
-                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['kamar_mandi'] ?></div>
+                                            <div class="col s5 grey-text darken-1">Cicilan Ke</div>
+                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['cicilan_ke']?></div>
                                         </div>
                                     </li>
                                     <li class="collection-item">
                                         <div class="row">
-                                            <div class="col s5 grey-text darken-1">Luas Bangunan (m2)</div>
-                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['luas_bangunan'] ?></div>
+                                            <div class="col s5 grey-text darken-1">Total Cicilan</div>
+                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['total_cicilan']." Bulan"?></div>
                                         </div>
                                     </li>
                                     <li class="collection-item">
                                         <div class="row">
-                                            <div class="col s5 grey-text darken-1">Kamar</div>
-                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['kamar'] ?></div>
-                                        </div>
-                                    </li>
-                                    <li class="collection-item">
-                                        <div class="row">
-                                            <div class="col s5 grey-text darken-1">Sertifikasi</div>
-                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['sertifikasi'] ?></div>
-                                        </div>
-                                    </li>
-                                    <li class="collection-item">
-                                        <div class="row">
-                                            <div class="col s5 grey-text darken-1">Kota</div>
-                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['kota'] ?></div>
-                                        </div>
-                                    </li>
-                                    <li class="collection-item">
-                                        <div class="row">
-                                            <div class="col s5 grey-text darken-1">Kelengkapan Dokumen</div>
-                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['dokumen'] ?></div>
+                                            <div class="col s5 grey-text darken-1">Cicilan</div>
+                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo "Rp ".number_format($data['cicilan_perbulan'],2,',','.') ?></div>
                                         </div>
                                     </li>
 
-                                    <li class="collection-item">
-                                        <div class="row">
-                                            <div class="col s5 grey-text darken-1">Alamat</div>
-                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['alamat'] ?></div>
-                                        </div>
-                                    </li>
 
-                                    <li class="collection-item">
-                                        <div class="row">
-                                            <div class="col s5 grey-text darken-1">Deskripsi</div>
-                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['deskripsi'] ?></div>
-                                        </div>
-                                    </li>
 
-                                    <li class="collection-item">
-                                        <div class="row">
-                                            <div class="col s5 grey-text darken-1">Harga Beli</div>
-                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo "Rp ".number_format($data['harga'],2,',','.')?></div>
-                                        </div>
-                                    </li>
-
-                                    <li class="collection-item">
-                                        <div class="row">
-                                            <div class="col s5 grey-text darken-1">Total Waktu Cicilan</div>
-                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['total_cicilan']." Bulan" ?></div>
-                                        </div>
-                                    </li>
-
-                                    <li class="collection-item">
-                                        <div class="row">
-                                            <div class="col s5 grey-text darken-1">Cicilan Berjalan ke-</div>
-                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['cicilan_ke']." Bulan"?></div>
-                                        </div>
-                                    </li>
-
-                                    <li class="collection-item">
-                                        <div class="row">
-                                            <div class="col s5 grey-text darken-1">Cicilan Perbulan</div>
-                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo "Rp ".number_format($data['harga']/$data['total_cicilan'],2,',','.')?></div>
-                                        </div>
-                                    </li>
                                 </ul>
                                 <!--/ Profile About Details  -->
                             </div>
                             <!-- profile-page-sidebar-->
 
                             <!-- profile-page-wall -->
-                            <div id="profile-page-wall" class="col s12 m8">
+                            <div id="profile-page-wall" class="col s12 m6">
+
                                 <!-- profile-page-wall-posts -->
                                 <div id="profile-page-wall-posts"class="row">
                                     <div class="col s12">
                                         <!-- medium -->
                                         <div id="profile-page-wall-post" class="card">
                                             <div class="card-profile-title">
-                                                <div class="row">
-                                                    <div class="col s1">
-                                                        <img src="images/avatar.jpg" alt="" >
-                                                    </div>
-                                                    <div class="col s10">
-                                                        <h4 align="center">Informasi Lainnya</h4>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col s12">
-                                                        <table class="table">
-                                                            <tr>
-                                                                <td>Foto Produk</td>
-                                                                <td><a href="<?php echo base_url("./rumah/".$data['foto1'])?>">
-                                                                        <img src="<?php echo base_url("./rumah/".$data['foto1'])?>" width="300" class="img-responsive thumbnail">
-                                                                    </a>
-                                                                <a href="<?php echo base_url("./rumah/".$data['foto2'])?>">
-                                                                        <img src="<?php echo base_url("./rumah/".$data['foto2'])?>" width="300" class="img-responsive thumbnail">
-                                                                    </a>
-                                                                <a href="<?php echo base_url("./rumah/".$data['foto3'])?>">
-                                                                        <img src="<?php echo base_url("./rumah/".$data['foto3'])?>" width="300" class="img-responsive thumbnail">
-                                                                    </a>
-                                                                <a href="<?php echo base_url("./rumah/".$data['foto4'])?>">
-                                                                        <img src="<?php echo base_url("./rumah/".$data['foto4'])?>" width="300" class="img-responsive thumbnail">
-                                                                </a></td>
-                                                            </tr>
-                                                        </table></div>
-                                                </div>
+                                                <h5 align="center">Informasi Lainnya</h5>
+                                                <ul id="profile-page-about-details" class="collection z-depth-1">
+                                                    <li class="collection-item">
+                                                        <div class="row">
+                                                            <div class="col s5 grey-text darken-1">Deskripsi</div>
+                                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['deskripsi'] ?></div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="collection-item">
+                                                        <div class="row">
+                                                            <div class="col s5 grey-text darken-1">Nama Pengoper</div>
+                                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['nama_lengkap'] ?></div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="collection-item">
+                                                        <div class="row">
+                                                            <div class="col s5 grey-text darken-1">Merek</div>
+                                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['merk'] ?></div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="collection-item">
+                                                        <div class="row">
+                                                            <div class="col s5 grey-text darken-1">Tipe</div>
+                                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['type'] ?></div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="collection-item">
+                                                        <div class="row">
+                                                            <div class="col s5 grey-text darken-1">Warna</div>
+                                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['warna'] ?></div>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="collection-item">
+                                                        <div class="row">
+                                                            <div class="col s5 grey-text darken-1">Jarak Tempuh</div>
+                                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['jarak_tempuh'] ?></div>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="collection-item">
+                                                        <div class="row">
+                                                            <div class="col s5 grey-text darken-1">Isi Silinder</div>
+                                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['isi_silinder'] ?></div>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="collection-item">
+                                                        <div class="row">
+                                                            <div class="col s5 grey-text darken-1">Tahun</div>
+                                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['tahun'] ?></div>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="collection-item">
+                                                        <div class="row">
+                                                            <div class="col s5 grey-text darken-1">Dokumen STNK</div>
+                                                            <div class="col s7 grey-text text-darken-4 right-align"><a href="<?php echo base_url("./motor/".$data['dokumen_stnkb']) ?>"><img src="<?php echo base_url("./motor/".$data['dokumen_stnkb']) ?>" width="50"></a></div>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="collection-item">
+                                                        <div class="row">
+                                                            <div class="col s5 grey-text darken-1">Status Produk</div>
+                                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo $data['status'] ?></div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
                                             </div>
 
                                         </div>

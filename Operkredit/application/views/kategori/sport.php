@@ -58,16 +58,25 @@ $this->load->view("./navbar.php");
                             ?>
                             <div id="profile-page-sidebar" class="col s12 m3">
                                 <!-- Profile About Details  -->
-
                                 <ul id="profile-page-about-details" class="collection z-depth-1">
                                     <li class="collection-item">
                                         <div class="row">
                                             <div class="col s7 grey-text text-darken-4 right-align"><img src="<?php echo base_url("./motor/".$motor -> foto1)?>" alt="product"
-                                                                                                         class="img-responsive img-center-sm" width="250"></div>
+                                                                                                         class="img-responsive img-center-sm" width="250" height="200"></div>
                                         </div>
                                         <button onclick="location.href='<?php echo base_url("index.php/category/detail/".$motor -> no_stnkb)?>';" type="button" class="btn btn-cart">
                                             Lihat
                                         </button>
+                                        <?php
+                                            if($motor -> stok == 1)
+                                            {
+                                                echo "<h6 align='right'><font color='green'> Tersedia</font></h6>";
+                                            }
+                                            else
+                                            {
+                                                echo "<h6 align='right'><font color='grey'> Terjual</font></h6>";
+                                            }
+                                        ?>
                                     </li>
 
                                     <li class="collection-item">
@@ -100,6 +109,12 @@ $this->load->view("./navbar.php");
                                         <div class="row">
                                             <div class="col s5 grey-text darken-1">Cicilan</div>
                                             <div class="col s7 grey-text text-darken-4 right-align"><?php echo "Rp.".number_format($motor -> cicilan_perbulan,2,',','.')." /bulan" ?></div>
+                                        </div>
+                                    </li>
+                                    <li class="collection-item">
+                                        <div class="row">
+                                            <div class="col s5 grey-text darken-1">Tanggal Posting</div>
+                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo date("d M Y", strtotime($motor -> tanggal_post))  ?></div>
                                         </div>
                                     </li>
                                 </ul>

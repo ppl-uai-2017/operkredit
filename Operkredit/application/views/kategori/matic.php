@@ -69,6 +69,16 @@ $this->load->view("./navbar.php");
                                         <button onclick="location.href='<?php echo base_url("index.php/category/detail/".$motor -> no_stnkb)?>';" type="button" class="btn btn-cart">
                                             Lihat
                                         </button>
+                                        <?php
+                                        if($motor -> stok == 1)
+                                        {
+                                            echo "<h6 align='right'><font color='green'> Tersedia</font></h6>";
+                                        }
+                                        else
+                                        {
+                                            echo "<h6 align='right'><font color='grey'> Terjual</font></h6>";
+                                        }
+                                        ?>
                                     </li>
 
                                     <li class="collection-item">
@@ -103,10 +113,14 @@ $this->load->view("./navbar.php");
                                             <div class="col s7 grey-text text-darken-4 right-align"><?php echo "Rp.".number_format($motor -> cicilan_perbulan,2,',','.')." /bulan" ?></div>
                                         </div>
                                     </li>
+                                    <li class="collection-item">
+                                        <div class="row">
+                                            <div class="col s5 grey-text darken-1">Tanggal Posting</div>
+                                            <div class="col s7 grey-text text-darken-4 right-align"><?php echo date("d M Y", strtotime($motor -> tanggal_post))  ?></div>
+                                        </div>
+                                    </li>
                                 </ul>
-
                                 <!--/ Profile About Details  -->
-
                             </div>
                                 <?php
                             }

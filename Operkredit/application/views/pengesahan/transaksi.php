@@ -131,11 +131,14 @@
 
                                             <td><?php if ($data['transaksi_status'] == "transaksi_status") {
                                                     echo "<font color='black'>" . $data['transaksi_status'] . "</font>";
-                                                } elseif ($data['transaksi_status'] == "Disetujui") {
+                                                } elseif ($data['transaksi_status'] == "Diproses") {
                                                     echo "<font color='#32cd32'>" . $data['transaksi_status'] . "</font>";
                                                 } elseif ($data['transaksi_status'] == "Ditolak") echo "<font color='red'>" . $data['transaksi_status'] . "</font>";
                                                 elseif ($data['transaksi_status'] == "Menunggu") {
                                                     echo "<font color='black'>" . $data['transaksi_status'] . "</font>";
+                                                }
+												elseif ($data['transaksi_status'] == "Selesai") {
+                                                    echo "<font color='blue'>" . $data['transaksi_status'] . "</font>";
                                                 }
 
                                                 ?>
@@ -148,7 +151,7 @@
                                             </button>
 
                                             <?php
-                                            if($data['transaksi_status'] == "Disetujui")
+                                            if($data['transaksi_status'] == "Diproses")
                                             {
                                             ?>
                                             <button type="button" rel="tooltip" title="Penjadwalan"

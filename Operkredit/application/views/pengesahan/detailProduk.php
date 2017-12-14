@@ -94,7 +94,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title" align="center">Detail Registrasi User</h4>
+                                <h4 class="title" align="center">Detail Registrasi Produk</h4>
                                 <hr>
 
                                 <div class="col-md-6">
@@ -104,42 +104,42 @@
                                             foreach ($data as $data) {
                                                 ?>
                                                 <tr>
-                                                    <td>Nama / Judul : </td>
-                                                    <td><?php echo $data['judul'] ?></td>
+                                                    <td>Nama Produk : </td>
+                                                    <td><?php echo $data['nama'] ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Luas Tanah : </td>
-                                                    <td><?php echo $data['luas_tanah'] ?></td>
+                                                    <td>No STNKB : </td>
+                                                    <td><?php echo $data['no_stnkb'] ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Lantai : </td>
-                                                    <td><?php echo $data['lantai'] ?></td>
+                                                    <td>Merek : </td>
+                                                    <td><?php echo $data['merk'] ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Kamar Mandi : </td>
-                                                    <td><?php echo $data['kamar_mandi'] ?></td>
+                                                    <td>Type : </td>
+                                                    <td><?php echo $data['type'] ?></td>
                                                 </tr><tr>
-                                                    <td>Luas Bangunan : </td>
-                                                    <td><?php echo $data['luas_bangunan'] ?></td>
+                                                    <td>Warna : </td>
+                                                    <td><?php echo $data['warna'] ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Kamar : </td>
-                                                    <td><?php echo $data['kamar'] ?></td>
+                                                    <td>Jarak Tempuh : </td>
+                                                    <td><?php echo $data['jarak_tempuh'] ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Sertifikasi : </td>
-                                                    <td><?php echo $data['sertifikasi'] ?></td>
+                                                    <td>Isi Silinder : </td>
+                                                    <td><?php echo $data['isi_silinder'] ?></td>
                                                 </tr>
                                                 <tr>
+                                                    <td>Tahun : </td>
+                                                    <td><?php echo $data['tahun'] ?></td>
+                                                </tr><tr>
                                                     <td>Kota : </td>
-                                                    <td><?php echo $data['kota'] ?></td>
-                                                </tr><tr>
-                                                    <td>Dokumen : </td>
-                                                    <td><?php echo $data['dokumen'] ?></td>
+                                                    <td><?php echo $data['kota_motor'] ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Alamat : </td>
-                                                    <td><?php echo $data['alamat'] ?></td>
+                                                    <td>Provinsi : </td>
+                                                    <td><?php echo $data['provinsi_motor'] ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Deskripsi : </td>
@@ -157,11 +157,11 @@
                                         <table class="table table-hover table-striped">
                                             <tr>
                                                 <td>Foto : </td>
-                                                <td><a href="<?php echo base_url("./rumah/".$data['foto1']) ?>"> <img src="<?php echo base_url("./rumah/".$data['foto1']) ?>" width="100"> </a> <br><br> <a href="<?php echo base_url("./rumah/".$data['foto1']) ?>"> <img src="<?php echo base_url("./rumah/".$data['foto2']) ?>" width="100"> </a>  <br><br> <a href="<?php echo base_url("./rumah/".$data['foto1']) ?>"> <img src="<?php echo base_url("./rumah/".$data['foto3']) ?>" width="100"> </a>  <br><br> <a href="<?php echo base_url("./rumah/".$data['foto1']) ?>"> <img src="<?php echo base_url("./rumah/".$data['foto4']) ?>" width="100"> </a> </td>
+                                                <td><a href="<?php echo base_url("./motor/".$data['foto1']) ?>"> <img src="<?php echo base_url("./motor/".$data['foto1']) ?>" width="100"> </a> <br><br> <a href="<?php echo base_url("./motor/".$data['foto2']) ?>"> <img src="<?php echo base_url("./motor/".$data['foto2']) ?>" width="100"> </a>  <br><br> <a href="<?php echo base_url("./motor/".$data['foto3']) ?>"> <img src="<?php echo base_url("./motor/".$data['foto3']) ?>" width="100"> </a>  <br><br> <a href="<?php echo base_url("./motor/".$data['foto4']) ?>"> <img src="<?php echo base_url("./motor/".$data['foto4']) ?>" width="100"> </a> </td>
                                             </tr>
                                             <tr>
                                                 <td>Harga : </td>
-                                                <td><?php echo "Rp ".number_format($data['harga'],2,',','.') ?></td>
+                                                <td><?php echo "Rp ".number_format($data['harga_awal'],2,',','.') ?></td>
                                             </tr>
                                             <tr>
                                                 <td>Total Cicilan/Bulan : </td>
@@ -187,7 +187,7 @@
                             if($data['status'] == "Terverifikasi")
                             {
                                 ?>
-                                <a href="<?php echo base_url("index.php/pengesahan/deniedProduk/" . $data['idrumah']) ?>" type="button" name="submit" rel="tooltip" title="Tolak"
+                                <a href="<?php echo base_url("index.php/pengesahan/deniedProduk/" . $data['no_stnkb']) ?>" type="button" name="submit" rel="tooltip" title="Tolak"
                                         class="btn btn-danger btn-simple btn-xs"
                                         onclick="return confirm('Tolak verifikasi produk ini ?');">
                                     <div class="btn btn-danger">Tolak Verifikasi</div>
@@ -197,10 +197,10 @@
                             ?>
 
                             <?php
-                            if($data['status'] == "Menunggu" || $data['status'] == "Ditolak")
+                            if($data['status'] == "Menunggu" || $data['status'] == "Ditolak" || $data['status'] == "" || $data['status'] == null)
                             {
                                 ?>
-                                <a href="<?php echo base_url("index.php/pengesahan/approveProduk/" . $data['idrumah']) ?>" type="button" name="submit" rel="tooltip" title="Verifikasi"
+                                <a href="<?php echo base_url("index.php/pengesahan/approveProduk/" . $data['no_stnkb']) ?>" type="button" name="submit" rel="tooltip" title="Verifikasi"
                                     class="btn btn-info btn-simple btn-xs"
                                     onclick="return confirm('Konfirmasi verifikasi produk ini ?')">
                                 <div class="btn btn-success">Setujui Verifikasi</div>

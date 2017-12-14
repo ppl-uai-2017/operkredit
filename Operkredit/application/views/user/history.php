@@ -114,9 +114,13 @@ $this->load->view("./navbar");
                                                                 ?>
                                                                 <span class="btn waves-effect waves-light yellow"><?php echo $data['status_transaksi']; ?></span>
                                                                 <?php
-                                                            } elseif ($data['status_transaksi'] == "Disetujui") {
+                                                            } elseif ($data['status_transaksi'] == "Diproses") {
                                                                 ?>
                                                                 <span class="btn waves-effect waves-light green"><?php echo $data['status_transaksi']; ?></span>
+                                                                <?php
+															} elseif ($data['status_transaksi'] == "Selesai") {
+                                                                ?>
+                                                                <span class="btn waves-effect waves-light blue"><?php echo $data['status_transaksi']; ?></span>
                                                                 <?php
                                                             } else{
                                                                 ?>

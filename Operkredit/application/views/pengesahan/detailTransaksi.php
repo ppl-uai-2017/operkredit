@@ -5,7 +5,7 @@
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Light Bootstrap Dashboard by Creative Tim</title>
+    <title>Daftar Transksi</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -151,40 +151,66 @@
                                         <h3 align="center">Informasi Produk</h3>
                                         <table class="table table-hover table-striped">
                                                 <tr>
-                                                    <td>Luas Bangunan : </td>
-                                                    <td><?php echo $data['luas_bangunan'] ?></td>
+                                                    <td>No STNKB : </td>
+                                                    <td><?php echo $data['no_stnkb'] ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Kamar : </td>
-                                                    <td><?php echo $data['kamar'] ?></td>
+                                                    <td>BPKB : </td>
+                                                    <td><?php echo $data['no_bpkb'] ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Sertifikasi : </td>
-                                                    <td><?php echo $data['sertifikasi'] ?></td>
+                                                    <td>Nama : </td>
+                                                    <td><?php echo $data['nama'] ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Kota : </td>
-                                                    <td><?php echo $data['kota'] ?></td>
+                                                    <td>Merek : </td>
+                                                    <td><?php echo $data['merk'] ?></td>
                                                 </tr><tr>
-                                                    <td>Dokumen : </td>
-                                                    <td><?php echo $data['dokumen'] ?></td>
+                                                    <td>Tipe : </td>
+                                                    <td><?php echo $data['type'] ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Alamat : </td>
-                                                    <td><?php echo $data['alamat'] ?></td>
+                                                    <td>Warna : </td>
+                                                    <td><?php echo $data['warna'] ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Deskripsi : </td>
-                                                    <td><?php echo $data['deskripsi'] ?></td>
+                                                    <td>Jarak Tempuh : </td>
+                                                    <td><?php echo $data['jarak_tempuh'] ?></td>
                                                 </tr>
+                                            <tr>
+                                                <td>Isi Silinder : </td>
+                                                <td><?php echo $data['isi_silinder'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tahun : </td>
+                                                <td><?php echo $data['tahun'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Kota : </td>
+                                                <td><?php echo $data['kota_motor'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Provinsi : </td>
+                                                <td><?php echo $data['provinsi_motor'] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Deskripsi : </td>
+                                                <td><?php echo $data['deskripsi'] ?></td>
+                                            </tr>
 
                                             <tr>
                                                 <td>Foto : </td>
-                                                <td><a href="<?php echo base_url("./rumah/".$data['foto1']) ?>"> <img src="<?php echo base_url("./rumah/".$data['foto1']) ?>" width="100"> </a> <br><br> <a href="<?php echo base_url("./rumah/".$data['foto1']) ?>"> <img src="<?php echo base_url("./rumah/".$data['foto2']) ?>" width="100"> </a>  <br><br> <a href="<?php echo base_url("./rumah/".$data['foto1']) ?>"> <img src="<?php echo base_url("./rumah/".$data['foto3']) ?>" width="100"> </a>  <br><br> <a href="<?php echo base_url("./rumah/".$data['foto1']) ?>"> <img src="<?php echo base_url("./rumah/".$data['foto4']) ?>" width="100"> </a> </td>
+                                                <td><a href="<?php echo base_url("./motor/".$data['foto1']) ?>"> <img src="<?php echo base_url("./motor/".$data['foto1']) ?>" width="100"> </a> <br><br> <a href="<?php echo base_url("./motor/".$data['foto2']) ?>"> <img src="<?php echo base_url("./motor/".$data['foto2']) ?>" width="100"> </a>  <br><br> <a href="<?php echo base_url("./motor/".$data['foto3']) ?>"> <img src="<?php echo base_url("./motor/".$data['foto3']) ?>" width="100"> </a>  <br><br> <a href="<?php echo base_url("./motor/".$data['foto4']) ?>"> <img src="<?php echo base_url("./motor/".$data['foto4']) ?>" width="100"> </a> </td>
                                             </tr>
+
+                                            <tr>
+                                                <td>Dokumen STNKB : </td>
+                                                <td><a href="<?php echo base_url("./motor/".$data['dokumen_stnkb']) ?>"> <img src="<?php echo base_url("./motor/".$data['foto1']) ?>" width="100"> </a></td>
+                                            </tr>
+
                                             <tr>
                                                 <td>Harga : </td>
-                                                <td><?php echo $data['harga'] ?></td>
+                                                <td><?php echo $data['harga_awal'] ?></td>
                                             </tr>
                                             <tr>
                                                 <td>Total Cicilan : </td>
@@ -235,23 +261,28 @@
                                             </tr>
                                         </table>
                                         <?php
-                                        if($data['status_verifikasi'] == "Disetujui")
+                                        if($data['status_verifikasi'] == "Diproses")
                                         {
                                             ?>
-                                            <a href="<?php echo base_url("index.php/pengesahan/deniedTransaksi/".$data['id_pengambilan_kredit']."/".$data['idrumah']) ?>" type="button" name="submit" rel="tooltip" title="Tolak"
+                                            <a href="<?php echo base_url("index.php/pengesahan/deniedTransaksi/".$data['id_pengambilan_kredit']."/".$data['no_stnkb']) ?>" type="button" name="submit" rel="tooltip" title="Tolak"
                                                class="btn btn-danger btn-simple btn-xs"
                                                onclick="return confirm('Tolak Transaksi ini ?');">
                                                 <div class="btn btn-danger">Batal/Tolak Transaksi</div>
+                                            </a>
+											<a href="<?php echo base_url("index.php/pengesahan/successTransaksi/".$data['id_pengambilan_kredit']."/".$data['no_stnkb']) ?>" type="button" name="submit" rel="tooltip" title="Selesai"
+                                               class="btn btn-danger btn-simple btn-xs"
+                                               onclick="return confirm('Transaksi Selesai ?');">
+                                                <div class="btn btn-success">Selesai</div>
                                             </a>
                                             <?php
                                         }
                                         if($data['status_verifikasi'] == "Menunggu" || $data['status_verifikasi'] == "Ditolak")
                                         {
                                             ?>
-                                            <a href="<?php echo base_url("index.php/pengesahan/approveTransaksi/" . $data['id_pengambilan_kredit']."/".$data['idrumah']) ?>" type="button" name="submit" rel="tooltip" title="Verifikasi"
+                                            <a href="<?php echo base_url("index.php/pengesahan/approveTransaksi/" . $data['id_pengambilan_kredit']."/".$data['no_stnkb']) ?>" type="button" name="submit" rel="tooltip" title="Verifikasi"
                                                class="btn btn-info btn-simple btn-xs"
                                                onclick="return confirm('Konfirmasi Transaksi ini ?')">
-                                                <div class="btn btn-success">Setujui Transaksi</div>
+                                                <div class="btn btn-success">Proses Transaksi</div>
                                             </a>
                                             <?php
                                         }

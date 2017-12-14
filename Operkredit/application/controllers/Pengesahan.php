@@ -97,52 +97,10 @@ class pengesahan extends CI_Controller
 
     public function produk()
     {
-        $message = null;
-        $in = $this->session->flashdata('in');
-        if($in==10)
-        {
-            $message = "<div class=\"alert alert-success alert-dismissable fade in\">
-                                                        <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
-                                                        <strong>Sukses</strong> Memverifikasi Produk.
-                                                    </div>";
-        }
+        $this->load->model("Data_model");
+        $data = $this->Data_model->getProduk();
 
-        $this->load->library("pagination");
-
-        $query = $this->db->get("rumah", $this->uri->segment(3));
-        $data['rumah'] = $query->result();
-
-        $query2 = $this->db->get("rumah");
-
-        $config['base_url'] = "produk";
-
-        $config['total_rows'] = $query2->num_rows();
-        $config['per_page'] = 10;
-
-        $config['full_tag_open'] = '<ul class="pagination">';
-        $config['full_tag_close'] = '</ul>';
-
-        $config['first_tag_open'] = '<li>';
-        $config['last_tag_open'] = '<li>';
-
-        $config['next_tag_open'] = '<li>';
-        $config['prev_tag_open'] = '<li>';
-
-        $config['num_tag_open'] = '<li>';
-        $config['num_tag_close'] = '</li>';
-
-        $config['first_tag_close'] = '</li>';
-        $config['last_tag_close'] = '</li>';
-
-        $config['next_tag_close'] = '</li>';
-        $config['prev_tag_close'] = '</li>';
-
-        $config['cur_tag_open'] = "<li class=\"active\"><span><b>";
-        $config['cur_tag_close'] = "</b></span></li>";
-
-        $this->pagination->initialize($config);
-
-        $this->load->view("pengesahan/produk", $data, array("message" => $message));
+        $this->load->view("pengesahan/produk", array("data" => $data));
     }
 
     public function hapusRegistrasi($email)
@@ -156,10 +114,14 @@ class pengesahan extends CI_Controller
 
     public function hapusProduk($id)
     {
-        $this->db->where('idrumah', $id);
-        $this->db->delete('rumah');
+        $this->db->where('no_stnkb', $id);
+        $this->db->delete('motor');
 
-        $this->session->set_flashdata('in',2);
+        $this->session->set_flashdata('something', '<div class="alert alert-success alert-dismissable fade in">
+                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Sukses</strong> Menghapus Produk.
+                                                    </div>');
+
         redirect(base_url("index.php/pengesahan/produk"));
     }
 
@@ -195,8 +157,8 @@ class pengesahan extends CI_Controller
                 'status' => "Terverifikasi"
             );
 
-            $where = array("idrumah" => $id);
-            $update = $this->db->update('rumah', $update_status, $where);
+            $where = array("no_stnkb" => $id);
+            $update = $this->db->update('motor', $update_status, $where);
             if ($update != null) {
                 $this->session->set_flashdata('in', 10);
                 redirect(base_url() . "index.php/pengesahan/produk");
@@ -209,8 +171,8 @@ class pengesahan extends CI_Controller
             'status' => "Ditolak"
         );
 
-        $where = array("idrumah" => $id);
-        $update = $this->db->update('rumah', $update_status, $where);
+        $where = array("no_stnkb" => $id);
+        $update = $this->db->update('motor', $update_status, $where);
         if ($update != null) {
             $this->session->set_flashdata('in', 10);
             redirect(base_url() . "index.php/pengesahan/produk");
@@ -259,7 +221,6 @@ class pengesahan extends CI_Controller
         $this->load->model("Data_model");
         $data = $this->Data_model->getRegistrasi($email);
 
-
         $this->load->view("pengesahan/detailRegistrasi", array("data" => $data));
     }
 
@@ -281,6 +242,13 @@ class pengesahan extends CI_Controller
             $message = "<div class=\"alert alert-success alert-dismissable fade in\">
                                                         <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
                                                         <strong>Sukses</strong> Transaksi berhasil di Tolak.
+                                                    </div>";
+        }
+		elseif($in==27)
+        {
+            $message = "<div class=\"alert alert-success alert-dismissable fade in\">
+                                                        <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
+                                                        <strong>Sukses</strong> Transaksi Dinyatakan Selesai.
                                                     </div>";
         }
         elseif($in==22)
@@ -330,10 +298,10 @@ class pengesahan extends CI_Controller
         $this->load->view("pengesahan/detailTransaksi", array("data" => $data, "message" => $message, "data2" => $data2));
     }
 
-    public function approveTransaksi($id_transaksi, $idrumah)
+    public function approveTransaksi($id_transaksi, $no_stnkb)
     {
         $update_status1 = array(
-            'verifikasi' => "Disetujui"
+            'verifikasi' => "Diproses"
         );
         $update_status2 = array(
             'status' => "Habis",
@@ -341,10 +309,10 @@ class pengesahan extends CI_Controller
         );
 
         $where1 = array("id_pengambilan_kredit" => $id_transaksi);
-        $where2 = array("idrumah" => $idrumah);
+        $where2 = array("no_stnkb" => $no_stnkb);
 
         $update1 = $this->db->update('pengambilan_kredit', $update_status1, $where1);
-        $update2 = $this->db->update('rumah', $update_status2, $where2);
+        $update2 = $this->db->update('motor', $update_status2, $where2);
 
         if ($update1 != null && $update2 != null) {
             $this->session->set_flashdata('in', 19);
@@ -352,7 +320,7 @@ class pengesahan extends CI_Controller
         }
     }
 
-    public function deniedTransaksi($id_transaksi, $idrumah)
+    public function deniedTransaksi($id_transaksi, $no_stnkb)
     {
         $update_status = array(
             'verifikasi' => "Ditolak"
@@ -363,13 +331,35 @@ class pengesahan extends CI_Controller
         );
 
         $where = array("id_pengambilan_kredit" => $id_transaksi);
-        $where2 = array("idrumah" => $idrumah);
+        $where2 = array("no_stnkb" => $no_stnkb);
 
         $update = $this->db->update('pengambilan_kredit', $update_status, $where);
-        $update2 = $this->db->update('rumah', $update_status2, $where2);
+        $update2 = $this->db->update('motor', $update_status2, $where2);
 
         if ($update != null && $update2 != null) {
             $this->session->set_flashdata('in', 20);
+            redirect(base_url() . "index.php/pengesahan/transaksi");
+        }
+    }
+	
+	public function successTransaksi($id_transaksi, $no_stnkb)
+    {
+        $update_status = array(
+            'verifikasi' => "Selesai"
+        );
+        $update_status2 = array(
+            'status' => "Terverifikasi",
+            'stok' => 1
+        );
+
+        $where = array("id_pengambilan_kredit" => $id_transaksi);
+        $where2 = array("no_stnkb" => $no_stnkb);
+
+        $update = $this->db->update('pengambilan_kredit', $update_status, $where);
+        $update2 = $this->db->update('motor', $update_status2, $where2);
+
+        if ($update != null && $update2 != null) {
+            $this->session->set_flashdata('in', 27);
             redirect(base_url() . "index.php/pengesahan/transaksi");
         }
     }

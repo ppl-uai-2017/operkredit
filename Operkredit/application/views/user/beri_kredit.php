@@ -74,12 +74,18 @@ $this->load->view("./navbar");
                             </div>
                             <hr>
                                     <?php
-                                    if($data != null) {
+                                    if(isset($data)) {
                                         foreach ($data as $data) {
                                             $verifikasi = $data['verifikasi'];
                                         }
-                                        if ($verifikasi != "Terverifikasi" ) {
-                                            echo "<h5 align='center'>Anda Belum dapat mengajukan barang untuk operkredit</h5>";
+                                        if ($verifikasi == "Menunggu" ) {
+                                            echo "<h5 align='center'>Anda Belum dapat mengajukan karena status akun dalam tahap verifikasi</h5>";
+                                            echo "<h6 align='center'>Silahkan pantau status akun anda <a href=".base_url("index.php/user").">disini</a> </h6>";
+                                        }
+                                        elseif ($verifikasi == "Ditolak" ) {
+                                            echo "<h5 align='center'>Anda tidak dapat mengajukan karena status akun ditolak </h5>";
+                                            echo "<h6 align='center'>hubungi tim kami untuk informasi lebih lanjut info@operkredit.web.id</h6>";
+
                                         }
                                     }
 
@@ -90,7 +96,7 @@ $this->load->view("./navbar");
                                         <form action="" method="POST">
                                             <select name="Produk" onchange="this.form.submit()" class="browser-default"  required>
                                                 <option value="">Pilih Produk</option>
-                                                <option value="Rumah">Motor</option>
+                                                <option value="Motor">Motor</option>
                                             </select>
                                         </form>
                                     </div>
@@ -101,7 +107,7 @@ $this->load->view("./navbar");
                                     <?php
                                     if(isset($_POST['Produk']))
                                     {
-                                        if($_POST['Produk'] == "Rumah") {
+                                        if($_POST['Produk'] == "Motor") {
                                             ?>
                             <!-- Registration Section Starts -->
                             <form class="form-horizontal" role="form" method="POST" action="<?php echo base_url("index.php/user/motor") ?>" enctype="multipart/form-data">
@@ -150,27 +156,15 @@ $this->load->view("./navbar");
                                                 <div class="form-group">
                                                     <label for="inputPhone" class="col-sm-3 control-label"><font color="red">*</font> Tipe :</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="tipe" required placeholder="Tipe Produk" oninvalid="this.setCustomValidity('Beri Tipe')"
-                                                               oninput="setCustomValidity('')">
+                                                        <select name="tipe" class="browser-default" required oninvalid="this.setCustomValidity('Beri Tipe')"
+                                                                oninput="setCustomValidity('')">
+                                                            <option value="">Pilih Tipe</option>
+                                                            <option value="Sport">Sport</option>
+                                                            <option value="Matic">Matic</option>
+                                                            <option value="Bebek">Bebek</option>
+                                                        </select>
                                                     </div>
                                                 </div>
-
-                                                <div class="form-group">
-                                                    <label for="inputPhone" class="col-sm-3 control-label"><font color="red">*</font> Kota :</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="kota" required placeholder="Kota Produk Berada" oninvalid="this.setCustomValidity('Kota Tidak Boleh Kosong')"
-                                                               oninput="setCustomValidity('')">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="inputPhone" class="col-sm-3 control-label"><font color="red">*</font> Provinsi :</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="provinsi" required placeholder="Provinsi Produk Berada" oninvalid="this.setCustomValidity('Provinsi Tidak Boleh Kosong')"
-                                                               oninput="setCustomValidity('')">
-                                                    </div>
-                                                </div>
-
                                                 <div class="form-group">
                                                     <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Warna :</label>
                                                     <div class="col-sm-9">
@@ -178,6 +172,31 @@ $this->load->view("./navbar");
                                                                oninput="setCustomValidity('')">
                                                     </div>
                                                 </div>
+												
+												
+												<?php
+												if($kota != null)
+												{
+													foreach ($kota as $kota) {?>
+												<div class="form-group">
+                                                    <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Kota :</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" name="kota" readonly required value = "<?php echo $kota['kota_motor'] ?>" oninvalid="this.setCustomValidity('Beri Warna Produk')"
+                                                               oninput="setCustomValidity('')">
+                                                    </div>
+                                                </div>
+												
+												<div class="form-group">
+                                                    <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Provinsi :</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" name="provinsi" readonly required value = "<?php echo $kota['provinsi_motor'] ?>" oninvalid="this.setCustomValidity('Beri Warna Produk')"
+                                                               oninput="setCustomValidity('')">
+                                                    </div>
+                                                </div>
+												
+												<?php }
+												}
+												?>
 
                                                 <div class="form-group">
                                                     <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Jarak Tempuh (KM) :</label>
@@ -212,7 +231,7 @@ $this->load->view("./navbar");
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Dokumen STNKB</label>
+                                                    <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Scane STNKB</label>
                                                     <div class="col-sm-9">
                                                         <input type="file" name="stnkb" class="form-control" required>
                                                     </div>
@@ -228,6 +247,7 @@ $this->load->view("./navbar");
                                                         * Silahkan Upload 4 foto, format hanya dalam jpg/png ukuran file maksimal 5mb
                                                     </div>
                                                 </div>
+										
                                                 <!-- Personal Information Ends -->
                                             <!-- Registration Form Starts -->
                                         </div>
@@ -252,6 +272,13 @@ $this->load->view("./navbar");
                                                         <div class="col-sm-9">
                                                             <input type="text" class="form-control" name="harga"
                                                                    placeholder="Harga Beli Total">
+                                                        </div>
+                                                    </div>
+													<div class="form-group">
+                                                        <label for="inputCompany" class="col-sm-3 control-label"><font color="red">*</font> Tebusan :</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" class="form-control" name="tebusan"
+                                                                   placeholder="Harga tebusan yang harus dibayar">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">

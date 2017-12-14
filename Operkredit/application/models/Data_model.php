@@ -46,6 +46,20 @@ class Data_model extends CI_Model
             return false;
         }
     }
+	
+	function getLocation($username)
+    {
+        $this->db->select('b.kota as kota_motor, b.provinsi as provinsi_motor');
+        $this->db->from('user a');
+        $this->db->join('pengunjung b', "b.email = a.email");
+        $this->db->where('username', $username);
+        $query = $this->db->get();
+        if ($query->num_rows() != 0) {
+            return $query->result_array();
+        } else {
+            return false;
+        }
+    }
 
     function getRegistrasi($email)
     {
@@ -64,8 +78,9 @@ class Data_model extends CI_Model
     function getProduk()
     {
         $this->db->select('*');
-        $this->db->from('rumah');
-        $this->db->where('status', "Terverifikasi");
+        $this->db->from('motor a');
+		$this->db->join('user b', "b.username = a.pengoper_kredit");
+        $this->db->join('pengunjung c', "b.email = c.email");
         $query = $this->db->get();
         if ($query->num_rows() != 0) {
             return $query->result_array();
@@ -76,7 +91,7 @@ class Data_model extends CI_Model
 
     function getDetail($id)
     {
-        $this->db->select('*, a.kota as kota_motor');
+        $this->db->select('*, c.kota as kota_motor');
         $this->db->from('motor a');
         $this->db->join('user b', "b.username = a.pengoper_kredit");
         $this->db->join('pengunjung c', "b.email = c.email");
@@ -119,11 +134,11 @@ class Data_model extends CI_Model
 
     function getDetailProduk($id)
     {
-        $this->db->select('*');
-        $this->db->from('rumah a');
+        $this->db->select('*, c.kota as kota_motor, c.provinsi as provinsi_motor');
+        $this->db->from('motor a');
         $this->db->join('user b', "a.pengoper_kredit = b.username");
         $this->db->join('pengunjung c', "b.email = c.email");
-        $this->db->where('idrumah', $id);
+        $this->db->where('no_stnkb', $id);
         $query = $this->db->get();
         if ($query->num_rows() != 0) {
             return $query->result_array();
@@ -150,9 +165,9 @@ class Data_model extends CI_Model
 
     function getDetailTransaksi($id)
     {
-        $this->db->select('*, a.verifikasi as status_verifikasi');
+        $this->db->select('*, a.verifikasi as status_verifikasi, d.kota as kota_motor, d.provinsi as provinsi_motor');
         $this->db->from('pengambilan_kredit a');
-        $this->db->join('rumah b', "a.id_rumah = b.idrumah");
+        $this->db->join('motor b', "a.no_stnkb = b.no_stnkb");
         $this->db->join('user c', "b.pengoper_kredit = c.username");
         $this->db->join('pengunjung d', "c.email = d.email");
         $this->db->join('metode_pembayaran e', "a.id_metode_pembayaran = e.id_metode_pembayaran");
@@ -200,7 +215,7 @@ class Data_model extends CI_Model
 
     function getDetailHistory($id)
     {
-        $this->db->select('*, b.kota as kota_motor');
+        $this->db->select('*, e.kota as kota_motor');
         $this->db->from('pengambilan_kredit a');
         $this->db->join('motor b', "a.no_stnkb = b.no_stnkb");
         $this->db->join('user d', "b.pengoper_kredit = d.username");
@@ -214,5 +229,27 @@ class Data_model extends CI_Model
             return false;
         }
     }
+	
+	function getKota(){
+		$this->db->select('*');
+        $this->db->from('regencies');
+        $query = $this->db->get();
+        if ($query->num_rows() != 0) {
+            return $query->result_array();
+        } else {
+            return false;
+        }
+	}
+	
+	function getProvinsi(){
+		$this->db->select('*');
+        $this->db->from('provinces');
+        $query = $this->db->get();
+        if ($query->num_rows() != 0) {
+            return $query->result_array();
+        } else {
+            return false;
+        }
+	}
 
 }

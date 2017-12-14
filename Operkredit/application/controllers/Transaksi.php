@@ -31,7 +31,7 @@ class Transaksi extends CI_Controller
             'no_pengesahan' => "1",
             'total_bayar' => $total,
             'cicilan' => $cicilan,
-            'id_rumah' => $idrumah,
+            'no_stnkb' => $idrumah,
             'verifikasi' => "Menunggu",
             'status_pembayaran' => "Menunggu"
         );
@@ -46,8 +46,9 @@ class Transaksi extends CI_Controller
         $update = $this->db->update('motor', $data, $where);
 
         if ($insert != null && $update != null) {
-            echo "<script type=\"text/javascript\">alert('Sukses, data anda kan kami review. Silahkan pantau pada halaman riwayat transaksi anda');</script>";
             redirect(base_url() . "index.php/user/history");
+            echo "<script type=\"text/javascript\">alert('Sukses, data anda kan kami review. Silahkan pantau pada halaman riwayat transaksi anda');</script>";
+
         }
     }
 }

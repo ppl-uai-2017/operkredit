@@ -88,7 +88,7 @@ $this->load->view("./navbar");
                                         <table id="data-table-simple" class="responsive-table display" cellspacing="0">
                                             <thead>
                                             <tr>
-                                                <th>No. </th>
+                                                <th>No STNKB </th>
                                                 <th>Foto </th>
                                                 <th>Judul </th>
                                                 <th>Harga </th>
@@ -106,11 +106,11 @@ $this->load->view("./navbar");
                                             {
                                                 ?>
                                             <tr>
-                                                <td><?php echo $data['idrumah']; ?></td>
-                                                <td><img src="<?php echo base_url("./rumah/" . $data['foto1']) ?>" width="100" alt="image"
+                                                <td><?php echo $data['no_stnkb']; ?></td>
+                                                <td><img src="<?php echo base_url("./motor/" . $data['foto1']) ?>" width="100" alt="image"
                                                          title="image" class="img-thumbnail"/></td>
-                                                <td><?php echo $data['judul']; ?></td>
-                                                <td><?php echo number_format($data['harga'], 2, ',', '.'); ?></td>
+                                                <td><?php echo $data['nama']; ?></td>
+                                                <td><?php echo number_format($data['harga_awal'], 2, ',', '.'); ?></td>
                                                 <td> <?php echo $data['total_cicilan'] . " Bulan"; ?></td>
                                                 <td><span class="label label-success"><?php echo $data['stok']; ?></span></td>
                                                 <td><?php
@@ -134,17 +134,17 @@ $this->load->view("./navbar");
                                                         <?php
                                                     }
                                                     ?></td>
-                                                <td><a href="<?php echo base_url("index.php/user/detail_produk/" . $data['idrumah']) ?>"><i class="mdi-action-home"></i></a>
+                                                <td><a href="<?php echo base_url("index.php/user/detail_produk/" . $data['no_stnkb']) ?>"><i class="mdi-action-home"></i></a>
                                                     <?php
                                                     if ($data['stok'] != 1) {
                                                         ?>
-                                                        <a href="<?php echo base_url("index.php/user/edit/" . $data['idrumah']) ?>"><i
+                                                        <a href="<?php echo base_url("index.php/user/edit/" . $data['no_stnkb']) ?>"><i
                                                                     class="mdi-editor-border-color"></i></a>
                                                         <?php
                                                     }
                                                     elseif ($data['status'] != "Dalam Transaksi") {
                                                         ?>
-                                                        <a href="<?php echo base_url("index.php/user/edit/" . $data['idrumah']) ?>"><i
+                                                        <a href="<?php echo base_url("index.php/user/edit/" . $data['no_stnkb']) ?>"><i
                                                                     class="mdi-editor-border-color"></i></a>
                                                         <?php
                                                     }
@@ -163,7 +163,7 @@ $this->load->view("./navbar");
                                                     }
                                                     else {
                                                         ?>
-                                                        <a href="<?php echo base_url("index.php/user/hapus/" . $data['idrumah']) ?>"
+                                                        <a href="<?php echo base_url("index.php/user/hapus/" . $data['no_stnkb']) ?>"
                                                            onclick="return confirm('Yakin Menghapus Produk ?')"> <i
                                                                     class="mdi-action-delete"></i></a>
                                                         <?php

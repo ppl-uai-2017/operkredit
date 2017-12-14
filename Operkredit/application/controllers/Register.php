@@ -23,7 +23,7 @@ class Register extends CI_Controller
         {
             $message = "<div class=\"alert alert-success alert-dismissable fade in\">
                                                         <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
-                                                        <strong>Registrasi Berhasil</strong> Silahkan login dan pantau status verifikasi akun. Klik <a href=''>Disini</a> untuk login
+                                                        <strong>Registrasi Berhasil</strong> Silahkan login dan pantau status verifikasi akun. Klik <a href='http://if.uai.ac.id/~generict/'>Disini</a> untuk login
                                                     </div>";
         }
 
@@ -34,7 +34,11 @@ class Register extends CI_Controller
                                                         <strong>Registrasi Gagal</strong> Silahkan hubungi customer service operkredit
                                                     </div>";
         }
-        $this->load->view("register/register", array("message" => $message));
+		$this->load->model("Data_model");
+        $kota = $this->Data_model->getKota();
+		$provinsi = $this->Data_model->getProvinsi();
+        $this->load->view("register/register", array("kota" => $kota, "provinsi" => $provinsi, "message" => $message));
+		
     }
 
     public function akun_baru()

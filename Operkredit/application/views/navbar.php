@@ -2,7 +2,7 @@
 <header id="header" class="page-topbar">
     <!-- start header nav-->
     <div class="navbar-fixed">
-        <nav class="cyan">
+        <nav class="red">
             <div class="nav-wrapper">
                 <ul class="left">
                     <li><h1 class="logo-wrapper"><a href="<?php echo base_url("")?>" class="brand-logo darken-1">Operkredit</a> <span class="logo-text">Materialize</span></h1></li>
@@ -39,12 +39,13 @@
                 <a href="#" class="waves-effect waves-red btn-flat modal-action modal-close">Batal</a>
             </div>
         </div>
+
         <!-- HORIZONTL NAV START-->
         <nav id="horizontal-nav" class="white hide-on-med-and-down">
             <div class="nav-wrapper">
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
                     <li>
-                        <a href="<?php echo base_url("")?>" class="cyan-text">
+                        <a href="<?php echo base_url("")?>" class="black-text">
                             <i class="mdi-action-home"></i>
                             <span>Home</span>
                         </a>
@@ -69,9 +70,41 @@
                     ?>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li>
-                            <a class="dropdown-menu cyan-text" href="#!" data-activates="UIElementsdropdown">
+                            <a class="dropdown-menu black-text" href="<?php echo base_url("index.php/login/out")?>">
+                                <i class="mdi-action-settings-power"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li>
+                            <a class="dropdown-menu black-text" href="<?php echo base_url("index.php/user")?>">
                                 <i class="mdi-social-person"></i>
                                 <span>Profile</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li>
+                            <a class="dropdown-menu black-text" href="<?php echo base_url("index.php/user/produk")?>">
+                                <i class="mdi-av-stop"></i>
+                                <span>Barang</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li>
+                            <a class="dropdown-menu black-text" href="<?php echo base_url("index.php/user/history")?>">
+                                <i class="mdi-maps-local-mall"></i>
+                                <span>Transaksi</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li>
+                            <a class="dropdown-menu black-text" href="<?php echo base_url("index.php/user/beri_kredit")?>">
+                                <i class="mdi-action-credit-card"></i>
+                                <span>Beri Kredit</span>
                             </a>
                         </li>
                     </ul>
@@ -81,13 +114,6 @@
             </div>
         </nav>
 
-        <ul id="UIElementsdropdown" class="dropdown-content dropdown-horizontal-list">
-            <li><a tabindex="-1" href="<?php echo base_url("index.php/user")?>"><font color="black", size="2">Halaman Profile</font></a></li>
-            <li><a tabindex="-1" href="<?php echo base_url("index.php/user/produk")?>"><font color="black", size="2">Barang Saya</font></a></li>
-            <li><a tabindex="-1" href="<?php echo base_url("index.php/user/history")?>"><font color="black", size="2">Riwayat Transaksi</font></a></li>
-            <li><a tabindex="-1" href="<?php echo base_url("index.php/user/beri_kredit")?>"><font color="black", size="2">Beri Kredit</font></a></li>
-            <li><a tabindex="-1" href="<?php echo base_url("index.php/login/out")?>"><font color="black", size="2">Logout</font></a></li>
-        </ul>
 
     </div>
     <!-- end header nav-->

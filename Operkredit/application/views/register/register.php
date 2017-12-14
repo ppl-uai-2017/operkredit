@@ -100,7 +100,7 @@
                             <div class="form-group">
                                 <label for="inputEmail" class="col-sm-3 control-label"><font color="red">*</font> Email :</label>
                                 <div class="col-sm-9">
-                                    <input type="email" class="form-control" name="email" placeholder="Email" required placeholder="Lengkapi email"
+                                    <input type="email" class="form-control" name="email" placeholder="Contoh : abc@operkredit.web.id" required placeholder="Lengkapi email"
                                            oninvalid="this.setCustomValidity('Lengkapi email')"
                                            oninput="setCustomValidity('')"  />
                                 </div>
@@ -129,7 +129,7 @@
                             <div class="form-group">
                                 <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Nomor HP :</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="no_hp" placeholder="Nomor HP" required
+                                    <input type="text" class="form-control" name="no_hp" placeholder="Contoh : 081234567890" required
                                            oninvalid="this.setCustomValidity('Nomor HP Tidak boleh kosong')"
                                            oninput="setCustomValidity('')" maxlength="13" />
                                 </div>
@@ -152,34 +152,57 @@
                             <div class="form-group">
                                 <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Alamat :</label>
                                 <div class="col-sm-9">
-                                    <textarea type="text" class="form-control" name="alamat" required placeholder="Alamat" oninvalid="this.setCustomValidity('Lengkapi Alamat')"
+                                    <textarea type="text" class="form-control" name="alamat" required placeholder="Alamat lengkap sesuai KTP" oninvalid="this.setCustomValidity('Lengkapi Alamat')"
                                               oninput="setCustomValidity('')"></textarea>
                                 </div>
                             </div>
-
                             <div class="form-group">
+                                <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Provinsi :</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" name="provinsi" required oninvalid="this.setCustomValidity('Pilih Provinsi')"
+                                            oninput="setCustomValidity('')">
+										<option value="">Pilih Provinsi</option>
+										
+									<?php
+									if($provinsi != null)
+                                    {
+										foreach ($provinsi as $provinsi) {?>
+										<option value = "<?php echo $provinsi['name'] ?>"><?php echo $provinsi['name'] ?></option>
+										<?php } 
+									}
+									?>
+									</select>
+                                </div>
+                            </div>
+							
+							<div class="form-group">
                                 <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Kota :</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="kota" required placeholder="Kota" oninvalid="this.setCustomValidity('Lengkapi Kota')"
-                                           oninput="setCustomValidity('')">
+                                    <select class="form-control" name="kota" required oninvalid="this.setCustomValidity('Pilih Kota')"
+                                            oninput="setCustomValidity('')">
+										<option value="">Pilih Kota</option>
+										
+									<?php
+									if($kota != null)
+                                    {
+										foreach ($kota as $kota) {?>
+										<option value = "<?php echo $kota['name'] ?>"><?php echo $kota['name'] ?></option>
+										<?php } 
+									}
+									?>
+									</select>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Kode Pos :</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="kode_pos" required placeholder="Kode Pos" oninvalid="this.setCustomValidity('Lengkapi Kodepos')"
+                                    <input type="text" class="form-control" name="kode_pos" required placeholder="Kode Pos sesuai KTP" oninvalid="this.setCustomValidity('Lengkapi Kodepos')"
                                            oninput="setCustomValidity('')">
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="inputFax" class="col-sm-3 control-label"><font color="red">*</font> Provinsi :</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="provinsi" required placeholder="Provinsi" oninvalid="this.setCustomValidity('Lengkapi Provinsi')"
-                                           oninput="setCustomValidity('')">
-                                </div>
-                            </div>
+                            
                             <!-- Personal Information Ends -->
                             <h3 class="panel-heading inner">
                                 Bukti Identitas
@@ -195,24 +218,29 @@
                             <div class="form-group">
                                 <label for="inputCompany" class="col-sm-3 control-label"><font color="red">*</font> Foto :</label>
                                 <div class="col-sm-9">
-                                    <input type="file" class="form-control" required name="foto" oninvalid="this.setCustomValidity('Lengkapi Foto')"
-                                           oninput="setCustomValidity('')">
+                                    <input type="file" class="form-control"  name="foto" >
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <label for="inputCompany" class="col-sm-3 control-label"><font color="red">*</font> File KTP :</label>
                                 <div class="col-sm-9">
-                                    <input type="file" class="form-control" name="file_ktp" required oninvalid="this.setCustomValidity('Lengkapi File KTP')"
-                                           oninput="setCustomValidity('')">
+                                    <input type="file" class="form-control" name="file_ktp" >
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="inputCompanyId" class="col-sm-3 control-label"><font color="red">*</font> Pekerjaan :</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="pekerjaan" required placeholder="Pekerjaan" oninvalid="this.setCustomValidity('Lengkapi Pekerjaan')"
-                                           oninput="setCustomValidity('')">
+                                    <select class="form-control" name="pekerjaan" required oninvalid="this.setCustomValidity('Pilih Status Pernikahan')"
+                                            oninput="setCustomValidity('')">
+                                        <option value="">Pilih</option>
+                                        <option value="Pegawai Negeri Sipil">Pegawai Negeri Sipil (PNS)</option>
+                                        <option value="Pegawai Swasta">Pegawai Swasta</option>
+                                        <option value="Mahasiswa">Mahasiswa</option>
+                                        <option value="Wirausaha">Wirausaha</option>
+										<option value="Pengajar">Pengajar</option>
+										<option value="Lain-lain">Lain-lain</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">

@@ -13,17 +13,17 @@ class Category extends CI_Controller
         $this->load->library("pagination");
 
         if(!isset($_POST['submit']) && !isset($_POST['kota'])) {
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "stok" => 1, "type" => "matic"), "12", $this->uri->segment(1));
+            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "matic"), "12", $this->uri->segment(1));
         }
 
         if(isset($_POST['kota']) && $_POST['kota'] != null) {
             $kota = $this->input->post('kota');
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "stok" => 1, "type" => "matic", "kota" => $kota), "12", $this->uri->segment(1));
+            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "matic", "kota" => $kota), "12", $this->uri->segment(1));
         }
 
         if(isset($_POST['submit']) && $_POST['kota'] != null) {
             $harga = $this->input->post('harga');
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "stok" => 1, "type" => "matic",  "kota" => $kota), "12", $this->uri->segment(1));
+            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "matic",  "kota" => $kota), "12", $this->uri->segment(1));
         }
 
         $data['motor'] = $query->result();
@@ -68,19 +68,19 @@ class Category extends CI_Controller
         $kota = $this->input->post('kota');
 
         if(!isset($_POST['submit']) && !isset($_POST['kota'])) {
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "stok" => 1, "type" => "sport"), "12", $this->uri->segment(1));
+            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "sport"), "12", $this->uri->segment(1));
         }
 
         if(isset($_POST['kota']) && $_POST['kota'] != null) {
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "stok" => 1, "type" => "sport", "kota" => $kota), "12", $this->uri->segment(1));
+            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "sport", "kota" => $kota), "12", $this->uri->segment(1));
         }
 
         if(isset($_POST['submit']) && $_POST['kota'] != null) {
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "stok" => 1, "type" => "sport",  "kota" => $kota), "12", $this->uri->segment(1));
+            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "sport",  "kota" => $kota), "12", $this->uri->segment(1));
         }
 
         if(isset($_POST['submit']) && $_POST['kota'] == "") {
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "stok" => 1, "type" => "sport"), "12", $this->uri->segment(1));
+            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "sport"), "12", $this->uri->segment(1));
         }
 
         $data['motor'] = $query->result();
@@ -116,6 +116,62 @@ class Category extends CI_Controller
         $this->pagination->initialize($config);
 
         $this->load->view("kategori/sport", $data);
+    }
+
+    public function bebek()
+    {
+        $this->load->library("pagination");
+        $kota = $this->input->post('kota');
+
+        if(!isset($_POST['submit']) && !isset($_POST['kota'])) {
+            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "bebek"), "12", $this->uri->segment(1));
+        }
+
+        if(isset($_POST['kota']) && $_POST['kota'] != null) {
+            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "bebek", "kota" => $kota), "12", $this->uri->segment(1));
+        }
+
+        if(isset($_POST['submit']) && $_POST['kota'] != null) {
+            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "bebek",  "kota" => $kota), "12", $this->uri->segment(1));
+        }
+
+        if(isset($_POST['submit']) && $_POST['kota'] == "") {
+            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "bebek"), "12", $this->uri->segment(1));
+        }
+
+        $data['motor'] = $query->result();
+
+        $query2 = $this->db->get("motor");
+
+        $config['base_url'] = "motor";
+
+        $config['total_rows'] = $query2->num_rows();
+        $config['per_page'] = 12;
+
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+
+        $config['first_tag_open'] = '<li>';
+        $config['last_tag_open'] = '<li>';
+
+        $config['next_tag_open'] = '<li>';
+        $config['prev_tag_open'] = '<li>';
+
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_close'] = '</li>';
+
+        $config['next_tag_close'] = '</li>';
+        $config['prev_tag_close'] = '</li>';
+
+        $config['cur_tag_open'] = "<li class=\"active\"><span><b>";
+        $config['cur_tag_close'] = "</b></span></li>";
+
+        $this->pagination->initialize($config);
+
+        $this->load->view("kategori/bebek", $data);
     }
 
     public function all()
@@ -177,6 +233,7 @@ class Category extends CI_Controller
 
     public function detail($id)
     {
+        echo $this->session->flashdata('something');
         $username = null;
 
         if(isset($_SESSION['username']))

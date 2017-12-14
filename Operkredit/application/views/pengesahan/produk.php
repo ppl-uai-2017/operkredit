@@ -108,33 +108,35 @@
                                 }
                                 ?>
                                 <thead>
-                                <th>No.</th>
+								<th>No.</th>
+                                <th>No STNKB</th>
                                 <th>Nama Pengoper Kredit</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                                 </thead>
                                 <tbody>
                                 <?php
-                                if($rumah != null)
-                                {
-                                foreach ($rumah as $data => $rumah) {
+                                if($data != null)
+                                {$no = 1;
+                                foreach ($data as $data) {
                                     ?>
 
                                     <tr>
-                                        <td><?php echo $rumah->idrumah ?></td>
-                                        <td><?php echo $rumah->pengoper_kredit ?></td>
-                                        <td><?php if ($rumah->status == "Menunggu") {
-                                                echo "<font color='black'>" . $rumah->status . "</font>";
-                                            } elseif ($rumah->status == "Terverifikasi") {
-                                                echo "<font color='#32cd32'>" . $rumah->status . "</font>";
-                                            } elseif ($rumah->status == "Ditolak") echo "<font color='red'>" . $rumah->status . "</font>" ?></td>
+										<td><?php echo $no ?></td>
+                                        <td><?php echo $data['no_stnkb'] ?></td>
+                                        <td><?php echo $data['nama_lengkap'] ?></td>
+                                        <td><?php if ($data['status'] == "Menunggu") {
+                                                echo "<font color='black'>" . $data['status'] . "</font>";
+                                            } elseif ($data['status'] == "Terverifikasi") {
+                                                echo "<font color='#32cd32'>" . $data['status'] . "</font>";
+                                            } elseif ($data['status'] == "Ditolak") echo "<font color='red'>" . $data['status'] . "</font>" ?></td>
                                         <td>
                                             <button type="button" rel="tooltip" title="Detail"
                                                     class="btn btn-info btn-simple btn-xs"
-                                                    onclick="location.href='<?php echo base_url("index.php/pengesahan/detailProduk/" . $rumah->idrumah) ?>';">
+                                                    onclick="location.href='<?php echo base_url("index.php/pengesahan/detailProduk/" . $data['no_stnkb']) ?>';">
                                                 <i class="fa fa-eye"></i>
                                             </button>
-                                            <a href="<?php echo base_url("index.php/pengesahan/hapusProduk/" . $rumah->idrumah) ?>" type="button" rel="tooltip" title="Hapus"
+                                            <a href="<?php echo base_url("index.php/pengesahan/hapusProduk/" . $data['no_stnkb']) ?>" type="button" rel="tooltip" title="Hapus"
                                                     class="btn btn-danger btn-simple btn-xs"
                                                     onclick="return confirm('Produk ini akan dihapus ?')">
                                                 <i class="fa fa-times"></i>
@@ -156,9 +158,6 @@
                                 ?>
                                 </tbody>
                             </table>
-                            <?php
-                            echo $this->pagination->create_links();
-                            ?>
                         </div>
 
                     </div>
