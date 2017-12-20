@@ -169,8 +169,12 @@ $this->load->view("./navbar.php");
                                                                         <img src="<?php echo base_url("./motor/".$data['foto4'])?>" width="300" class="img-responsive thumbnail">
                                                                     </a>
                                                                     <input type="file" name="foto4" class="form-control" required>
-
-                                                                    <a href="<?php echo base_url("./motor/".$data['dokumen_stnkb'])?>">
+                                                                </td>
+                                                            </tr>
+															<tr>
+															<td>Foto STNK</td>
+															<td>
+															<a href="<?php echo base_url("./motor/".$data['dokumen_stnkb'])?>">
                                                                         <img src="<?php echo base_url("./motor/".$data['dokumen_stnkb'])?>" width="300" class="img-responsive thumbnail">
                                                                     </a>
                                                                     <input type="file" name="stnkb" class="form-control" required>

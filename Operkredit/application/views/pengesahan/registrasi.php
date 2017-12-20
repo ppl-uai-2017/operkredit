@@ -29,6 +29,15 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="<?php echo base_url("./assets/css/pe-icon-7-stroke.css")?>" rel="stylesheet" />
+
+    <link href="<?php echo base_url("./css/materialize.css")?>" type="text/css" rel="stylesheet" media="screen,projection">
+
+    <link href="<?php echo base_url("../../../../cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css")?>" type="text/css" rel="stylesheet" media="screen,projection">
+
+    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+
+    <link href="<?php echo base_url("./js/plugins/data-tables/css/jquery.dataTables.min.css")?>" type="text/css" rel="stylesheet" media="screen,projection">
+
 </head>
 <body>
 
@@ -92,24 +101,43 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
+                    <div class="col-md-15">
+
                             <div class="header">
                                 <h4 class="title" align="center">Daftar Registrasi User</h4>
                                 <hr>
                             </div>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-hover table-striped">
-                                    <thead>
+                        <table >
 
-                                    <th>No.</th>
-                                    <th>Nama Lengkap</th>
-                                    <th>Email</th>
-                                    <th>No Hp</th>
-                                    <th>Jenis Kelamin</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
+                                <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>Email</th>
+                                        <th>No Hp</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Status</th>
+                                        <th>Tanggal Daftar</th>
+                                        <th>Aksi</th>
+                                    </tr>
                                     </thead>
+
+                                    <tfoot>
+                                    <tr>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>Email</th>
+                                        <th>No Hp</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Status</th>
+                                        <th>Tanggal Daftar</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                    </tfoot>
+
                                     <tbody>
                                     <?php
                                     if(isset($message))
@@ -117,16 +145,12 @@
                                         echo $message;
                                     }
                                     $no = 1;
-                                    if($pengunjung != null)
-                                    {
 
                                     foreach ($pengunjung as $data => $pengunjung) {
-
                                         ?>
-                                        <tr>
                                             <td><?php echo $no ?></td>
                                             <td><?php echo $pengunjung->nama_lengkap ?></td>
-                                           <td><?php echo $pengunjung->email ?></td>
+                                            <td><?php echo $pengunjung->email ?></td>
                                             <td><?php echo $pengunjung->no_hp ?></td>
                                             <td><?php echo $pengunjung->jenis_kelamin ?></td>
                                             <td><?php if ($pengunjung->verifikasi == "Menunggu") {
@@ -134,14 +158,15 @@
                                                 } elseif ($pengunjung->verifikasi == "Terverifikasi") {
                                                     echo "<font color='#32cd32'>" . $pengunjung->verifikasi . "</font>";
                                                 } elseif ($pengunjung->verifikasi == "Ditolak") echo "<font color='red'>" . $pengunjung->verifikasi . "</font>" ?></td>
+                                            <td><?php echo $pengunjung->create_at ?></td>
                                             <td>
                                                 <a href="<?php echo base_url("index.php/pengesahan/detailRegistrasi/" . $pengunjung->email) ?>" type="button" rel="tooltip" title="Detail"
-                                                        class="btn btn-info btn-simple btn-xs">
+                                                   class="btn btn-info btn-simple btn-xs">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                                 <a href="<?php echo base_url("index.php/pengesahan/hapusRegistrasi/" . $pengunjung->email) ?>" type="button" rel="tooltip" title="Hapus"
-                                                        class="btn btn-danger btn-simple btn-xs"
-                                                        onclick="return confirm('User Registrasi ini akan dihapus ?')">
+                                                   class="btn btn-danger btn-simple btn-xs"
+                                                   onclick="return confirm('User Registrasi ini akan dihapus ?')">
                                                     <i class="fa fa-times"></i>
                                                 </a>
                                             </td>
@@ -149,35 +174,14 @@
                                         <?php
                                         $no++;
                                     }
-                                    }
-                                    else
-                                    {
-                                        ?>
-                                        <tr>
-                                            <td colspan="7" align="center">Belum Ada Data</td>
-                                        </tr>
-                                        <?php
-                                    }
                                     ?>
-
                                     </tbody>
-                                </table>
-                                <?php
-                                echo $this->pagination->create_links();
-                                ?>
+                                </table >
                             </div>
-
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-
-        <?php
-        $this->load->view("./footer");
-        ?>
-
-    </div>
+            </div>
 </div>
 
 
@@ -205,4 +209,19 @@
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="<?php echo base_url("./assets/js/demo.js")?>"></script>
 
+
+
+
+<script type="text/javascript" src="<?php echo base_url("./js/materialize.js")?>"></script>
+<!--prism-->
+<script type="text/javascript" src="<?php echo base_url("./js/prism.js")?>"></script>
+<!--scrollbar-->
+<script type="text/javascript" src="<?php echo base_url("./js/plugins/perfect-scrollbar/perfect-scrollbar.min.js")?>"></script>
+<!-- data-tables -->
+<script type="text/javascript" src="<?php echo base_url("./js/plugins/data-tables/js/jquery.dataTables.min.js")?>"></script>
+<script type="text/javascript" src="<?php echo base_url("./js/plugins/data-tables/data-tables-script.js")?>"></script>
+<!-- chartist -->
+<script type="text/javascript" src="<?php echo base_url("./js/plugins/chartist-js/chartist.min.js")?>"></script>
+
+<script type="text/javascript" src="<?php echo base_url("./js/plugins.js")?>"></script>
 </html>

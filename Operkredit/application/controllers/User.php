@@ -229,7 +229,6 @@ class User extends CI_Controller
             echo $stnkb_name = $stnkb['file_name'];
 
             $edit_motor = array(
-                'no_stnkb' => $nomor_stnk,
                 'no_bpkb' => $nomor_bpkb,
                 'nama' => $nama,
                 'merk' => $merek,
@@ -249,7 +248,7 @@ class User extends CI_Controller
             );
 
             $where = array("no_stnkb" => $id);
-            $update = $this->db->update('rumah', $edit_motor, $where);
+            $update = $this->db->update('motor', $edit_motor, $where);
             if ($update != null) {
                 $this->session->set_flashdata('in', 1);
                 redirect(base_url() . "index.php/user/produk");

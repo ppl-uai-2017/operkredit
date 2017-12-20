@@ -5,7 +5,7 @@
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Daftar Transksi</title>
+    <title>Daftar Transaksi</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -114,7 +114,7 @@
                                                 </tr>
                                                     <tr>
                                                         <td>Pemilik Produk (From) : </td>
-                                                        <td><?php echo $data['nama_lengkap'] ?></td>
+                                                        <td><a target="_blank" href="<?php echo base_url("index.php/pengesahan/detailRegistrasi/".$data['email'])?>"><?php echo $data['nama_lengkap'] ?></a></td>
                                                     </tr>
                                                 <tr>
                                                 </tr>
@@ -131,7 +131,7 @@
                                                 ?>
                                                 <tr>
                                                     <td>Pengambil Barang (For) :</td>
-                                                    <td><?php echo $data2['nama_lengkap'] ?></td>
+                                                    <td><a target="_blank" href="<?php echo base_url("index.php/pengesahan/detailRegistrasi/".$data2['email'])?>"><?php echo $data2['nama_lengkap'] ?></a></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Email :</td>
@@ -152,7 +152,7 @@
                                         <table class="table table-hover table-striped">
                                                 <tr>
                                                     <td>No STNKB : </td>
-                                                    <td><?php echo $data['no_stnkb'] ?></td>
+                                                    <td><a target="_blank" href="<?php echo base_url("index.php/pengesahan/detailProduk/".$data['no_stnkb'])?>"><?php echo $data['no_stnkb'] ?></a></td>
                                                 </tr>
                                                 <tr>
                                                     <td>BPKB : </td>

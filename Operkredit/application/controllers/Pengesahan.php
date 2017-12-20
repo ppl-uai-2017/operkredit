@@ -36,7 +36,36 @@ class pengesahan extends CI_Controller
 
     public function index()
     {
-        $this->load->view("pengesahan/index");
+        $this->load->model("Data_model");
+
+        //Product
+        $VerifiedProduct = $this->Data_model->getVerifiedProduct();
+        $UnverifiedProduct = $this->Data_model->getUnverifiedProduct();
+        $TotalProduct = $this->Data_model->getTotalProduct();
+
+        //User
+        $VerifiedUser = $this->Data_model->getVerifiedUser();
+        $UnverifiedUser = $this->Data_model->getUnverifiedUser();
+        $TotalUser = $this->Data_model->getTotalUser();
+
+        //Transaction
+        $VerifiedTransaction = $this->Data_model->getVerifiedTransaction();
+        $UnverifiedTransaction = $this->Data_model->getUnverifiedTransaction();
+        $TotalTransaction = $this->Data_model->getTotalTransaction();
+        $DeniedTransaction = $this->Data_model->getDeniedTransaction();
+
+
+
+        $this->load->view("pengesahan/index", array("VerifiedProduct" => $VerifiedProduct,
+                                                    "UnverifiedProduct" => $UnverifiedProduct,
+                                                    "TotalProduct" => $TotalProduct,
+                                                    "VerifiedUser" => $VerifiedUser,
+                                                    "UnverifiedUser" => $UnverifiedUser,
+                                                    "TotalUser" => $TotalUser,
+                                                    "VerifiedTransaction" => $VerifiedTransaction,
+                                                    "UnverifiedTransaction" => $UnverifiedTransaction,
+                                                    "TotalTransaction" => $TotalTransaction,
+                                                    "DeniedTransaction" => $DeniedTransaction));
     }
 
     public function customer()
@@ -54,19 +83,15 @@ class pengesahan extends CI_Controller
 
         $this->load->library("pagination");
 
-        //$this->db->select('*');
-        //$this->db->from('user a');
-        //$this->db->join('pengunjung b', "b.email = a.email");
-
-        $query = $this->db->get("pengunjung", "10", $this->uri->segment(3));
+        $query = $this->db->get("pengunjung", "1000", $this->uri->segment(3));
         $data['pengunjung'] = $query->result();
 
         $query2 = $this->db->get("pengunjung");
 
-        $config['base_url'] = "registrasi";
+        $config['base_url'] = "customer";
 
         $config['total_rows'] = $query2->num_rows();
-        $config['per_page'] = 10;
+        $config['per_page'] = 1000;
 
         $config['full_tag_open'] = '<ul class="pagination">';
         $config['full_tag_close'] = '</ul>';
@@ -185,7 +210,8 @@ class pengesahan extends CI_Controller
     public function approveRegister($email)
     {
         $update_status = array(
-            'verifikasi' => "Terverifikasi"
+            'verifikasi' => "Terverifikasi",
+            'catatan' => "Akun telah terverifikasi, anda dapat melakukan transaksi."
         );
 
         $where = array("email" => $email);
@@ -348,8 +374,8 @@ class pengesahan extends CI_Controller
             'verifikasi' => "Selesai"
         );
         $update_status2 = array(
-            'status' => "Terverifikasi",
-            'stok' => 1
+            'status' => "Habis",
+            'stok' => 0
         );
 
         $where = array("id_pengambilan_kredit" => $id_transaksi);

@@ -134,31 +134,26 @@ $this->load->view("./navbar");
                                                         <?php
                                                     }
                                                     ?></td>
-                                                <td><a href="<?php echo base_url("index.php/user/detail_produk/" . $data['no_stnkb']) ?>"><i class="mdi-action-home"></i></a>
+                                                <td>
+                                                    <a href="<?php echo base_url("index.php/user/detail_produk/" . $data['no_stnkb']) ?>"><i class="mdi-action-home"></i></a>
                                                     <?php
-                                                    if ($data['stok'] != 1) {
-                                                        ?>
-                                                        <a href="<?php echo base_url("index.php/user/edit/" . $data['no_stnkb']) ?>"><i
-                                                                    class="mdi-editor-border-color"></i></a>
-                                                        <?php
-                                                    }
-                                                    elseif ($data['status'] != "Dalam Transaksi") {
-                                                        ?>
-                                                        <a href="<?php echo base_url("index.php/user/edit/" . $data['no_stnkb']) ?>"><i
-                                                                    class="mdi-editor-border-color"></i></a>
-                                                        <?php
+                                                    if ($data['status'] == "Habis" || $data['status'] == "Terjual" || $data['status'] == "Dalam Transaksi") {
+                                                        echo "";
                                                     }
                                                     else {
-                                                        echo "";
+                                                        ?>
+                                                        <a href="<?php echo base_url("index.php/user/edit/" . $data['no_stnkb']) ?>"><i class="mdi-editor-border-color"></i></a>
+
+                                                        <?php
                                                     }
 
                                                     ?>
                                                     <?php
-                                                    if($data['status'] == "Dalam Transaksi")
+                                                    if($data['status'] == "Habis" || $data['status'] == "Terjual" || $data['status'] == "Dalam Transaksi")
                                                     {
                                                         ?>
-                                                        <a href="<?php echo base_url("index.php/transaksi/riwayat/") ?>" <i
-                                                            class="mdi-action-add-shopping-cart"> Transaksi</i></a>
+
+
                                                         <?php
                                                     }
                                                     else {

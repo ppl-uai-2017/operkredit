@@ -5,7 +5,7 @@
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Light Bootstrap Dashboard by Creative Tim</title>
+    <title>Pengesahan Akun</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -94,7 +94,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="header">
+                            <div class="header"><a href="<?php echo base_url("index.php/pengesahan/customer")?>">Kembali</a>
                                 <h4 class="title" align="center">Detail Registrasi User</h4>
                                 <hr>
 
@@ -150,8 +150,12 @@
                                                     <td><?php echo $data['kode_pos'] ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Kode Pos : </td>
+                                                    <td>Provinsi : </td>
                                                     <td><?php echo $data['provinsi'] ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Terdaftar Pada : </td>
+                                                    <td><?php echo $data['create_at'] ?></td>
                                                 </tr>
                                                 <?php
                                             }
@@ -191,7 +195,10 @@
                                                 <td>Status Verifikasi User : </td>
                                                 <td><?php echo $data['verifikasi'] ?></td>
                                             </tr>
-
+                                            <tr>
+                                                <td>Catatan : </td>
+                                                <td><?php echo $data['catatan'] ?></td>
+                                            </tr>
                                         </table>
                                     </div>
                                 </div>

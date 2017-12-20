@@ -29,6 +29,17 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="<?php echo base_url("./assets/css/pe-icon-7-stroke.css")?>" rel="stylesheet" />
+
+
+
+    <link href="<?php echo base_url("./css/materialize.css")?>" type="text/css" rel="stylesheet" media="screen,projection">
+
+    <link href="<?php echo base_url("../../../../cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css")?>" type="text/css" rel="stylesheet" media="screen,projection">
+
+    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+
+    <link href="<?php echo base_url("./js/plugins/data-tables/css/jquery.dataTables.min.css")?>" type="text/css" rel="stylesheet" media="screen,projection">
+
 </head>
 <body>
 
@@ -93,19 +104,18 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card">
                             <div class="header">
                                 <h4 class="title" align="center">Daftar Transaksi operkredit</h4>
                                 <hr>
                             </div>
-                            <div class="content table-responsive table-full-width">
+
                                 <?php
                                 if(isset($message))
                                 {
                                     echo $message;
                                 }
                                 ?>
-                                <table class="table table-hover table-striped">
+                                <table id="data-table-simple" class="responsive-table display">
                                     <thead>
                                     <th>No.</th>
                                     <th>Nama Pengambil Kredit</th>
@@ -179,46 +189,10 @@
                                     ?>
                                     </tbody>
                                 </table>
-                            </div>
-
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Company
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Portfolio
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Blog
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <p class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-                </p>
-            </div>
-        </footer>
-
 
     </div>
 </div>
@@ -247,5 +221,19 @@
 
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="<?php echo base_url("./assets/js/demo.js")?>"></script>
+
+
+<script type="text/javascript" src="<?php echo base_url("./js/materialize.js")?>"></script>
+<!--prism-->
+<script type="text/javascript" src="<?php echo base_url("./js/prism.js")?>"></script>
+<!--scrollbar-->
+<script type="text/javascript" src="<?php echo base_url("./js/plugins/perfect-scrollbar/perfect-scrollbar.min.js")?>"></script>
+<!-- data-tables -->
+<script type="text/javascript" src="<?php echo base_url("./js/plugins/data-tables/js/jquery.dataTables.min.js")?>"></script>
+<script type="text/javascript" src="<?php echo base_url("./js/plugins/data-tables/data-tables-script.js")?>"></script>
+<!-- chartist -->
+<script type="text/javascript" src="<?php echo base_url("./js/plugins/chartist-js/chartist.min.js")?>"></script>
+
+<script type="text/javascript" src="<?php echo base_url("./js/plugins.js")?>"></script>
 
 </html>

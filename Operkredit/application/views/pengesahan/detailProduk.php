@@ -5,7 +5,7 @@
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Light Bootstrap Dashboard by Creative Tim</title>
+    <title>Pengesahan Produk</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -93,7 +93,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="header">
+                            <div class="header"><a href="<?php echo base_url("index.php/pengesahan/produk")?>">Kembali</a>
                                 <h4 class="title" align="center">Detail Registrasi Produk</h4>
                                 <hr>
 
@@ -208,10 +208,11 @@
                                 </form>
                             <?php
                             }
+                            else
+                            {
+                                echo "Produk Sudah Terjual, tidak dapat melakukan aksi";
+                            }
                             ?>
-
-
-
                         </div>
                     </div>
                 </div>

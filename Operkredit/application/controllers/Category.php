@@ -13,17 +13,42 @@ class Category extends CI_Controller
         $this->load->library("pagination");
 
         if(!isset($_POST['submit']) && !isset($_POST['kota'])) {
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "matic"), "12", $this->uri->segment(1));
+            $this->db->select('*');
+            $this->db->from('motor');
+            $this->db->where('type', "matic");
+            $this->db->where('status', "Terverifikasi");
+            $this->db->or_where('status', "Habis");
+            $this->db->where('type', "matic");
+            $this->db->limit(12);
+            $query = $this->db->get();
+            //$query = $this->db->get_where("motor", array("status" => "Terverifikasi, Habis", "type" => "matic"), "12", $this->uri->segment(1));
         }
 
         if(isset($_POST['kota']) && $_POST['kota'] != null) {
             $kota = $this->input->post('kota');
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "matic", "kota" => $kota), "12", $this->uri->segment(1));
+            $this->db->select('*');
+            $this->db->from('motor');
+            $this->db->where('type', "matic");
+            $this->db->where('status', "Terverifikasi");
+            $this->db->where('kota', $kota);
+            $this->db->or_where('status', "Habis");
+            $this->db->where('type', "matic");
+            $this->db->limit(12);
+            $query = $this->db->get();
+            //$query = $this->db->get_where("motor", array("status" => "Terverifikasi, Habis", "type" => "matic", "kota" => $kota), "12", $this->uri->segment(1));
         }
 
         if(isset($_POST['submit']) && $_POST['kota'] != null) {
-            $harga = $this->input->post('harga');
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "matic",  "kota" => $kota), "12", $this->uri->segment(1));
+            $this->db->select('*');
+            $this->db->from('motor');
+            $this->db->where('type', "matic");
+            $this->db->where('status', "Terverifikasi");
+            $this->db->where('kota', $kota);
+            $this->db->or_where('status', "Habis");
+            $this->db->where('type', "matic");
+            $this->db->limit(12);
+            $query = $this->db->get();
+            //$query = $this->db->get_where("motor", array("status" => "Terverifikasi, Habis", "type" => "matic",  "kota" => $kota), "12", $this->uri->segment(1));
         }
 
         $data['motor'] = $query->result();
@@ -68,19 +93,53 @@ class Category extends CI_Controller
         $kota = $this->input->post('kota');
 
         if(!isset($_POST['submit']) && !isset($_POST['kota'])) {
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "sport"), "12", $this->uri->segment(1));
+            $this->db->select('*');
+            $this->db->from('motor');
+            $this->db->where('type', "Sport");
+            $this->db->where('status', "Terverifikasi");
+            $this->db->or_where('status', "Habis");
+            $this->db->where('type', "Sport");
+            $this->db->limit(12);
+            $query = $this->db->get();
+            //$query = $this->db->get_where("motor", array("status" => "Terverifikasi, Habis", "type" => "sport"), "12", $this->uri->segment(1));
         }
 
         if(isset($_POST['kota']) && $_POST['kota'] != null) {
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "sport", "kota" => $kota), "12", $this->uri->segment(1));
+            $this->db->select('*');
+            $this->db->from('motor');
+            $this->db->where('type', "Sport");
+            $this->db->where('status', "Terverifikasi");
+            $this->db->where('kota', $kota);
+            $this->db->or_where('status', "Habis");
+            $this->db->where('type', "Sport");
+            $this->db->limit(12);
+            $query = $this->db->get();
+            //$query = $this->db->get_where("motor", array("status" => "Terverifikasi, Habis", "type" => "sport", "kota" => $kota), "12", $this->uri->segment(1));
         }
 
         if(isset($_POST['submit']) && $_POST['kota'] != null) {
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "sport",  "kota" => $kota), "12", $this->uri->segment(1));
+            $this->db->select('*');
+            $this->db->from('motor');
+            $this->db->where('type', "Sport");
+            $this->db->where('status', "Terverifikasi");
+            $this->db->where('kota', $kota);
+            $this->db->or_where('status', "Habis");
+            $this->db->where('type', "Sport");
+            $this->db->limit(12);
+            $query = $this->db->get();
+            //$query = $this->db->get_where("motor", array("status" => "Terverifikasi, Habis", "type" => "sport",  "kota" => $kota), "12", $this->uri->segment(1));
         }
 
         if(isset($_POST['submit']) && $_POST['kota'] == "") {
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "sport"), "12", $this->uri->segment(1));
+            $this->db->select('*');
+            $this->db->from('motor');
+            $this->db->where('type', "Sport");
+            $this->db->where('status', "Terverifikasi");
+            $this->db->or_where('status', "Habis");
+            $this->db->where('type', "Sport");
+            $this->db->limit(12);
+            $query = $this->db->get();
+            //$query = $this->db->get_where("motor", array("status" => "Terverifikasi, Habis", "type" => "sport"), "12", $this->uri->segment(1));
         }
 
         $data['motor'] = $query->result();
@@ -124,19 +183,53 @@ class Category extends CI_Controller
         $kota = $this->input->post('kota');
 
         if(!isset($_POST['submit']) && !isset($_POST['kota'])) {
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "bebek"), "12", $this->uri->segment(1));
+            $this->db->select('*');
+            $this->db->from('motor');
+            $this->db->where('type', "bebek");
+            $this->db->where('status', "Terverifikasi");
+            $this->db->or_where('status', "Habis");
+            $this->db->where('type', "bebek");
+            $this->db->limit(12);
+            $query = $this->db->get();
+            //$query = $this->db->get_where("motor", array("status" => "Terverifikasi, Habis", "type" => "bebek"), "12", $this->uri->segment(1));
         }
 
         if(isset($_POST['kota']) && $_POST['kota'] != null) {
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "bebek", "kota" => $kota), "12", $this->uri->segment(1));
+            $this->db->select('*');
+            $this->db->from('motor');
+            $this->db->where('type', "bebek");
+            $this->db->where('status', "Terverifikasi");
+            $this->db->where('kota', $kota);
+            $this->db->or_where('status', "Habis");
+            $this->db->where('type', "bebek");
+            $this->db->limit(12);
+            $query = $this->db->get();
+            //$query = $this->db->get_where("motor", array("status" => "Terverifikasi, Habis", "type" => "bebek", "kota" => $kota), "12", $this->uri->segment(1));
         }
 
         if(isset($_POST['submit']) && $_POST['kota'] != null) {
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "bebek",  "kota" => $kota), "12", $this->uri->segment(1));
+            $this->db->select('*');
+            $this->db->from('motor');
+            $this->db->where('type', "bebek");
+            $this->db->where('status', "Terverifikasi");
+            $this->db->where('kota', $kota);
+            $this->db->or_where('status', "Habis");
+            $this->db->where('type', "bebek");
+            $this->db->limit(12);
+            $query = $this->db->get();
+            //$query = $this->db->get_where("motor", array("status" => "Terverifikasi, Habis", "type" => "bebek",  "kota" => $kota), "12", $this->uri->segment(1));
         }
 
         if(isset($_POST['submit']) && $_POST['kota'] == "") {
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "type" => "bebek"), "12", $this->uri->segment(1));
+            $this->db->select('*');
+            $this->db->from('motor');
+            $this->db->where('type', "bebek");
+            $this->db->where('status', "Terverifikasi");
+            $this->db->or_where('status', "Habis");
+            $this->db->where('type', "bebek");
+            $this->db->limit(12);
+            $query = $this->db->get();
+            //$query = $this->db->get_where("motor", array("status" => "Terverifikasi, Habis", "type" => "bebek"), "12", $this->uri->segment(1));
         }
 
         $data['motor'] = $query->result();
@@ -181,19 +274,45 @@ class Category extends CI_Controller
         $kota = $this->input->post('kota');
 
         if(!isset($_POST['submit']) && !isset($_POST['kota'])) {
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "stok" => 1), "12", $this->uri->segment(1));
+            $this->db->select('*');
+            $this->db->from('motor');
+            $this->db->where('status', "Terverifikasi");
+            $this->db->or_where('status', "Habis");
+            $this->db->limit(12);
+            $query = $this->db->get();
+            //$query = $this->db->get_where("motor", array("status" => "Terverifikasi, Habis", "stok" => 1), "12", $this->uri->segment(1));
         }
 
         if(isset($_POST['kota']) && $_POST['kota'] != null) {
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "stok" => 1, "kota" => $kota), "12", $this->uri->segment(1));
+            $this->db->select('*');
+            $this->db->from('motor');
+            $this->db->where('status', "Terverifikasi");
+            $this->db->where('kota', $kota);
+            $this->db->or_where('status', "Habis");
+            $this->db->limit(12);
+            $query = $this->db->get();
+            //$query = $this->db->get_where("motor", array("status" => "Terverifikasi, Habis", "stok" => 1, "kota" => $kota), "12", $this->uri->segment(1));
         }
 
         if(isset($_POST['submit']) && $_POST['kota'] != null) {
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "stok" => 1,  "kota" => $kota), "12", $this->uri->segment(1));
+            $this->db->select('*');
+            $this->db->from('motor');
+            $this->db->where('status', "Terverifikasi");
+            $this->db->where('kota', $kota);
+            $this->db->or_where('status', "Habis");
+            $this->db->limit(12);
+            $query = $this->db->get();
+            //$query = $this->db->get_where("motor", array("status" => "Terverifikasi, Habis", "stok" => 1,  "kota" => $kota), "12", $this->uri->segment(1));
         }
 
         if(isset($_POST['submit']) && $_POST['kota'] == "") {
-            $query = $this->db->get_where("motor", array("status" => "Terverifikasi", "stok" => 1), "12", $this->uri->segment(1));
+            $this->db->select('*');
+            $this->db->from('motor');
+            $this->db->where('status', "Terverifikasi");
+            $this->db->or_where('status', "Habis");
+            $this->db->limit(12);
+            $query = $this->db->get();
+            //$query = $this->db->get_where("motor", array("status" => "Terverifikasi, Habis", "stok" => 1), "12", $this->uri->segment(1));
         }
 
         $data['motor'] = $query->result();

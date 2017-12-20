@@ -252,4 +252,130 @@ class Data_model extends CI_Model
         }
 	}
 
+
+
+	//Statistik Query
+    function getVerifiedProduct()
+    {
+        $this->db->select('COUNT(no_stnkb) as jumlah');
+        $this->db->from('motor');
+        $this->db->where('status', "Terverifikasi");
+        $query = $this->db->get();
+        if ($query->num_rows() != 0) {
+            return $query->result_array();
+        } else {
+            return false;
+        }
+    }
+
+    function getUnverifiedProduct()
+    {
+        $this->db->select('COUNT(no_stnkb) as jumlah');
+        $this->db->from('motor');
+        $this->db->where('status', "Menunggu");
+        $query = $this->db->get();
+        if ($query->num_rows() != 0) {
+            return $query->result_array();
+        } else {
+            return false;
+        }
+    }
+
+    function getTotalProduct()
+    {
+        $this->db->select('COUNT(no_stnkb) as jumlah');
+        $this->db->from('motor');
+        $query = $this->db->get();
+        if ($query->num_rows() != 0) {
+            return $query->result_array();
+        } else {
+            return false;
+        }
+    }
+
+    function getVerifiedUser()
+    {
+        $this->db->select('COUNT(email) as jumlah');
+        $this->db->from('pengunjung');
+        $this->db->where('verifikasi', "Terverifikasi");
+        $query = $this->db->get();
+        if ($query->num_rows() != 0) {
+            return $query->result_array();
+        } else {
+            return false;
+        }
+    }
+    function getUnverifiedUser()
+    {
+        $this->db->select('COUNT(email) as jumlah');
+        $this->db->from('pengunjung');
+        $this->db->where('verifikasi', "Menunggu");
+        $query = $this->db->get();
+        if ($query->num_rows() != 0) {
+            return $query->result_array();
+        } else {
+            return false;
+        }
+    }
+    function getTotalUser()
+    {
+        $this->db->select('COUNT(email) as jumlah');
+        $this->db->from('pengunjung');
+        $query = $this->db->get();
+        if ($query->num_rows() != 0) {
+            return $query->result_array();
+        } else {
+            return false;
+        }
+    }
+
+
+    function getVerifiedTransaction()
+    {
+        $this->db->select('COUNT(id_pengambil_kredit) as jumlah');
+        $this->db->from('pengambilan_kredit');
+        $this->db->where('verifikasi', "Terverifikasi");
+        $query = $this->db->get();
+        if ($query->num_rows() != 0) {
+            return $query->result_array();
+        } else {
+            return false;
+        }
+    }
+    function getUnverifiedTransaction()
+    {
+        $this->db->select('COUNT(id_pengambil_kredit) as jumlah');
+        $this->db->from('pengambilan_kredit');
+        $this->db->where('verifikasi', "Menunggu");
+        $query = $this->db->get();
+        if ($query->num_rows() != 0) {
+            return $query->result_array();
+        } else {
+            return false;
+        }
+    }
+    function getTotalTransaction()
+    {
+        $this->db->select('COUNT(id_pengambil_kredit) as jumlah');
+        $this->db->from('pengambilan_kredit');
+        $query = $this->db->get();
+        if ($query->num_rows() != 0) {
+            return $query->result_array();
+        } else {
+            return false;
+        }
+    }
+
+    function getDeniedTransaction()
+    {
+        $this->db->select('COUNT(id_pengambil_kredit) as jumlah');
+        $this->db->from('pengambilan_kredit');
+        $this->db->where('verifikasi', "Ditolak");
+        $query = $this->db->get();
+        if ($query->num_rows() != 0) {
+            return $query->result_array();
+        } else {
+            return false;
+        }
+    }
 }

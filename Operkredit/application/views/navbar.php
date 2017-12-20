@@ -76,6 +76,33 @@
                             </a>
                         </li>
                     </ul>
+
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li>
+                            <a class="dropdown-menu black-text" href="#!" data-activates="UIElementsdropdown">
+                                <i class="mdi-social-notifications-none"></i>
+                                <?php
+                                if(isset($notif))
+                                {
+                                    ?>
+                                    <span class="new badge">1</span>
+                                <?php
+                                }
+                                else
+                                {
+                                    ?>
+                                    <span>Notifikasi</span>
+                                <?php
+                                }
+                                ?>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul id="UIElementsdropdown" class="dropdown-content dropdown-horizontal-list">
+                        <li>Belum ada Notifikasi</li>
+                    </ul>
+
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li>
                             <a class="dropdown-menu black-text" href="<?php echo base_url("index.php/user")?>">
@@ -84,6 +111,7 @@
                             </a>
                         </li>
                     </ul>
+
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li>
                             <a class="dropdown-menu black-text" href="<?php echo base_url("index.php/user/produk")?>">
