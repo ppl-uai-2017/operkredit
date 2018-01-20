@@ -72,6 +72,9 @@ class Register extends CI_Controller
             $password = $this->input->post('password');
             $konfirmasi = $this->input->post('konfirmasi');
 
+            //Send Email
+            //$this->sendMail($email);
+
             $this->upload->do_upload('foto');
             $foto = $this->upload->data();
             $foto_name = $foto['file_name'];
@@ -129,6 +132,32 @@ class Register extends CI_Controller
             $this->load->view("register/register");
         }
     }
+
+    public function send()
+    {
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'smtp.googlemail.com',
+            'smtp_port' => 25,
+            'smtp_user' => 'operkredit.web.id@gmail.com',
+            'smtp_pass' => 'blinkbink',
+            'mailtype' => 'html',
+            'charset' => 'iso-8859-1',
+            'mailpath' => '/usr/sbin/sendmail'
+        );
+        $this->load->library('email', $config);
+        $this->email->set_newline('\r\n');
+        $this->email->from('operkredit.web.id@gmail.com', 'Admin');
+        $this->email->to('operkredit.web.id@gmail.com');
+        $this->email->subject('Percobaan email');
+        $this->email->message('Ini adalah email percobaan untuk Tutorial CodeIgniter: Mengirim Email via Gmail SMTP menggunakan Email Library CodeIgniter @ recodeku.blogspot.com');
+        if (!$this->email->send()) {
+            show_error($this->email->print_debugger());
+        }else{
+            echo 'Success to send email';
+        }
+    }
+
 }
 
 ?>

@@ -19,7 +19,7 @@ class Category extends CI_Controller
             $this->db->where('status', "Terverifikasi");
             $this->db->or_where('status', "Habis");
             $this->db->where('type', "matic");
-            $this->db->limit(12);
+            $this->db->limit(120);
             $query = $this->db->get();
             //$query = $this->db->get_where("motor", array("status" => "Terverifikasi, Habis", "type" => "matic"), "12", $this->uri->segment(1));
         }
@@ -33,7 +33,7 @@ class Category extends CI_Controller
             $this->db->where('kota', $kota);
             $this->db->or_where('status', "Habis");
             $this->db->where('type', "matic");
-            $this->db->limit(12);
+            $this->db->limit(120);
             $query = $this->db->get();
             //$query = $this->db->get_where("motor", array("status" => "Terverifikasi, Habis", "type" => "matic", "kota" => $kota), "12", $this->uri->segment(1));
         }
@@ -46,7 +46,7 @@ class Category extends CI_Controller
             $this->db->where('kota', $kota);
             $this->db->or_where('status', "Habis");
             $this->db->where('type', "matic");
-            $this->db->limit(12);
+            $this->db->limit(120);
             $query = $this->db->get();
             //$query = $this->db->get_where("motor", array("status" => "Terverifikasi, Habis", "type" => "matic",  "kota" => $kota), "12", $this->uri->segment(1));
         }
@@ -55,10 +55,10 @@ class Category extends CI_Controller
 
         $query2 = $this->db->get("motor");
 
-        $config['base_url'] = "motor";
+        $config['base_url'] = "http://operkredit.web.id/index.php/category/matic/";
 
         $config['total_rows'] = $query2->num_rows();
-        $config['per_page'] = 12;
+        $config['per_page'] = 120;
 
         $config['full_tag_open'] = '<ul class="pagination">';
         $config['full_tag_close'] = '</ul>';
@@ -82,7 +82,7 @@ class Category extends CI_Controller
         $config['cur_tag_close'] = "</b></span></li>";
 
         $this->pagination->initialize($config);
-
+        echo $this->pagination->create_links();
         $this->load->view("kategori/matic", $data);
     }
 
@@ -146,7 +146,7 @@ class Category extends CI_Controller
 
         $query2 = $this->db->get("motor");
 
-        $config['base_url'] = "motor";
+        $config['base_url'] = "sport";
 
         $config['total_rows'] = $query2->num_rows();
         $config['per_page'] = 12;
@@ -236,7 +236,7 @@ class Category extends CI_Controller
 
         $query2 = $this->db->get("motor");
 
-        $config['base_url'] = "motor";
+        $config['base_url'] = "bebek";
 
         $config['total_rows'] = $query2->num_rows();
         $config['per_page'] = 12;

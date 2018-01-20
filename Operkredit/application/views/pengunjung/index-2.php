@@ -74,6 +74,11 @@ $this->load->view("./navbar.php");
                 Operkredit adalah marketplace khusus bagi pengguna yang ingin memiliki barang dengan cara kredit baru maupun pindah kredit lama dari pengguna lainnya. Di Operkredit pengguna dapat mengajukan pengoperan produk motor yang masih dalam status kredit berjalan maupun produk baru dari dealer resmi maupun perorangan.
             </p>
 
+            <center>
+            <iframe src="https://www.youtube.com/embed/YbzcxAPTk7U"  width="710" height="345"  align="middle">
+            </iframe>
+            </center>
+
             <br><br><br>
             <h4 align="center">Cara Operkredit</h4>
             <div id="container">
